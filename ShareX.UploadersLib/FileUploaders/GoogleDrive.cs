@@ -24,9 +24,11 @@
 #endregion License Information (GPL v3)
 
 using Newtonsoft.Json;
+using ShareX.UploadersLib.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Drawing;
 using System.IO;
 using System.Web;
 using System.Windows.Forms;
@@ -36,6 +38,8 @@ namespace ShareX.UploadersLib.FileUploaders
     public class GoogleDriveFileUploaderService : FileUploaderService
     {
         public override FileDestination EnumValue { get; } = FileDestination.GoogleDrive;
+
+        public override Icon ServiceIcon => Resources.GoogleDrive;
 
         public override bool CheckConfig(UploadersConfig config)
         {
@@ -247,7 +251,7 @@ namespace ShareX.UploadersLib.FileUploaders
             string metadata = GetMetadata(fileName, FolderID);
 
             UploadResult result = UploadData(stream, "https://www.googleapis.com/upload/drive/v2/files?uploadType=multipart", fileName, headers: GetAuthHeaders(),
-                requestContentType: "multipart/related", metadata: metadata);
+                contentType: "multipart/related", metadata: metadata);
 
             if (!string.IsNullOrEmpty(result.Response))
             {

@@ -476,5 +476,19 @@ namespace ShareX.HelpersLib
 
             return FlashWindowEx(ref fInfo);
         }
+
+        public static void OpenFolderAndSelectFile(string filePath)
+        {
+            IntPtr pidl = ILCreateFromPathW(filePath);
+
+            try
+            {
+                SHOpenFolderAndSelectItems(pidl, 0, IntPtr.Zero, 0);
+            }
+            finally
+            {
+                ILFree(pidl);
+            }
+        }
     }
 }

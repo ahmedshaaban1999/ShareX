@@ -23,7 +23,9 @@
 
 #endregion License Information (GPL v3)
 
+using ShareX.UploadersLib.Properties;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -33,6 +35,8 @@ namespace ShareX.UploadersLib.FileUploaders
     {
         public override FileDestination EnumValue { get; } = FileDestination.Puush;
 
+        public override Icon ServiceIcon => Resources.puush;
+
         public override bool CheckConfig(UploadersConfig config)
         {
             return !string.IsNullOrEmpty(config.PuushAPIKey);
@@ -40,10 +44,7 @@ namespace ShareX.UploadersLib.FileUploaders
 
         public override GenericUploader CreateUploader(UploadersConfig config, TaskReferenceHelper taskInfo)
         {
-            return new Puush()
-            {
-                APIKey = config.PuushAPIKey
-            };
+            return new Puush(config.PuushAPIKey);
         }
 
         public override TabPage GetUploadersConfigTabPage(UploadersConfigForm form) => form.tpPuush;
@@ -52,13 +53,23 @@ namespace ShareX.UploadersLib.FileUploaders
     public class Puush : FileUploader
     {
         public const string PuushURL = "https://puush.me";
-        public const string PuushAPIURL = PuushURL + "/api";
-        public const string PuushAPILoginURL = PuushAPIURL + "/auth";
-        public const string PuushAPIUploadURL = PuushAPIURL + "/up";
         public const string PuushRegisterURL = PuushURL + "/register";
         public const string PuushResetPasswordURL = PuushURL + "/reset_password";
 
+        private const string PuushAPIURL = PuushURL + "/api";
+        private const string PuushAPILoginURL = PuushAPIURL + "/auth";
+        private const string PuushAPIUploadURL = PuushAPIURL + "/up";
+
         public string APIKey { get; set; }
+
+        public Puush()
+        {
+        }
+
+        public Puush(string apiKey)
+        {
+            APIKey = apiKey;
+        }
 
         public string Login(string email, string password)
         {
