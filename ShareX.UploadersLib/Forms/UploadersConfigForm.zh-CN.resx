@@ -481,9 +481,6 @@
   <data name="grpSeafileShareSettings.Text" xml:space="preserve">
     <value>Seafile共享设置</value>
   </data>
-  <data name="lblUp1Host.Text" xml:space="preserve">
-    <value>域名:</value>
-  </data>
   <data name="lblPomfUploaders.Text" xml:space="preserve">
     <value>上传者:</value>
   </data>
@@ -703,9 +700,6 @@
   <data name="lblDropboxStatus.Text" xml:space="preserve">
     <value>状态</value>
   </data>
-  <data name="btnDropboxShowFiles.Text" xml:space="preserve">
-    <value>选择...</value>
-  </data>
   <data name="cbDropboxAutoCreateShareableLink.Text" xml:space="preserve">
     <value>创建共享网址:</value>
   </data>
@@ -725,7 +719,7 @@
     <value>图片上传者</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>ShareX - 目标设定</value>
+    <value>ShareX - 上传至...设定</value>
   </data>
   <data name="lblCheveretoAPIKey.Text" xml:space="preserve">
     <value>API密钥:</value>
@@ -854,5 +848,56 @@
     <value>存储对象使用一个较低的冗余存储类。
 使用此选项,对象可以很方便的存储,但只有99.99％的持久性，而不是99.999999999％。
 这意味着,他们可以从Amazon S3某些点丢失。</value>
+  </data>
+  <data name="lblCustomUploaderJsonPathExample.Text" xml:space="preserve">
+    <value>例子：
+
+Files[0].URL
+store.book[0].title</value>
+  </data>
+  <data name="lblCustomUploaderXPathExample.Text" xml:space="preserve">
+    <value>例子：
+
+/Files/File[1]/URL
+/store/book[1]/title</value>
+  </data>
+  <data name="lblCustomUploaderURL.Text" xml:space="preserve">
+    <value>URL：</value>
+  </data>
+  <data name="btnPuushLogin.Text" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="lblPuushEmail.Text" xml:space="preserve">
+    <value>邮箱：</value>
+  </data>
+  <data name="lblPuushPassword.Text" xml:space="preserve">
+    <value>密码：</value>
+  </data>
+  <data name="llPuushCreateAccount.Text" xml:space="preserve">
+    <value>创建一个帐户...</value>
+  </data>
+  <data name="llPuushForgottenPassword.Text" xml:space="preserve">
+    <value>忘记了密码？</value>
+  </data>
+  <data name="cbGoogleDriveDirectLink.Text" xml:space="preserve">
+    <value>使用direct link</value>
+  </data>
+  <data name="lblOwnCloudHostExample.Text" xml:space="preserve">
+    <value>例子：http://example.com/owncloud</value>
+  </data>
+  <data name="lblSeafileAccInfoEmail.Text" xml:space="preserve">
+    <value>邮箱：</value>
+  </data>
+  <data name="llVgymeAccountDetailsPage.Text" xml:space="preserve">
+    <value>您可以从帐户详情页面中用户密钥。</value>
+  </data>
+  <data name="lblCheveretoUploadURLExample.Text" xml:space="preserve">
+    <value>例子：http://example.com/api/1/upload</value>
+  </data>
+  <data name="btnCheveretoTestAll.Text" xml:space="preserve">
+    <value>测试全部</value>
+  </data>
+  <data name="cbHastebinUseFileExtension.Text" xml:space="preserve">
+    <value>使用格式高亮显示文件扩展名（除了.TXT）</value>
   </data>
 </root>

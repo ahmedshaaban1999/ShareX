@@ -151,7 +151,7 @@
     <value>Histórico de imagens...</value>
   </data>
   <data name="tsbScreenshotsFolder.Text" xml:space="preserve">
-    <value>Capturas de tela...</value>
+    <value>Screenshots...</value>
   </data>
   <data name="tsbTaskSettings.Text" xml:space="preserve">
     <value>Config. de tarefas...</value>
@@ -200,9 +200,6 @@
   </data>
   <data name="tsmiAutoCapture.Text" xml:space="preserve">
     <value>Captura automática...</value>
-  </data>
-  <data name="tsmiAutomate.Text" xml:space="preserve">
-    <value>Automatizar...</value>
   </data>
   <data name="tsmiClearList.Text" xml:space="preserve">
     <value>Limpar lista</value>
@@ -355,7 +352,7 @@
     <value>Encurtar URL</value>
   </data>
   <data name="tsmiScreenshotsFolder.Text" xml:space="preserve">
-    <value>Pasta de capturas de tela...</value>
+    <value>Pasta de screenshots...</value>
   </data>
   <data name="tsmiShowDebugLog.Text" xml:space="preserve">
     <value>Registro de depuração...</value>
@@ -438,9 +435,6 @@
   <data name="tsmiURLShorteners.Text" xml:space="preserve">
     <value>Encurtadores de URL...</value>
   </data>
-  <data name="tsmiTrayAutomate.Text" xml:space="preserve">
-    <value>Automatizar...</value>
-  </data>
   <data name="tsmiTrayApplicationSettings.Text" xml:space="preserve">
     <value>Config. do programa...</value>
   </data>
@@ -480,9 +474,6 @@
   <data name="tsmiFileUploaders.Text" xml:space="preserve">
     <value>Envio de arquivos</value>
   </data>
-  <data name="tsmiFreeHand.Text" xml:space="preserve">
-    <value>Mão livre</value>
-  </data>
   <data name="tsmiHashCheck.Text" xml:space="preserve">
     <value>Conferir hash...</value>
   </data>
@@ -506,9 +497,6 @@
   </data>
   <data name="tsmiOpenThumbnailURL.Text" xml:space="preserve">
     <value>URL da miniatura</value>
-  </data>
-  <data name="tsmiPolygon.Text" xml:space="preserve">
-    <value>Polígono</value>
   </data>
   <data name="tsmiRectangle.Text" xml:space="preserve">
     <value>Região</value>
@@ -543,9 +531,6 @@
   <data name="tsmiTrayFileUploaders.Text" xml:space="preserve">
     <value>Envio de arquivos</value>
   </data>
-  <data name="tsmiTrayFreeHand.Text" xml:space="preserve">
-    <value>Desenho à mão livre</value>
-  </data>
   <data name="tsmiTrayHashCheck.Text" xml:space="preserve">
     <value>Conferir hash</value>
   </data>
@@ -569,9 +554,6 @@
   </data>
   <data name="tsmiTrayMonitorTest.Text" xml:space="preserve">
     <value>Teste de monitor</value>
-  </data>
-  <data name="tsmiTrayPolygon.Text" xml:space="preserve">
-    <value>Polígono</value>
   </data>
   <data name="tsmiTrayRectangle.Text" xml:space="preserve">
     <value>Região</value>
@@ -668,5 +650,8 @@
   </data>
   <data name="tsmiTrayTextCapture.Text" xml:space="preserve">
     <value>Captura de texto (OCR)...</value>
+  </data>
+  <data name="tsmiDownloadSelectedURL.Text" xml:space="preserve">
+    <value>Baixar</value>
   </data>
 </root>

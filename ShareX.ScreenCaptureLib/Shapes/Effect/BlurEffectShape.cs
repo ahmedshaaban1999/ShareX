@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -24,28 +24,22 @@
 #endregion License Information (GPL v3)
 
 using ShareX.HelpersLib;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace ShareX.ScreenCaptureLib
 {
     public class BlurEffectShape : BaseEffectShape
     {
-        public override ShapeType ShapeType { get; } = ShapeType.DrawingBlur;
+        public override ShapeType ShapeType { get; } = ShapeType.EffectBlur;
 
         public int BlurRadius { get; set; }
 
-        public override void UpdateShapeConfig()
+        public override void OnConfigLoad()
         {
             BlurRadius = AnnotationOptions.BlurRadius;
         }
 
-        public override void ApplyShapeConfig()
+        public override void OnConfigSave()
         {
             AnnotationOptions.BlurRadius = BlurRadius;
         }
@@ -81,11 +75,14 @@ namespace ShareX.ScreenCaptureLib
         {
             if (BlurRadius > 1)
             {
-                using (Bitmap croppedImage = ImageHelpers.CropBitmap(bmp, Rectangle))
-                {
-                    ImageHelpers.Blur(croppedImage, BlurRadius);
+                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                rect.Intersect(Rectangle);
 
-                    g.DrawImage(croppedImage, Rectangle);
+                using (Bitmap croppedImage = ImageHelpers.CropBitmap(bmp, rect))
+                {
+                    ImageHelpers.BoxBlur(croppedImage, BlurRadius);
+
+                    g.DrawImage(croppedImage, rect);
                 }
             }
         }

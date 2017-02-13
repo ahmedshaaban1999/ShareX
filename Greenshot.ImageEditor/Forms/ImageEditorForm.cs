@@ -121,8 +121,54 @@ namespace Greenshot
             if (EditorConfiguration.MatchSizeToCapture)
             {
                 RECT lastPosition = EditorConfiguration.GetEditorPlacement().NormalPosition;
+
+                WindowPlacement wp = new WindowDetails(Handle).WindowPlacement;
+                wp.NormalPosition.Top = lastPosition.Top;
+                wp.NormalPosition.Left = lastPosition.Left;
+                // don't actually show window now (it is done later)
+                wp.ShowCmd = ShowWindowCommand.Hide;
+
                 this.StartPosition = FormStartPosition.Manual;
-                this.Location = new Point(lastPosition.Left, lastPosition.Top);
+
+                WindowDetails thisForm = new WindowDetails(Handle)
+                {
+                    WindowPlacement = wp
+                };
+
+                // Once image is loaded into window, size and position window
+                Load += delegate
+                {
+                    Rectangle workingArea = Screen.FromControl(this).WorkingArea;
+                    WindowPlacement windowPlacement = new WindowDetails(Handle).WindowPlacement;
+
+                    if (EditorConfiguration.MaximizeWhenLargeImage)
+                    {
+                        if ((windowPlacement.NormalPosition.Width > workingArea.Width) || (windowPlacement.NormalPosition.Height > workingArea.Height))
+                        {
+                            windowPlacement.ShowCmd = ShowWindowCommand.Maximize;
+                        }
+                    }
+
+                    if (windowPlacement.NormalPosition.Right > workingArea.Right)
+                    {
+                        int toMoveLeft = windowPlacement.NormalPosition.Right - workingArea.Right;
+                        if (windowPlacement.NormalPosition.Left - toMoveLeft < 0)
+                            toMoveLeft = windowPlacement.NormalPosition.Left;
+
+                        windowPlacement.NormalPosition.Left -= toMoveLeft;
+                        windowPlacement.NormalPosition.Right -= toMoveLeft;
+                    }
+                    if (windowPlacement.NormalPosition.Bottom > workingArea.Bottom)
+                    {
+                        int toMoveUp = windowPlacement.NormalPosition.Bottom - workingArea.Bottom;
+                        if (windowPlacement.NormalPosition.Top - toMoveUp < 0)
+                            toMoveUp = windowPlacement.NormalPosition.Top;
+
+                        windowPlacement.NormalPosition.Top -= toMoveUp;
+                        windowPlacement.NormalPosition.Bottom -= toMoveUp;
+                    }
+                    WindowDetails thisForm1 = new WindowDetails(Handle) { WindowPlacement = windowPlacement };
+                };
             }
             else
             {
@@ -182,7 +228,8 @@ namespace Greenshot
             {
                 _surface.TransparencyBackgroundBrush = new TextureBrush(backgroundForTransparency, WrapMode.Tile);
 
-                _surface.MovingElementChanged += delegate {
+                _surface.MovingElementChanged += delegate
+                {
                     RefreshEditorControls();
                 };
                 _surface.DrawingModeChanged += surface_DrawingModeChanged;
@@ -327,8 +374,9 @@ namespace Greenshot
                 Size imageSize = Surface.Image.Size;
                 Size currentFormSize = Size;
                 Size currentImageClientSize = panel1.ClientSize;
-                int minimumFormWidth = 650;
-                int minimumFormHeight = 530;
+                // Scale minimum size based on icons over default 16 pixels
+                int minimumFormWidth = 650 + 24 * Math.Max(coreConfiguration.IconSize.Width - 16, 0);
+                int minimumFormHeight = 530 + 17 * Math.Max(coreConfiguration.IconSize.Height - 16, 0);
                 int newWidth = Math.Max(minimumFormWidth, currentFormSize.Width - currentImageClientSize.Width + imageSize.Width);
                 int newHeight = Math.Max(minimumFormHeight, currentFormSize.Height - currentImageClientSize.Height + imageSize.Height);
                 Size = new Size(newWidth, newHeight);

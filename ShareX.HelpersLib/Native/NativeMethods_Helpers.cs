@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -122,15 +122,15 @@ namespace ShareX.HelpersLib
         {
             IntPtr iconHandle;
 
-            SendMessageTimeout(handle, (int)WindowsMessages.GETICON, ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 1000, out iconHandle);
+            SendMessageTimeout(handle, (int)WindowsMessages.GETICON, NativeConstants.ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 1000, out iconHandle);
 
             if (iconHandle == IntPtr.Zero)
             {
-                SendMessageTimeout(handle, (int)WindowsMessages.GETICON, ICON_SMALL, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 1000, out iconHandle);
+                SendMessageTimeout(handle, (int)WindowsMessages.GETICON, NativeConstants.ICON_SMALL, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 1000, out iconHandle);
 
                 if (iconHandle == IntPtr.Zero)
                 {
-                    iconHandle = GetClassLongPtrSafe(handle, GCL_HICONSM);
+                    iconHandle = GetClassLongPtrSafe(handle, NativeConstants.GCL_HICONSM);
 
                     if (iconHandle == IntPtr.Zero)
                     {
@@ -151,11 +151,11 @@ namespace ShareX.HelpersLib
         {
             IntPtr iconHandle;
 
-            SendMessageTimeout(handle, (int)WindowsMessages.GETICON, ICON_BIG, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 1000, out iconHandle);
+            SendMessageTimeout(handle, (int)WindowsMessages.GETICON, NativeConstants.ICON_BIG, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 1000, out iconHandle);
 
             if (iconHandle == IntPtr.Zero)
             {
-                iconHandle = GetClassLongPtrSafe(handle, GCL_HICON);
+                iconHandle = GetClassLongPtrSafe(handle, NativeConstants.GCL_HICON);
             }
 
             if (iconHandle != IntPtr.Zero)
@@ -349,13 +349,16 @@ namespace ShareX.HelpersLib
             return wp.showCmd == WindowShowStyle.Maximize;
         }
 
-        public static IntPtr SetHook(int hookType, HookProc hookProc)
+        public static bool IsWindowCloaked(IntPtr handle)
         {
-            using (Process currentProcess = Process.GetCurrentProcess())
-            using (ProcessModule currentModule = currentProcess.MainModule)
+            if (IsDWMEnabled())
             {
-                return SetWindowsHookEx(hookType, hookProc, GetModuleHandle(currentModule.ModuleName), 0);
+                int cloaked;
+                int result = DwmGetWindowAttribute(handle, (int)DwmWindowAttribute.Cloaked, out cloaked, sizeof(int));
+                return result == 0 && cloaked != 0;
             }
+
+            return false;
         }
 
         public static void RestoreWindow(IntPtr handle)
@@ -489,6 +492,18 @@ namespace ShareX.HelpersLib
             {
                 ILFree(pidl);
             }
+        }
+
+        public static bool CreateProcess(string path, string arguments, CreateProcessFlags flags = CreateProcessFlags.NORMAL_PRIORITY_CLASS)
+        {
+            PROCESS_INFORMATION pInfo = new PROCESS_INFORMATION();
+            STARTUPINFO sInfo = new STARTUPINFO();
+            SECURITY_ATTRIBUTES pSec = new SECURITY_ATTRIBUTES();
+            SECURITY_ATTRIBUTES tSec = new SECURITY_ATTRIBUTES();
+            pSec.nLength = Marshal.SizeOf(pSec);
+            tSec.nLength = Marshal.SizeOf(tSec);
+
+            return CreateProcess(path, $"\"{path}\" {arguments}", ref pSec, ref tSec, false, (uint)flags, IntPtr.Zero, null, ref sInfo, out pInfo);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -151,9 +151,19 @@ namespace ShareX.HelpersLib
             return new Point(point.X + offsetX, point.Y + offsetY);
         }
 
+        public static Point Add(this Point point, Point offset)
+        {
+            return new Point(point.X + offset.X, point.Y + offset.Y);
+        }
+
         public static Size Offset(this Size size, int offset)
         {
-            return new Size(size.Width + offset, size.Height + offset);
+            return size.Offset(offset, offset);
+        }
+
+        public static Size Offset(this Size size, int width, int height)
+        {
+            return new Size(size.Width + width, size.Height + height);
         }
 
         public static Rectangle Offset(this Rectangle rect, int offset)
@@ -164,6 +174,11 @@ namespace ShareX.HelpersLib
         public static Rectangle LocationOffset(this Rectangle rect, int x, int y)
         {
             return new Rectangle(rect.X + x, rect.Y + y, rect.Width, rect.Height);
+        }
+
+        public static Rectangle LocationOffset(this Rectangle rect, Point offset)
+        {
+            return rect.LocationOffset(offset.X, offset.Y);
         }
 
         public static Rectangle LocationOffset(this Rectangle rect, int offset)
@@ -289,17 +304,27 @@ namespace ShareX.HelpersLib
 
         public static void RadioCheck(this ToolStripMenuItem tsmi)
         {
-            ToolStrip parent = tsmi.GetCurrentParent();
+            ToolStripDropDownItem tsddiParent = tsmi.OwnerItem as ToolStripDropDownItem;
 
-            foreach (ToolStripMenuItem tsmiParent in parent.Items.OfType<ToolStripMenuItem>())
+            foreach (ToolStripMenuItem tsmiChild in tsddiParent.DropDownItems.OfType<ToolStripMenuItem>())
             {
-                if (tsmiParent != tsmi)
+                tsmiChild.Checked = tsmiChild == tsmi;
+            }
+        }
+
+        public static void RadioCheck(this ToolStripButton tsb)
+        {
+            ToolStrip parent = tsb.GetCurrentParent();
+
+            foreach (ToolStripButton tsbParent in parent.Items.OfType<ToolStripButton>())
+            {
+                if (tsbParent != tsb)
                 {
-                    tsmiParent.Checked = false;
+                    tsbParent.Checked = false;
                 }
             }
 
-            tsmi.Checked = true;
+            tsb.Checked = true;
         }
 
         public static void InvokeSafe(this Control control, Action action)
@@ -466,7 +491,7 @@ namespace ShareX.HelpersLib
         {
             if (textBox != null && textBox.IsHandleCreated && watermarkText != null)
             {
-                NativeMethods.SendMessage(textBox.Handle, (int)NativeMethods.EM_SETCUEBANNER, showCueWhenFocus ? 1 : 0, watermarkText);
+                NativeMethods.SendMessage(textBox.Handle, (int)NativeConstants.EM_SETCUEBANNER, showCueWhenFocus ? 1 : 0, watermarkText);
             }
         }
 
@@ -501,6 +526,54 @@ namespace ShareX.HelpersLib
                     e.Cancel = true;
                 }
             };
+        }
+
+        public static Rectangle Combine(this IEnumerable<Rectangle> rects)
+        {
+            Rectangle result = Rectangle.Empty;
+
+            foreach (Rectangle rect in rects)
+            {
+                if (result.IsEmpty)
+                {
+                    result = rect;
+                }
+                else
+                {
+                    result = Rectangle.Union(result, rect);
+                }
+            }
+
+            return result;
+        }
+
+        public static Rectangle AddPoint(this Rectangle rect, Point point)
+        {
+            return Rectangle.Union(rect, new Rectangle(point, new Size(1, 1)));
+        }
+
+        public static Rectangle CreateRectangle(this IEnumerable<Point> points)
+        {
+            Rectangle result = Rectangle.Empty;
+
+            foreach (Point point in points)
+            {
+                if (result.IsEmpty)
+                {
+                    result = new Rectangle(point, new Size(1, 1));
+                }
+                else
+                {
+                    result = result.AddPoint(point);
+                }
+            }
+
+            return result;
+        }
+
+        public static Point Center(this Rectangle rect)
+        {
+            return new Point(rect.X + rect.Width / 2, rect.Y + rect.Height / 2);
         }
     }
 }

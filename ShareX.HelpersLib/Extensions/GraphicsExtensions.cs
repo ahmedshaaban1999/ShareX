@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -23,7 +23,6 @@
 
 #endregion License Information (GPL v3)
 
-using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -78,7 +77,7 @@ namespace ShareX.HelpersLib
         {
             using (GraphicsPath gp = new GraphicsPath())
             {
-                gp.AddRoundedRectangle(rect, radius);
+                gp.AddRoundedRectangleProper(rect, radius);
                 if (brush != null) g.FillPath(brush, gp);
                 if (pen != null) g.DrawPath(pen, gp);
             }
@@ -166,6 +165,44 @@ namespace ShareX.HelpersLib
             g.CompositingQuality = CompositingQuality.HighQuality;
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             g.SmoothingMode = SmoothingMode.HighQuality;
+        }
+
+        public static void DrawTextWithOutline(this Graphics g, string text, PointF position, Font font, Color textColor, Color borderColor, int borderSize = 2)
+        {
+            SmoothingMode tempMode = g.SmoothingMode;
+
+            g.SmoothingMode = SmoothingMode.HighQuality;
+
+            using (GraphicsPath gp = new GraphicsPath())
+            {
+                using (StringFormat sf = new StringFormat())
+                {
+                    gp.AddString(text, font.FontFamily, (int)font.Style, font.Size, position, sf);
+                }
+
+                using (Pen borderPen = new Pen(borderColor, borderSize) { LineJoin = LineJoin.Round })
+                {
+                    g.DrawPath(borderPen, gp);
+                }
+
+                using (Brush textBrush = new SolidBrush(textColor))
+                {
+                    g.FillPath(textBrush, gp);
+                }
+            }
+
+            g.SmoothingMode = tempMode;
+        }
+
+        public static void DrawTextWithShadow(this Graphics g, string text, PointF position, Font font, Brush textBrush, Brush shadowBrush)
+        {
+            DrawTextWithShadow(g, text, position, font, textBrush, shadowBrush, new Point(1, 1));
+        }
+
+        public static void DrawTextWithShadow(this Graphics g, string text, PointF position, Font font, Brush textBrush, Brush shadowBrush, Point shadowOffset)
+        {
+            g.DrawString(text, font, shadowBrush, position.X + shadowOffset.X, position.Y + shadowOffset.Y);
+            g.DrawString(text, font, textBrush, position.X, position.Y);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -71,9 +71,9 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("email", email);
             args.Add("password", password);
 
-            string argsJSON = JsonConvert.SerializeObject(args);
+            string json = JsonConvert.SerializeObject(args);
 
-            string response = SendRequestJSON("https://open.ge.tt/1/users/login", argsJSON);
+            string response = SendRequest(HttpMethod.POST, "https://open.ge.tt/1/users/login", json, ContentTypeJSON);
 
             return JsonConvert.DeserializeObject<Ge_ttLogin>(response);
         }
@@ -94,14 +94,12 @@ namespace ShareX.UploadersLib.FileUploaders
             Dictionary<string, string> args = new Dictionary<string, string>();
             args.Add("accesstoken", accessToken);
 
-            string url = CreateQuery(string.Format("https://open.ge.tt/1/files/{0}/create", shareName), args);
-
             Dictionary<string, string> args2 = new Dictionary<string, string>();
             args2.Add("filename", fileName);
 
-            string argsJSON = JsonConvert.SerializeObject(args2);
+            string json = JsonConvert.SerializeObject(args2);
 
-            string response = SendRequestJSON(url, argsJSON);
+            string response = SendRequest(HttpMethod.POST, $"https://open.ge.tt/1/files/{shareName}/create", json, ContentTypeJSON, args);
 
             return JsonConvert.DeserializeObject<Ge_ttFile>(response);
         }
@@ -118,7 +116,7 @@ namespace ShareX.UploadersLib.FileUploaders
 
                 if (file != null)
                 {
-                    result = UploadData(stream, file.Upload.PostURL, fileName);
+                    result = SendRequestFile(file.Upload.PostURL, stream, fileName);
 
                     if (result.IsSuccess)
                     {

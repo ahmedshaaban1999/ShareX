@@ -169,7 +169,7 @@
     <value>调试</value>
   </data>
   <data name="tsddbDestinations.Text" xml:space="preserve">
-    <value>目的地</value>
+    <value>上传至...</value>
   </data>
   <data name="tsddbTools.Text" xml:space="preserve">
     <value>工具</value>
@@ -253,7 +253,7 @@
     <value>删除本地文件</value>
   </data>
   <data name="tsmiDestinationSettings.Text" xml:space="preserve">
-    <value>目标设置...</value>
+    <value>上传至...设置</value>
   </data>
   <data name="tsmiDNSChanger.Text" xml:space="preserve">
     <value>更换DNS...</value>
@@ -266,9 +266,6 @@
   </data>
   <data name="tsmiFileUploaders.Text" xml:space="preserve">
     <value>文件上传者</value>
-  </data>
-  <data name="tsmiFreeHand.Text" xml:space="preserve">
-    <value>手绘</value>
   </data>
   <data name="tsmiFTPClient.Text" xml:space="preserve">
     <value>FTP客户端...</value>
@@ -338,9 +335,6 @@
   </data>
   <data name="tsmiOpenURL.Text" xml:space="preserve">
     <value>URL</value>
-  </data>
-  <data name="tsmiPolygon.Text" xml:space="preserve">
-    <value>多边形</value>
   </data>
   <data name="tsmiQRCode.Text" xml:space="preserve">
     <value>二维码...</value>
@@ -424,10 +418,10 @@
     <value>截图</value>
   </data>
   <data name="tsmiTrayDestinations.Text" xml:space="preserve">
-    <value>目的地</value>
+    <value>上传至...</value>
   </data>
   <data name="tsmiTrayDestinationSettings.Text" xml:space="preserve">
-    <value>目标设置...</value>
+    <value>上传至...设置</value>
   </data>
   <data name="tsmiTrayDNSChanger.Text" xml:space="preserve">
     <value>DNS更换...</value>
@@ -440,9 +434,6 @@
   </data>
   <data name="tsmiTrayFileUploaders.Text" xml:space="preserve">
     <value>文件上传者</value>
-  </data>
-  <data name="tsmiTrayFreeHand.Text" xml:space="preserve">
-    <value>写意</value>
   </data>
   <data name="tsmiTrayFTPClient.Text" xml:space="preserve">
     <value>FTP客户端...</value>
@@ -482,9 +473,6 @@
   </data>
   <data name="tsmiTrayMonitorTest.Text" xml:space="preserve">
     <value>显示器测试...</value>
-  </data>
-  <data name="tsmiTrayPolygon.Text" xml:space="preserve">
-    <value>多边形</value>
   </data>
   <data name="tsmiTrayQRCode.Text" xml:space="preserve">
     <value>二维码...</value>
@@ -594,9 +582,6 @@
   <data name="tsmiColorPicker.Text" xml:space="preserve">
     <value>颜色选择器...</value>
   </data>
-  <data name="tsmiAutomate.Text" xml:space="preserve">
-    <value>自动化...</value>
-  </data>
   <data name="tsmiImageCombiner.Text" xml:space="preserve">
     <value>图像合并...</value>
   </data>
@@ -614,9 +599,6 @@
   </data>
   <data name="tsmiTrayColorPicker.Text" xml:space="preserve">
     <value>颜色选择器...</value>
-  </data>
-  <data name="tsmiTrayAutomate.Text" xml:space="preserve">
-    <value>自动化...</value>
   </data>
   <data name="tsmiTrayImageCombiner.Text" xml:space="preserve">
     <value>图像合并...</value>
@@ -650,5 +632,29 @@
   </data>
   <data name="tsmiTrayRecentItems.Text" xml:space="preserve">
     <value>最近的链接</value>
+  </data>
+  <data name="tsmiTextCapture.Text" xml:space="preserve">
+    <value>文本捕捉（OCR）</value>
+  </data>
+  <data name="tsmiDownloadSelectedURL.Text" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="tsmiTrayTextCapture.Text" xml:space="preserve">
+    <value>文本捕捉（OCR）</value>
+  </data>
+  <data name="pbPatreonHide.ToolTip" xml:space="preserve">
+    <value>永久隐藏Patreon按钮</value>
+  </data>
+  <data name="pbPatreonOpen.ToolTip" xml:space="preserve">
+    <value>打开ShareX在Patreon上的捐助页面</value>
+  </data>
+  <data name="pbTips.ToolTip" xml:space="preserve">
+    <value>显示提示和快捷键</value>
+  </data>
+  <data name="tsmiHideColumns.Text" xml:space="preserve">
+    <value>隐藏列</value>
+  </data>
+  <data name="niTray.Text" xml:space="preserve">
+    <value>ShareX</value>
   </data>
 </root>

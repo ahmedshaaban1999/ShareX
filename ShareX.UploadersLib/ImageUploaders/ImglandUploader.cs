@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -51,7 +51,7 @@ namespace ShareX.UploadersLib.ImageUploaders
             Dictionary<string, string> arguments = new Dictionary<string, string>();
             arguments.Add("usubmit", "true");
 
-            UploadResult result = UploadData(stream, uploadUrl, fileName, "imagefile[]", arguments);
+            UploadResult result = SendRequestFile(uploadUrl, stream, fileName, "imagefile[]", arguments);
 
             if (result.IsSuccess)
             {

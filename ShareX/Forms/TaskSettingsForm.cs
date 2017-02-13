@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -183,9 +183,9 @@ namespace ShareX
             nudImageJPEGQuality.SetValue(TaskSettings.ImageSettings.ImageJPEGQuality);
             cbImageGIFQuality.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<GIFQuality>());
             cbImageGIFQuality.SelectedIndex = (int)TaskSettings.ImageSettings.ImageGIFQuality;
-            nudUseImageFormat2After.SetValue(TaskSettings.ImageSettings.ImageSizeLimit);
-            cbImageFormat2.Items.AddRange(Enum.GetNames(typeof(EImageFormat)));
-            cbImageFormat2.SelectedIndex = (int)TaskSettings.ImageSettings.ImageFormat2;
+            cbImageAutoUseJPEG.Checked = TaskSettings.ImageSettings.ImageAutoUseJPEG;
+            nudImageAutoUseJPEGSize.Enabled = TaskSettings.ImageSettings.ImageAutoUseJPEG;
+            nudImageAutoUseJPEGSize.SetValue(TaskSettings.ImageSettings.ImageAutoUseJPEGSize);
             cbImageFileExist.Items.Clear();
             cbImageFileExist.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<FileExistAction>());
             cbImageFileExist.SelectedIndex = (int)TaskSettings.ImageSettings.FileExistAction;
@@ -235,13 +235,13 @@ namespace ShareX
 
             cbRegionCaptureMultiRegionMode.Checked = !TaskSettings.CaptureSettings.SurfaceOptions.QuickCrop;
             cbRegionCaptureMouseRightClickAction.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<RegionCaptureAction>());
-            cbRegionCaptureMouseRightClickAction.SelectedIndex = (int)TaskSettings.CaptureSettings.SurfaceOptions.MouseRightClickAction;
+            cbRegionCaptureMouseRightClickAction.SelectedIndex = (int)TaskSettings.CaptureSettings.SurfaceOptions.RegionCaptureActionRightClick;
             cbRegionCaptureMouseMiddleClickAction.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<RegionCaptureAction>());
-            cbRegionCaptureMouseMiddleClickAction.SelectedIndex = (int)TaskSettings.CaptureSettings.SurfaceOptions.MouseMiddleClickAction;
+            cbRegionCaptureMouseMiddleClickAction.SelectedIndex = (int)TaskSettings.CaptureSettings.SurfaceOptions.RegionCaptureActionMiddleClick;
             cbRegionCaptureMouse4ClickAction.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<RegionCaptureAction>());
-            cbRegionCaptureMouse4ClickAction.SelectedIndex = (int)TaskSettings.CaptureSettings.SurfaceOptions.Mouse4ClickAction;
+            cbRegionCaptureMouse4ClickAction.SelectedIndex = (int)TaskSettings.CaptureSettings.SurfaceOptions.RegionCaptureActionX1Click;
             cbRegionCaptureMouse5ClickAction.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<RegionCaptureAction>());
-            cbRegionCaptureMouse5ClickAction.SelectedIndex = (int)TaskSettings.CaptureSettings.SurfaceOptions.Mouse5ClickAction;
+            cbRegionCaptureMouse5ClickAction.SelectedIndex = (int)TaskSettings.CaptureSettings.SurfaceOptions.RegionCaptureActionX2Click;
             cbRegionCaptureDetectWindows.Checked = TaskSettings.CaptureSettings.SurfaceOptions.DetectWindows;
             cbRegionCaptureDetectControls.Enabled = TaskSettings.CaptureSettings.SurfaceOptions.DetectWindows;
             cbRegionCaptureDetectControls.Checked = TaskSettings.CaptureSettings.SurfaceOptions.DetectControls;
@@ -249,21 +249,25 @@ namespace ShareX
             cbRegionCaptureUseCustomInfoText.Checked = TaskSettings.CaptureSettings.SurfaceOptions.UseCustomInfoText;
             txtRegionCaptureCustomInfoText.Enabled = TaskSettings.CaptureSettings.SurfaceOptions.UseCustomInfoText;
             TaskSettings.CaptureSettings.SurfaceOptions.CustomInfoText = TaskSettings.CaptureSettings.SurfaceOptions.CustomInfoText.Replace("\r\n", "$n").Replace("\n", "$n");
-            CodeMenu.Create<RegionCaptureInfoTextCodeMenuEntry>(txtRegionCaptureCustomInfoText);
+            CodeMenu.Create<CodeMenuEntryPixelInfo>(txtRegionCaptureCustomInfoText);
             txtRegionCaptureCustomInfoText.Text = TaskSettings.CaptureSettings.SurfaceOptions.CustomInfoText;
             cbRegionCaptureSnapSizes.Items.AddRange(TaskSettings.CaptureSettings.SurfaceOptions.SnapSizes.ToArray());
-            cbRegionCaptureShowTips.Checked = TaskSettings.CaptureSettings.SurfaceOptions.ShowTips;
+            cbRegionCaptureShowTips.Checked = TaskSettings.CaptureSettings.SurfaceOptions.ShowHotkeys;
             cbRegionCaptureShowInfo.Checked = TaskSettings.CaptureSettings.SurfaceOptions.ShowInfo;
             cbRegionCaptureShowMagnifier.Checked = TaskSettings.CaptureSettings.SurfaceOptions.ShowMagnifier;
             cbRegionCaptureUseSquareMagnifier.Enabled = nudRegionCaptureMagnifierPixelCount.Enabled = nudRegionCaptureMagnifierPixelSize.Enabled = TaskSettings.CaptureSettings.SurfaceOptions.ShowMagnifier;
             cbRegionCaptureUseSquareMagnifier.Checked = TaskSettings.CaptureSettings.SurfaceOptions.UseSquareMagnifier;
-            nudRegionCaptureMagnifierPixelCount.Value = TaskSettings.CaptureSettings.SurfaceOptions.MagnifierPixelCount;
-            nudRegionCaptureMagnifierPixelSize.Value = TaskSettings.CaptureSettings.SurfaceOptions.MagnifierPixelSize;
+            nudRegionCaptureMagnifierPixelCount.Minimum = RegionCaptureOptions.MagnifierPixelCountMinimum;
+            nudRegionCaptureMagnifierPixelCount.Maximum = RegionCaptureOptions.MagnifierPixelCountMaximum;
+            nudRegionCaptureMagnifierPixelCount.SetValue(TaskSettings.CaptureSettings.SurfaceOptions.MagnifierPixelCount);
+            nudRegionCaptureMagnifierPixelSize.Minimum = RegionCaptureOptions.MagnifierPixelSizeMinimum;
+            nudRegionCaptureMagnifierPixelSize.Maximum = RegionCaptureOptions.MagnifierPixelSizeMaximum;
+            nudRegionCaptureMagnifierPixelSize.SetValue(TaskSettings.CaptureSettings.SurfaceOptions.MagnifierPixelSize);
             cbRegionCaptureShowCrosshair.Checked = TaskSettings.CaptureSettings.SurfaceOptions.ShowCrosshair;
             cbRegionCaptureIsFixedSize.Checked = TaskSettings.CaptureSettings.SurfaceOptions.IsFixedSize;
             nudRegionCaptureFixedSizeWidth.Enabled = nudRegionCaptureFixedSizeHeight.Enabled = TaskSettings.CaptureSettings.SurfaceOptions.IsFixedSize;
-            nudRegionCaptureFixedSizeWidth.Value = TaskSettings.CaptureSettings.SurfaceOptions.FixedSize.Width;
-            nudRegionCaptureFixedSizeHeight.Value = TaskSettings.CaptureSettings.SurfaceOptions.FixedSize.Height;
+            nudRegionCaptureFixedSizeWidth.SetValue(TaskSettings.CaptureSettings.SurfaceOptions.FixedSize.Width);
+            nudRegionCaptureFixedSizeHeight.SetValue(TaskSettings.CaptureSettings.SurfaceOptions.FixedSize.Height);
             cbRegionCaptureShowFPS.Checked = TaskSettings.CaptureSettings.SurfaceOptions.ShowFPS;
 
             #endregion Region capture
@@ -284,13 +288,6 @@ namespace ShareX
 
             #endregion Screen recorder
 
-            #region Scrolling capture
-
-            if (TaskSettings.CaptureSettings.ScrollingCaptureOptions == null) TaskSettings.CaptureSettings.ScrollingCaptureOptions = new ScrollingCaptureOptions();
-            pgScrollingCapture.SelectedObject = TaskSettings.CaptureSettings.ScrollingCaptureOptions;
-
-            #endregion Scrolling capture
-
             #endregion Capture
 
             #region Upload
@@ -299,8 +296,8 @@ namespace ShareX
 
             txtNameFormatPattern.Text = TaskSettings.UploadSettings.NameFormatPattern;
             txtNameFormatPatternActiveWindow.Text = TaskSettings.UploadSettings.NameFormatPatternActiveWindow;
-            CodeMenu.Create<ReplCodeMenuEntry>(txtNameFormatPattern, ReplCodeMenuEntry.n, ReplCodeMenuEntry.t, ReplCodeMenuEntry.pn);
-            CodeMenu.Create<ReplCodeMenuEntry>(txtNameFormatPatternActiveWindow, ReplCodeMenuEntry.n);
+            CodeMenu.Create<CodeMenuEntryFilename>(txtNameFormatPattern, CodeMenuEntryFilename.n, CodeMenuEntryFilename.t, CodeMenuEntryFilename.pn);
+            CodeMenu.Create<CodeMenuEntryFilename>(txtNameFormatPatternActiveWindow, CodeMenuEntryFilename.n);
             cbRegionCaptureUseWindowPattern.Checked = TaskSettings.UploadSettings.RegionCaptureUseWindowPattern;
             cbFileUploadUseNamePattern.Checked = TaskSettings.UploadSettings.FileUploadUseNamePattern;
             UpdateNameFormatPreviews();
@@ -325,6 +322,19 @@ namespace ShareX
             cbClipboardUploadAutoIndexFolder.Checked = TaskSettings.UploadSettings.ClipboardUploadAutoIndexFolder;
 
             #endregion Clipboard upload
+
+            #region Uploader filters
+
+            cbUploaderFiltersDestination.Items.AddRange(UploaderFactory.AllGenericUploaderServices.OrderBy(x => x.ServiceName).ToArray());
+
+            if (TaskSettings.UploadSettings.UploaderFilters == null) TaskSettings.UploadSettings.UploaderFilters = new List<UploaderFilter>();
+
+            foreach (UploaderFilter filter in TaskSettings.UploadSettings.UploaderFilters)
+            {
+                AddUploaderFilterToList(filter);
+            }
+
+            #endregion Uploader filters
 
             #endregion Upload
 
@@ -355,17 +365,8 @@ namespace ShareX
 
             #region Tools
 
-            #region Indexer
-
-            pgIndexer.SelectedObject = TaskSettings.ToolsSettings.IndexerSettings;
-
-            #endregion Indexer
-
-            #region Video thumbnailer
-
-            pgVideoThumbnailer.SelectedObject = TaskSettings.ToolsSettings.VideoThumbnailOptions;
-
-            #endregion Video thumbnailer
+            CodeMenu.Create<CodeMenuEntryPixelInfo>(txtToolsScreenColorPickerFormat);
+            txtToolsScreenColorPickerFormat.Text = TaskSettings.ToolsSettings.ScreenColorPickerFormat;
 
             #endregion Tools
 
@@ -385,7 +386,7 @@ namespace ShareX
 
         private void tttvMain_TabChanged(TabPage tabPage)
         {
-            if (IsDefault && (tabPage == tpUploadMain || tabPage == tpToolsMain))
+            if (IsDefault && tabPage == tpUploadMain)
             {
                 tttvMain.SelectChild();
             }
@@ -407,12 +408,12 @@ namespace ShareX
         {
             if (!IsDefault)
             {
-                panelGeneral.Enabled = !TaskSettings.UseDefaultGeneralSettings;
+                pGeneral.Enabled = !TaskSettings.UseDefaultGeneralSettings;
                 pImage.Enabled = ((Control)tpEffects).Enabled = ((Control)tpThumbnail).Enabled = !TaskSettings.UseDefaultImageSettings;
                 pCapture.Enabled = ((Control)tpRegionCapture).Enabled = ((Control)tpScreenRecorder).Enabled = !TaskSettings.UseDefaultCaptureSettings;
                 pActions.Enabled = !TaskSettings.UseDefaultActions;
                 ((Control)tpFileNaming).Enabled = ((Control)tpUploadClipboard).Enabled = !TaskSettings.UseDefaultUploadSettings;
-                ((Control)tpIndexer).Enabled = ((Control)tpVideoThumbnailer).Enabled = !TaskSettings.UseDefaultToolsSettings;
+                pTools.Enabled = !TaskSettings.UseDefaultToolsSettings;
                 pgTaskSettings.Enabled = !TaskSettings.UseDefaultAdvancedSettings;
             }
         }
@@ -713,25 +714,25 @@ namespace ShareX
             TaskSettings.ImageSettings.ImageFormat = (EImageFormat)cbImageFormat.SelectedIndex;
         }
 
-        private void cbImageGIFQuality_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TaskSettings.ImageSettings.ImageGIFQuality = (GIFQuality)cbImageGIFQuality.SelectedIndex;
-        }
-
-        private void cbImageFormat2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TaskSettings.ImageSettings.ImageFormat2 = (EImageFormat)cbImageFormat2.SelectedIndex;
-        }
-
         private void nudImageJPEGQuality_ValueChanged(object sender, EventArgs e)
         {
             TaskSettings.ImageSettings.ImageJPEGQuality = (int)nudImageJPEGQuality.Value;
         }
 
-        private void nudUseImageFormat2After_ValueChanged(object sender, EventArgs e)
+        private void cbImageGIFQuality_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TaskSettings.ImageSettings.ImageSizeLimit = (int)nudUseImageFormat2After.Value;
-            cbImageFormat2.Enabled = TaskSettings.ImageSettings.ImageSizeLimit > 0;
+            TaskSettings.ImageSettings.ImageGIFQuality = (GIFQuality)cbImageGIFQuality.SelectedIndex;
+        }
+
+        private void cbImageAutoUseJPEG_CheckedChanged(object sender, EventArgs e)
+        {
+            TaskSettings.ImageSettings.ImageAutoUseJPEG = cbImageAutoUseJPEG.Checked;
+            nudImageAutoUseJPEGSize.Enabled = TaskSettings.ImageSettings.ImageAutoUseJPEG;
+        }
+
+        private void nudImageAutoUseJPEGSize_ValueChanged(object sender, EventArgs e)
+        {
+            TaskSettings.ImageSettings.ImageAutoUseJPEGSize = (int)nudImageAutoUseJPEGSize.Value;
         }
 
         private void cbImageFileExist_SelectedIndexChanged(object sender, EventArgs e)
@@ -858,12 +859,12 @@ namespace ShareX
         {
             Rectangle rect;
 
-            if (RegionCaptureHelpers.GetRectangleRegion(out rect))
+            if (RegionCaptureTasks.GetRectangleRegion(out rect, TaskSettings.CaptureSettings.SurfaceOptions))
             {
-                nudCaptureCustomRegionX.Value = rect.X;
-                nudCaptureCustomRegionY.Value = rect.Y;
-                nudCaptureCustomRegionWidth.Value = rect.Width;
-                nudCaptureCustomRegionHeight.Value = rect.Height;
+                nudCaptureCustomRegionX.SetValue(rect.X);
+                nudCaptureCustomRegionY.SetValue(rect.Y);
+                nudCaptureCustomRegionWidth.SetValue(rect.Width);
+                nudCaptureCustomRegionHeight.SetValue(rect.Height);
             }
         }
 
@@ -878,22 +879,22 @@ namespace ShareX
 
         private void cbRegionCaptureMouseRightClickAction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TaskSettings.CaptureSettings.SurfaceOptions.MouseRightClickAction = (RegionCaptureAction)cbRegionCaptureMouseRightClickAction.SelectedIndex;
+            TaskSettings.CaptureSettings.SurfaceOptions.RegionCaptureActionRightClick = (RegionCaptureAction)cbRegionCaptureMouseRightClickAction.SelectedIndex;
         }
 
         private void cbRegionCaptureMouseMiddleClickAction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TaskSettings.CaptureSettings.SurfaceOptions.MouseMiddleClickAction = (RegionCaptureAction)cbRegionCaptureMouseMiddleClickAction.SelectedIndex;
+            TaskSettings.CaptureSettings.SurfaceOptions.RegionCaptureActionMiddleClick = (RegionCaptureAction)cbRegionCaptureMouseMiddleClickAction.SelectedIndex;
         }
 
         private void cbRegionCaptureMouse4ClickAction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TaskSettings.CaptureSettings.SurfaceOptions.Mouse4ClickAction = (RegionCaptureAction)cbRegionCaptureMouse4ClickAction.SelectedIndex;
+            TaskSettings.CaptureSettings.SurfaceOptions.RegionCaptureActionX1Click = (RegionCaptureAction)cbRegionCaptureMouse4ClickAction.SelectedIndex;
         }
 
         private void cbRegionCaptureMouse5ClickAction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TaskSettings.CaptureSettings.SurfaceOptions.Mouse5ClickAction = (RegionCaptureAction)cbRegionCaptureMouse5ClickAction.SelectedIndex;
+            TaskSettings.CaptureSettings.SurfaceOptions.RegionCaptureActionX2Click = (RegionCaptureAction)cbRegionCaptureMouse5ClickAction.SelectedIndex;
         }
 
         private void cbRegionCaptureDetectWindows_CheckedChanged(object sender, EventArgs e)
@@ -956,7 +957,7 @@ namespace ShareX
 
         private void cbRegionCaptureShowTips_CheckedChanged(object sender, EventArgs e)
         {
-            TaskSettings.CaptureSettings.SurfaceOptions.ShowTips = cbRegionCaptureShowTips.Checked;
+            TaskSettings.CaptureSettings.SurfaceOptions.ShowHotkeys = cbRegionCaptureShowTips.Checked;
         }
 
         private void cbRegionCaptureShowInfo_CheckedChanged(object sender, EventArgs e)
@@ -977,12 +978,18 @@ namespace ShareX
 
         private void nudRegionCaptureMagnifierPixelCount_ValueChanged(object sender, EventArgs e)
         {
-            TaskSettings.CaptureSettings.SurfaceOptions.MagnifierPixelCount = (int)nudRegionCaptureMagnifierPixelCount.Value;
+            if (loaded)
+            {
+                TaskSettings.CaptureSettings.SurfaceOptions.MagnifierPixelCount = (int)nudRegionCaptureMagnifierPixelCount.Value;
+            }
         }
 
         private void nudRegionCaptureMagnifierPixelSize_ValueChanged(object sender, EventArgs e)
         {
-            TaskSettings.CaptureSettings.SurfaceOptions.MagnifierPixelSize = (int)nudRegionCaptureMagnifierPixelSize.Value;
+            if (loaded)
+            {
+                TaskSettings.CaptureSettings.SurfaceOptions.MagnifierPixelSize = (int)nudRegionCaptureMagnifierPixelSize.Value;
+            }
         }
 
         private void cbRegionCaptureShowCrosshair_CheckedChanged(object sender, EventArgs e)
@@ -1232,6 +1239,112 @@ namespace ShareX
             TaskSettings.UploadSettings.ClipboardUploadAutoIndexFolder = cbClipboardUploadAutoIndexFolder.Checked;
         }
 
+        private UploaderFilter GetUploaderFilterFromFields()
+        {
+            IGenericUploaderService service = cbUploaderFiltersDestination.SelectedItem as IGenericUploaderService;
+
+            if (service != null)
+            {
+                UploaderFilter filter = new UploaderFilter();
+                filter.Uploader = service.ServiceIdentifier;
+                filter.SetExtensions(txtUploaderFiltersExtensions.Text);
+                return filter;
+            }
+
+            return null;
+        }
+
+        private void AddUploaderFilterToList(UploaderFilter filter)
+        {
+            if (filter != null)
+            {
+                ListViewItem lvi = new ListViewItem(filter.Uploader);
+                lvi.SubItems.Add(filter.GetExtensions());
+                lvi.Tag = filter;
+
+                lvUploaderFiltersList.Items.Add(lvi);
+            }
+        }
+
+        private void UpdateUploaderFilterFields(UploaderFilter filter)
+        {
+            if (filter == null)
+            {
+                filter = new UploaderFilter();
+            }
+
+            for (int i = 0; i < cbUploaderFiltersDestination.Items.Count; i++)
+            {
+                IGenericUploaderService service = cbUploaderFiltersDestination.Items[i] as IGenericUploaderService;
+
+                if (service != null && service.ServiceIdentifier.Equals(filter.Uploader, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    cbUploaderFiltersDestination.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            txtUploaderFiltersExtensions.Text = filter.GetExtensions();
+        }
+
+        private void btnUploaderFiltersAdd_Click(object sender, EventArgs e)
+        {
+            UploaderFilter filter = GetUploaderFilterFromFields();
+
+            if (filter != null)
+            {
+                TaskSettings.UploadSettings.UploaderFilters.Add(filter);
+
+                AddUploaderFilterToList(filter);
+
+                lvUploaderFiltersList.SelectedIndex = lvUploaderFiltersList.Items.Count - 1;
+            }
+        }
+
+        private void btnUploaderFiltersUpdate_Click(object sender, EventArgs e)
+        {
+            int index = lvUploaderFiltersList.SelectedIndex;
+
+            if (index > -1)
+            {
+                UploaderFilter filter = GetUploaderFilterFromFields();
+
+                if (filter != null)
+                {
+                    TaskSettings.UploadSettings.UploaderFilters[index] = filter;
+
+                    ListViewItem lvi = lvUploaderFiltersList.Items[index];
+                    lvi.Text = filter.Uploader;
+                    lvi.SubItems[1].Text = filter.GetExtensions();
+                    lvi.Tag = filter;
+                }
+            }
+        }
+
+        private void btnUploaderFiltersRemove_Click(object sender, EventArgs e)
+        {
+            int index = lvUploaderFiltersList.SelectedIndex;
+
+            if (index > -1)
+            {
+                TaskSettings.UploadSettings.UploaderFilters.RemoveAt(index);
+
+                lvUploaderFiltersList.Items.RemoveAt(index);
+            }
+        }
+
+        private void lvUploaderFiltersList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UploaderFilter filter = null;
+
+            if (lvUploaderFiltersList.SelectedItems.Count > 0)
+            {
+                filter = lvUploaderFiltersList.SelectedItems[0].Tag as UploaderFilter;
+            }
+
+            UpdateUploaderFilterFields(filter);
+        }
+
         #endregion Upload
 
         #region Actions
@@ -1399,6 +1512,11 @@ namespace ShareX
         {
             TaskSettings.UseDefaultToolsSettings = chkUseDefaultToolsSettings.Checked;
             UpdateDefaultSettingVisibility();
+        }
+
+        private void txtToolsScreenColorPickerFormat_TextChanged(object sender, EventArgs e)
+        {
+            TaskSettings.ToolsSettings.ScreenColorPickerFormat = txtToolsScreenColorPickerFormat.Text;
         }
 
         #endregion Tools

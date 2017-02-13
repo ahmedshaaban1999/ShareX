@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -57,10 +57,10 @@ namespace ShareX.UploadersLib.ImageUploaders
 
         public override UploadResult Upload(Stream stream, string fileName)
         {
-            Dictionary<string, string> arguments = new Dictionary<string, string>();
-            if (!string.IsNullOrEmpty(UserKey)) arguments.Add("userkey", UserKey);
+            Dictionary<string, string> args = new Dictionary<string, string>();
+            if (!string.IsNullOrEmpty(UserKey)) args.Add("userkey", UserKey);
 
-            UploadResult result = UploadData(stream, "https://vgy.me/upload", fileName, arguments: arguments);
+            UploadResult result = SendRequestFile("https://vgy.me/upload", stream, fileName, "file", args);
 
             if (result.IsSuccess)
             {

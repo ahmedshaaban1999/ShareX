@@ -144,12 +144,6 @@
   <data name="tsmiRectangleLight.Text" xml:space="preserve">
     <value>Region (Einfach)</value>
   </data>
-  <data name="tsmiPolygon.Text" xml:space="preserve">
-    <value>Vieleck</value>
-  </data>
-  <data name="tsmiFreeHand.Text" xml:space="preserve">
-    <value>Freihand</value>
-  </data>
   <data name="tsmiLastRegion.Text" xml:space="preserve">
     <value>Letzte Region</value>
   </data>
@@ -408,12 +402,6 @@
   <data name="tsmiTrayRectangleLight.Text" xml:space="preserve">
     <value>Region (Einfach)</value>
   </data>
-  <data name="tsmiTrayPolygon.Text" xml:space="preserve">
-    <value>Vieleck</value>
-  </data>
-  <data name="tsmiTrayFreeHand.Text" xml:space="preserve">
-    <value>Freihand</value>
-  </data>
   <data name="tsmiTrayLastRegion.Text" xml:space="preserve">
     <value>Letzte Region</value>
   </data>
@@ -591,17 +579,11 @@
   <data name="tsmiTrayRecentItems.Text" xml:space="preserve">
     <value>Letzte Links</value>
   </data>
-  <data name="tsmiAutomate.Text" xml:space="preserve">
-    <value>Automatisieren...</value>
-  </data>
   <data name="tsmiImageCombiner.Text" xml:space="preserve">
     <value>Bildverbinder...</value>
   </data>
   <data name="tsmiRectangleTransparent.Text" xml:space="preserve">
     <value>Region (Transparent)</value>
-  </data>
-  <data name="tsmiTrayAutomate.Text" xml:space="preserve">
-    <value>Automatisieren...</value>
   </data>
   <data name="tsmiTrayImageCombiner.Text" xml:space="preserve">
     <value>Bildverbinder...</value>

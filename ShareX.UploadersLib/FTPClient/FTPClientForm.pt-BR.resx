@@ -147,4 +147,31 @@
   <data name="tpMain.Text" xml:space="preserve">
     <value>Arquivos</value>
   </data>
+  <data name="tsmiConnect.Text" xml:space="preserve">
+    <value>Conectar</value>
+  </data>
+  <data name="tsmiDisconnect.Text" xml:space="preserve">
+    <value>Desconectar</value>
+  </data>
+  <data name="tsmiDownload.Text" xml:space="preserve">
+    <value>Baixar</value>
+  </data>
+  <data name="tsmiOpenURL.Text" xml:space="preserve">
+    <value>Abrir URL</value>
+  </data>
+  <data name="tsmiRename.Text" xml:space="preserve">
+    <value>Renomear</value>
+  </data>
+  <data name="tsmiDelete.Text" xml:space="preserve">
+    <value>Deletar</value>
+  </data>
+  <data name="tsmiRefresh.Text" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="tsmiCreateDirectory.Text" xml:space="preserve">
+    <value>Criar diretório</value>
+  </data>
+  <data name="tsmiCopyURL.Text" xml:space="preserve">
+    <value>Copiar URL(s) para a área de transferência</value>
+  </data>
 </root>

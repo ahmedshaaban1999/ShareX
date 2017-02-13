@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -58,14 +58,6 @@ namespace ShareX.HelpersLib
         TIFF
     }
 
-    public enum TriangleAngle
-    {
-        Top,
-        Right,
-        Bottom,
-        Left
-    }
-
     public enum HashType
     {
         [Description("CRC-32")]
@@ -82,17 +74,6 @@ namespace ShareX.HelpersLib
         SHA512,
         [Description("RIPEMD-160")]
         RIPEMD160
-    }
-
-    public enum TokenType
-    {
-        Unknown,
-        Whitespace,
-        Symbol,
-        Literal,
-        Identifier,
-        Numeric,
-        Keyword
     }
 
     public enum BorderType
@@ -178,5 +159,12 @@ namespace ShareX.HelpersLib
     {
         VerticalLines,
         HorizontalLines
+    }
+
+    public enum HotkeyStatus
+    {
+        Registered,
+        Failed,
+        NotConfigured
     }
 }

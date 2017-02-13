@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -86,7 +86,7 @@ namespace ShareX.UploadersLib.ImageUploaders
             args.Add("redirect_uri", "urn:ietf:wg:oauth:2.0:oob");
             args.Add("grant_type", "authorization_code");
 
-            string response = SendRequest(HttpMethod.POST, "https://accounts.google.com/o/oauth2/token", args);
+            string response = SendRequestMultiPart("https://accounts.google.com/o/oauth2/token", args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -113,7 +113,7 @@ namespace ShareX.UploadersLib.ImageUploaders
                 args.Add("client_secret", AuthInfo.Client_Secret);
                 args.Add("grant_type", "refresh_token");
 
-                string response = SendRequest(HttpMethod.POST, "https://accounts.google.com/o/oauth2/token", args);
+                string response = SendRequestMultiPart("https://accounts.google.com/o/oauth2/token", args);
 
                 if (!string.IsNullOrEmpty(response))
                 {
@@ -204,27 +204,30 @@ namespace ShareX.UploadersLib.ImageUploaders
             NameValueCollection headers = GetAuthHeaders();
             headers.Add("Slug", URLHelpers.URLEncode(fileName));
 
-            ur.Response = SendRequestStream(url, stream, contentType, headers);
+            ur.Response = SendRequest(HttpMethod.POST, url, stream, contentType, null, headers);
 
-            XDocument xd = XDocument.Parse(ur.Response);
-
-            XElement entry_element = xd.Element(AtomNS + "entry");
-
-            if (entry_element != null)
+            if (ur.Response != null)
             {
-                XElement group_element = entry_element.Element(MediaNS + "group");
+                XDocument xd = XDocument.Parse(ur.Response);
 
-                if (group_element != null)
+                XElement entry_element = xd.Element(AtomNS + "entry");
+
+                if (entry_element != null)
                 {
-                    XElement content_element = group_element.Element(MediaNS + "content");
+                    XElement group_element = entry_element.Element(MediaNS + "group");
 
-                    if (content_element != null)
+                    if (group_element != null)
                     {
-                        ur.ThumbnailURL = content_element.GetAttributeValue("url");
+                        XElement content_element = group_element.Element(MediaNS + "content");
 
-                        int last_slash_index = ur.ThumbnailURL.LastIndexOf(@"/");
+                        if (content_element != null)
+                        {
+                            ur.ThumbnailURL = content_element.GetAttributeValue("url");
 
-                        ur.URL = ur.ThumbnailURL.Insert(last_slash_index, @"/s0");
+                            int last_slash_index = ur.ThumbnailURL.LastIndexOf(@"/");
+
+                            ur.URL = ur.ThumbnailURL.Insert(last_slash_index, @"/s0");
+                        }
                     }
                 }
             }

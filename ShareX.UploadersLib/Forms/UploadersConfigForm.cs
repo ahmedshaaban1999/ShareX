@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -31,6 +31,7 @@ using ShareX.UploadersLib.Properties;
 using ShareX.UploadersLib.TextUploaders;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -40,6 +41,8 @@ namespace ShareX.UploadersLib
 {
     public partial class UploadersConfigForm : Form
     {
+        public static bool IsInstanceActive => instance != null && !instance.IsDisposed;
+
         private static UploadersConfigForm instance;
 
         public UploadersConfig Config { get; private set; }
@@ -54,16 +57,11 @@ namespace ShareX.UploadersLib
             InitializeControls();
         }
 
-        public static UploadersConfigForm GetFormInstance(UploadersConfig config, out bool firstInstance)
+        public static UploadersConfigForm GetFormInstance(UploadersConfig config)
         {
-            if (instance == null || instance.IsDisposed)
+            if (!IsInstanceActive)
             {
                 instance = new UploadersConfigForm(config);
-                firstInstance = true;
-            }
-            else
-            {
-                firstInstance = false;
             }
 
             return instance;
@@ -94,11 +92,11 @@ namespace ShareX.UploadersLib
             ttlvMain.MainTabControl = tcUploaders;
             ttlvMain.FocusListView();
 
-            CodeMenu.Create<ReplCodeMenuEntry>(txtDropboxPath, ReplCodeMenuEntry.n, ReplCodeMenuEntry.t, ReplCodeMenuEntry.pn);
-            CodeMenu.Create<ReplCodeMenuEntry>(txtAmazonS3ObjectPrefix, ReplCodeMenuEntry.n, ReplCodeMenuEntry.t, ReplCodeMenuEntry.pn);
-            CodeMenu.Create<ReplCodeMenuEntry>(txtMediaFirePath, ReplCodeMenuEntry.n, ReplCodeMenuEntry.t, ReplCodeMenuEntry.pn);
-            CodeMenu.Create<ReplCodeMenuEntry>(txtCustomUploaderArgValue, ReplCodeMenuEntry.n, ReplCodeMenuEntry.t, ReplCodeMenuEntry.pn);
-            CodeMenu.Create<ReplCodeMenuEntry>(txtCustomUploaderHeaderValue, ReplCodeMenuEntry.n, ReplCodeMenuEntry.t, ReplCodeMenuEntry.pn);
+            CodeMenu.Create<CodeMenuEntryFilename>(txtDropboxPath, CodeMenuEntryFilename.n, CodeMenuEntryFilename.t, CodeMenuEntryFilename.pn);
+            CodeMenu.Create<CodeMenuEntryFilename>(txtAmazonS3ObjectPrefix, CodeMenuEntryFilename.n, CodeMenuEntryFilename.t, CodeMenuEntryFilename.pn);
+            CodeMenu.Create<CodeMenuEntryFilename>(txtMediaFirePath, CodeMenuEntryFilename.n, CodeMenuEntryFilename.t, CodeMenuEntryFilename.pn);
+            CodeMenu.Create<CodeMenuEntryFilename>(txtCustomUploaderArgValue, CodeMenuEntryFilename.n, CodeMenuEntryFilename.t, CodeMenuEntryFilename.pn);
+            CodeMenu.Create<CodeMenuEntryFilename>(txtCustomUploaderHeaderValue, CodeMenuEntryFilename.n, CodeMenuEntryFilename.t, CodeMenuEntryFilename.pn);
 
             txtCustomUploaderLog.AddContextMenu();
 
@@ -118,6 +116,11 @@ namespace ShareX.UploadersLib
 
             eiFTP.ObjectType = typeof(FTPAccount);
             eiCustomUploaders.ObjectType = typeof(CustomUploaderItem);
+
+            txtCustomUploaderName.HandleCreated += (sender, e) => txtCustomUploaderName.SetWatermark("Name");
+            AddCustomUploaderDestinationTypes();
+            cbCustomUploaderRequestType.Items.AddRange(Enum.GetNames(typeof(CustomUploaderRequestType)));
+            cbCustomUploaderResponseType.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<ResponseType>());
 
 #if DEBUG
             btnCheveretoTestAll.Visible = true;
@@ -184,6 +187,7 @@ namespace ShareX.UploadersLib
             cbImgurThumbnailType.Items.Clear();
             cbImgurThumbnailType.Items.AddRange(Helpers.GetEnumDescriptions<ImgurThumbnailType>());
             cbImgurThumbnailType.SelectedIndex = (int)Config.ImgurThumbnailType;
+            cbImgurUseHTTPS.Checked = Config.ImgurUseHTTPS;
             cbImgurUseGIFV.Checked = Config.ImgurUseGIFV;
             cbImgurUploadSelectedAlbum.Checked = Config.ImgurUploadSelectedAlbum;
             ImgurFillAlbumList();
@@ -306,11 +310,16 @@ namespace ShareX.UploadersLib
 
             txtHastebinCustomDomain.Text = Config.HastebinCustomDomain;
             txtHastebinSyntaxHighlighting.Text = Config.HastebinSyntaxHighlighting;
+            cbHastebinUseFileExtension.Checked = Config.HastebinUseFileExtension;
 
             // OneTimeSecret
 
             txtOneTimeSecretEmail.Text = Config.OneTimeSecretAPIUsername;
             txtOneTimeSecretAPIKey.Text = Config.OneTimeSecretAPIKey;
+
+            // Pastie
+
+            cbPastieIsPublic.Checked = Config.PastieIsPublic;
 
             #endregion Text uploaders
 
@@ -535,11 +544,6 @@ namespace ShareX.UploadersLib
             txtMediaFirePath.Text = Config.MediaFirePath;
             cbMediaFireUseLongLink.Checked = Config.MediaFireUseLongLink;
 
-            // Up1
-
-            txtUp1Host.Text = Config.Up1Host;
-            txtUp1Key.Text = Config.Up1Key;
-
             // Lambda
 
             txtLambdaApiKey.Text = Config.LambdaSettings.UserAPIKey;
@@ -549,8 +553,6 @@ namespace ShareX.UploadersLib
             // Lithiio
 
             txtLithiioApiKey.Text = Config.LithiioSettings.UserAPIKey;
-            cbLithiioUploadURL.Items.AddRange(Lithiio.UploadURLs);
-            cbLithiioUploadURL.SelectedItem = Config.LithiioSettings.UploadURL;
 
             // Pomf
 
@@ -581,6 +583,17 @@ namespace ShareX.UploadersLib
             txtStreamableUsername.Text = Config.StreamableUsername;
             txtStreamableUsername.Enabled = txtStreamablePassword.Enabled = !Config.StreamableAnonymous;
             cbStreamableUseDirectURL.Checked = Config.StreamableUseDirectURL;
+
+            // Uplea
+            txtUpleaApiKey.Text = Config.UpleaApiKey;
+            txtUpleaEmailAddress.Text = Config.UpleaEmailAddress;
+            cbUpleaInstantDownloadEnabled.Checked = Config.UpleaInstantDownloadEnabled;
+            cbUpleaIsPremium.Checked = Config.UpleaIsPremiumMember;
+
+            // Azure Storage
+            txtAzureStorageAccountName.Text = Config.AzureStorageAccountName;
+            txtAzureStorageAccessKey.Text = Config.AzureStorageAccountAccessKey;
+            txtAzureStorageContainer.Text = Config.AzureStorageContainer;
 
             #endregion File uploaders
 
@@ -625,6 +638,8 @@ namespace ShareX.UploadersLib
 
             txtPolrAPIHostname.Text = Config.PolrAPIHostname;
             txtPolrAPIKey.Text = Config.PolrAPIKey;
+            cbPolrIsSecret.Checked = Config.PolrIsSecret;
+            cbPolrUseAPIv1.Checked = Config.PolrUseAPIv1;
 
             #endregion URL shorteners
 
@@ -651,30 +666,7 @@ namespace ShareX.UploadersLib
 
             // Custom uploaders
 
-            lbCustomUploaderList.Items.Clear();
-
-            if (Config.CustomUploadersList == null)
-            {
-                Config.CustomUploadersList = new List<CustomUploaderItem>();
-            }
-            else
-            {
-                foreach (CustomUploaderItem customUploader in Config.CustomUploadersList)
-                {
-                    lbCustomUploaderList.Items.Add(customUploader.Name);
-                }
-
-                PrepareCustomUploaderList();
-            }
-
-#if DEBUG
-            btnCustomUploadersExportAll.Visible = true;
-#endif
-
-            cbCustomUploaderRequestType.Items.AddRange(Enum.GetNames(typeof(CustomUploaderRequestType)));
-            cbCustomUploaderResponseType.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<ResponseType>());
-
-            CustomUploaderClearFields();
+            LoadCustomUploaderTab();
 
             #endregion Other uploaders
         }
@@ -717,6 +709,11 @@ namespace ShareX.UploadersLib
         private void cbImgurThumbnailType_SelectedIndexChanged(object sender, EventArgs e)
         {
             Config.ImgurThumbnailType = (ImgurThumbnailType)cbImgurThumbnailType.SelectedIndex;
+        }
+
+        private void cbImgurUseHTTPS_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ImgurUseHTTPS = cbImgurUseHTTPS.Checked;
         }
 
         private void cbImgurUseGIFV_CheckedChanged(object sender, EventArgs e)
@@ -1201,6 +1198,11 @@ namespace ShareX.UploadersLib
             Config.HastebinSyntaxHighlighting = txtHastebinSyntaxHighlighting.Text;
         }
 
+        private void cbHastebinUseFileExtension_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.HastebinUseFileExtension = cbHastebinUseFileExtension.Checked;
+        }
+
         #endregion Hastebin
 
         #region OneTimeSecret
@@ -1216,6 +1218,15 @@ namespace ShareX.UploadersLib
         }
 
         #endregion OneTimeSecret
+
+        #region Pastie
+
+        private void cbPastieIsPublic_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.PastieIsPublic = cbPastieIsPublic.Checked;
+        }
+
+        #endregion Pastie
 
         #endregion Text Uploaders
 
@@ -1462,7 +1473,7 @@ namespace ShareX.UploadersLib
             if (lvGoogleDriveFoldersList.SelectedItems.Count > 0)
             {
                 ListViewItem lvi = lvGoogleDriveFoldersList.SelectedItems[0];
-                var folder = lvi.Tag as GoogleDrive.GoogleDriveFile;
+                GoogleDriveFile folder = lvi.Tag as GoogleDriveFile;
                 if (folder != null)
                 {
                     txtGoogleDriveFolderID.Text = folder.id;
@@ -1944,7 +1955,7 @@ namespace ShareX.UploadersLib
 
         private void cbAmazonS3Endpoint_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var region = cbAmazonS3Endpoint.SelectedItem as AmazonS3Region;
+            AmazonS3Region region = cbAmazonS3Endpoint.SelectedItem as AmazonS3Region;
             if (region != null)
             {
                 Config.AmazonS3Settings.Endpoint = region.Identifier;
@@ -2028,20 +2039,6 @@ namespace ShareX.UploadersLib
         }
 
         #endregion ownCloud
-
-        #region Up1
-
-        private void txtUp1Host_TextChanged(object sender, EventArgs e)
-        {
-            Config.Up1Host = txtUp1Host.Text;
-        }
-
-        private void txtUp1Key_TextChanged(object sender, EventArgs e)
-        {
-            Config.Up1Key = txtUp1Key.Text;
-        }
-
-        #endregion Up1
 
         #region Pushbullet
 
@@ -2210,19 +2207,6 @@ namespace ShareX.UploadersLib
             Config.LithiioSettings.UserAPIKey = txtLithiioApiKey.Text;
         }
 
-        private void cbLithiioUploadURL_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbLithiioUploadURL.SelectedIndex > -1)
-            {
-                string url = cbLithiioUploadURL.SelectedItem as string;
-
-                if (url != null)
-                {
-                    Config.LithiioSettings.UploadURL = url;
-                }
-            }
-        }
-
         #endregion Lithiio
 
         #region Pomf
@@ -2260,7 +2244,7 @@ namespace ShareX.UploadersLib
 
                     if (!string.IsNullOrEmpty(result))
                     {
-                        MessageBox.Show(result, "Pomf test results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Debug.WriteLine("Pomf test results:\r\n\r\n" + result);
                     }
                 }
             });
@@ -2401,7 +2385,7 @@ namespace ShareX.UploadersLib
             }
 
             Seafile sf = new Seafile(cbSeafileAPIURL.Text, txtSeafileAuthToken.Text, null);
-            Seafile.SeafileCheckAccInfoResponse SeafileCheckAccInfoResponse = sf.GetAccountInfo();
+            SeafileCheckAccInfoResponse SeafileCheckAccInfoResponse = sf.GetAccountInfo();
 
             if (SeafileCheckAccInfoResponse == null)
             {
@@ -2421,9 +2405,9 @@ namespace ShareX.UploadersLib
             lvSeafileLibraries.Items.Clear();
 
             Seafile sf = new Seafile(cbSeafileAPIURL.Text, txtSeafileAuthToken.Text, null);
-            List<Seafile.SeafileLibraryObj> SeafileLibraries = sf.GetLibraries();
+            List<SeafileLibraryObj> SeafileLibraries = sf.GetLibraries();
 
-            foreach (var SeafileLibrary in SeafileLibraries)
+            foreach (SeafileLibraryObj SeafileLibrary in SeafileLibraries)
             {
                 if (SeafileLibrary.permission == "rw")
                 {
@@ -2450,7 +2434,7 @@ namespace ShareX.UploadersLib
             {
                 ListViewItem selectedItem = lvSeafileLibraries.Items[selIndex];
                 Config.SeafileRepoID = selectedItem.Name;
-                Seafile.SeafileLibraryObj SealileLibraryInfo = (Seafile.SeafileLibraryObj)selectedItem.Tag;
+                SeafileLibraryObj SealileLibraryInfo = (SeafileLibraryObj)selectedItem.Tag;
                 if (SealileLibraryInfo.encrypted)
                 {
                     Config.SeafileIsLibraryEncrypted = true;
@@ -2558,6 +2542,95 @@ namespace ShareX.UploadersLib
         }
 
         #endregion Streamable
+
+        #region Uplea
+
+        private void btnUpleaLogin_Click(object sender, EventArgs e)
+        {
+            btnUpleaLogin.Enabled = false;
+
+            Uplea uplea = new Uplea();
+
+            txtUpleaApiKey.Text = "";
+            cbUpleaIsPremium.Checked = false;
+            cbUpleaInstantDownloadEnabled.Checked = false;
+
+            try
+            {
+                string apiKey = uplea.GetApiKey(txtUpleaUsername.Text, txtUpleaPassword.Text);
+
+                txtUpleaApiKey.Text = apiKey;
+
+                if (!string.IsNullOrEmpty(apiKey))
+                {
+                    UpleaGetUserInformationResponse upleaUserInformation = uplea.GetUserInformation(apiKey);
+                    txtUpleaEmailAddress.Text = upleaUserInformation.Result.EmailAddress;
+                    cbUpleaIsPremium.Checked = upleaUserInformation.Result.IsPremiumMember;
+                    cbUpleaInstantDownloadEnabled.Checked = upleaUserInformation.Result.InstantDownloadEnabled;
+                }
+                else
+                {
+                    MessageBox.Show("Unable to retrieve API key and user details from Uplea. Please check your user credentials and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            finally
+            {
+                btnUpleaLogin.Enabled = true;
+            }
+        }
+
+        private void txtUpleaApiKey_TextChanged(object sender, EventArgs e)
+        {
+            Config.UpleaApiKey = txtUpleaApiKey.Text;
+
+            if (string.IsNullOrEmpty(Config.UpleaApiKey))
+            {
+                txtUpleaEmailAddress.Text = "";
+                cbUpleaIsPremium.Checked = false;
+                cbUpleaInstantDownloadEnabled.Checked = false;
+            }
+        }
+
+        private void txtUpleaEmailAddress_TextChanged(object sender, EventArgs e)
+        {
+            Config.UpleaEmailAddress = txtUpleaEmailAddress.Text;
+        }
+
+        private void cbUpleaIsPremium_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.UpleaIsPremiumMember = cbUpleaIsPremium.Checked;
+        }
+
+        private void cbUpleaInstantDownloadEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.UpleaInstantDownloadEnabled = cbUpleaInstantDownloadEnabled.Checked;
+        }
+
+        #endregion Uplea
+
+        #region Azure Storage
+
+        private void txtAzureStorageAccountName_TextChanged(object sender, EventArgs e)
+        {
+            Config.AzureStorageAccountName = txtAzureStorageAccountName.Text;
+        }
+
+        private void txtAzureStorageAccessKey_TextChanged(object sender, EventArgs e)
+        {
+            Config.AzureStorageAccountAccessKey = txtAzureStorageAccessKey.Text;
+        }
+
+        private void txtAzureStorageContainer_TextChanged(object sender, EventArgs e)
+        {
+            Config.AzureStorageContainer = txtAzureStorageContainer.Text;
+        }
+
+        private void btnAzureStoragePortal_Click(object sender, EventArgs e)
+        {
+            URLHelpers.OpenURL("https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/Resources/resourceType/Microsoft.Storage%2FStorageAccounts");
+        }
+
+        #endregion Azure Storage
 
         #endregion File Uploaders
 
@@ -2679,6 +2752,16 @@ namespace ShareX.UploadersLib
         private void txtPolrAPIKey_TextChanged(object sender, EventArgs e)
         {
             Config.PolrAPIKey = txtPolrAPIKey.Text;
+        }
+
+        private void cbPolrIsSecret_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.PolrIsSecret = cbPolrIsSecret.Checked;
+        }
+
+        private void cbPolrUseAPIv1_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.PolrUseAPIv1 = cbPolrUseAPIv1.Checked;
         }
 
         #endregion Polr

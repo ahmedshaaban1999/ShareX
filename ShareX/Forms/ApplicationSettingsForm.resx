@@ -121,14 +121,41 @@
   <data name="tcSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbCheckPreReleaseUpdates.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cbCheckPreReleaseUpdates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 328</value>
+  </data>
+  <data name="cbCheckPreReleaseUpdates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 17</value>
+  </data>
+  <data name="cbCheckPreReleaseUpdates.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="cbCheckPreReleaseUpdates.Text" xml:space="preserve">
+    <value>Check for pre-release updates</value>
+  </data>
+  <data name="&gt;&gt;cbCheckPreReleaseUpdates.Name" xml:space="preserve">
+    <value>cbCheckPreReleaseUpdates</value>
+  </data>
+  <data name="&gt;&gt;cbCheckPreReleaseUpdates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbCheckPreReleaseUpdates.Parent" xml:space="preserve">
+    <value>tpGeneral</value>
+  </data>
+  <data name="&gt;&gt;cbCheckPreReleaseUpdates.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cbTrayMiddleClickAction.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 260</value>
   </data>
   <data name="cbTrayMiddleClickAction.Size" type="System.Drawing.Size, System.Drawing">
     <value>288, 21</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cbTrayMiddleClickAction.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
@@ -142,7 +169,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;cbTrayMiddleClickAction.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lblTrayMiddleClickAction.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -169,7 +196,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;lblTrayMiddleClickAction.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cbTrayLeftDoubleClickAction.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 236</value>
@@ -190,7 +217,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;cbTrayLeftDoubleClickAction.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblTrayLeftDoubleClickAction.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -217,7 +244,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;lblTrayLeftDoubleClickAction.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="cbTrayLeftClickAction.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 212</value>
@@ -238,7 +265,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;cbTrayLeftClickAction.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lblTrayLeftClickAction.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -265,7 +292,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;lblTrayLeftClickAction.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnEditQuickTaskMenu.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 296</value>
@@ -289,7 +316,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;btnEditQuickTaskMenu.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="cbShowTray.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -319,7 +346,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;cbShowTray.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="cbTrayIconProgressEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -349,7 +376,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;cbTrayIconProgressEnabled.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnLanguages.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -394,7 +421,7 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;btnLanguages.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="cbRememberMainFormPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -424,36 +451,6 @@
     <value>tpGeneral</value>
   </data>
   <data name="&gt;&gt;cbRememberMainFormPosition.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="llTranslators.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="llTranslators.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="llTranslators.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 37</value>
-  </data>
-  <data name="llTranslators.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 13</value>
-  </data>
-  <data name="llTranslators.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="llTranslators.Text" xml:space="preserve">
-    <value>Help us translate ShareX to your language!</value>
-  </data>
-  <data name="&gt;&gt;llTranslators.Name" xml:space="preserve">
-    <value>llTranslators</value>
-  </data>
-  <data name="&gt;&gt;llTranslators.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;llTranslators.Parent" xml:space="preserve">
-    <value>tpGeneral</value>
-  </data>
-  <data name="&gt;&gt;llTranslators.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
   <data name="cbSilentRun.AutoSize" type="System.Boolean, mscorlib">
@@ -603,6 +600,84 @@
   <data name="&gt;&gt;tpGeneral.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cbFirefoxAddonSupport.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbFirefoxAddonSupport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 24</value>
+  </data>
+  <data name="cbFirefoxAddonSupport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 17</value>
+  </data>
+  <data name="cbFirefoxAddonSupport.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cbFirefoxAddonSupport.Text" xml:space="preserve">
+    <value>Enable Firefox addon support</value>
+  </data>
+  <data name="&gt;&gt;cbFirefoxAddonSupport.Name" xml:space="preserve">
+    <value>cbFirefoxAddonSupport</value>
+  </data>
+  <data name="&gt;&gt;cbFirefoxAddonSupport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbFirefoxAddonSupport.Parent" xml:space="preserve">
+    <value>gpFirefox</value>
+  </data>
+  <data name="&gt;&gt;cbFirefoxAddonSupport.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnFirefoxOpenAddonPage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnFirefoxOpenAddonPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 48</value>
+  </data>
+  <data name="btnFirefoxOpenAddonPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 23</value>
+  </data>
+  <data name="btnFirefoxOpenAddonPage.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnFirefoxOpenAddonPage.Text" xml:space="preserve">
+    <value>Install ShareX Firefox addon...</value>
+  </data>
+  <data name="&gt;&gt;btnFirefoxOpenAddonPage.Name" xml:space="preserve">
+    <value>btnFirefoxOpenAddonPage</value>
+  </data>
+  <data name="&gt;&gt;btnFirefoxOpenAddonPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFirefoxOpenAddonPage.Parent" xml:space="preserve">
+    <value>gpFirefox</value>
+  </data>
+  <data name="&gt;&gt;btnFirefoxOpenAddonPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gpFirefox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 216</value>
+  </data>
+  <data name="gpFirefox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 88</value>
+  </data>
+  <data name="gpFirefox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="gpFirefox.Text" xml:space="preserve">
+    <value>Firefox addon</value>
+  </data>
+  <data name="&gt;&gt;gpFirefox.Name" xml:space="preserve">
+    <value>gpFirefox</value>
+  </data>
+  <data name="&gt;&gt;gpFirefox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gpFirefox.Parent" xml:space="preserve">
+    <value>tpIntegration</value>
+  </data>
+  <data name="&gt;&gt;gpFirefox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cbSteamShowInApp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -631,7 +706,7 @@
     <value>0</value>
   </data>
   <data name="gbSteam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 192</value>
+    <value>8, 312</value>
   </data>
   <data name="gbSteam.Size" type="System.Drawing.Size, System.Drawing">
     <value>536, 56</value>
@@ -641,7 +716,7 @@
   </data>
   <data name="gbSteam.Text" xml:space="preserve">
     <value>Steam</value>
-  <comment>@Invariant</comment></data>
+  </data>
   <data name="&gt;&gt;gbSteam.Name" xml:space="preserve">
     <value>gbSteam</value>
   </data>
@@ -652,44 +727,71 @@
     <value>tpIntegration</value>
   </data>
   <data name="&gt;&gt;gbSteam.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
-  <data name="btnChromeSupport.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cbChromeExtensionSupport.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbChromeExtensionSupport.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 24</value>
   </data>
-  <data name="btnChromeSupport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 24</value>
+  <data name="cbChromeExtensionSupport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 17</value>
   </data>
-  <data name="btnChromeSupport.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="cbChromeExtensionSupport.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="btnChromeSupport.Text" xml:space="preserve">
-    <value>Chrome extension support...</value>
+  <data name="cbChromeExtensionSupport.Text" xml:space="preserve">
+    <value>Enable Chrome extension support</value>
   </data>
-  <data name="&gt;&gt;btnChromeSupport.Name" xml:space="preserve">
-    <value>btnChromeSupport</value>
+  <data name="&gt;&gt;cbChromeExtensionSupport.Name" xml:space="preserve">
+    <value>cbChromeExtensionSupport</value>
   </data>
-  <data name="&gt;&gt;btnChromeSupport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;cbChromeExtensionSupport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnChromeSupport.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cbChromeExtensionSupport.Parent" xml:space="preserve">
     <value>gbChrome</value>
   </data>
-  <data name="&gt;&gt;btnChromeSupport.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbChromeExtensionSupport.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="btnChromeOpenExtensionPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 48</value>
+  </data>
+  <data name="btnChromeOpenExtensionPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 23</value>
+  </data>
+  <data name="btnChromeOpenExtensionPage.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnChromeOpenExtensionPage.Text" xml:space="preserve">
+    <value>Install ShareX Chrome extension...</value>
+  </data>
+  <data name="&gt;&gt;btnChromeOpenExtensionPage.Name" xml:space="preserve">
+    <value>btnChromeOpenExtensionPage</value>
+  </data>
+  <data name="&gt;&gt;btnChromeOpenExtensionPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnChromeOpenExtensionPage.Parent" xml:space="preserve">
+    <value>gbChrome</value>
+  </data>
+  <data name="&gt;&gt;btnChromeOpenExtensionPage.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="gbChrome.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 120</value>
   </data>
   <data name="gbChrome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 64</value>
+    <value>536, 88</value>
   </data>
   <data name="gbChrome.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="gbChrome.Text" xml:space="preserve">
-    <value>Chrome</value>
-  <comment>@Invariant</comment></data>
+    <value>Chrome extension</value>
+  </data>
   <data name="&gt;&gt;gbChrome.Name" xml:space="preserve">
     <value>gbChrome</value>
   </data>
@@ -700,7 +802,7 @@
     <value>tpIntegration</value>
   </data>
   <data name="&gt;&gt;gbChrome.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cbStartWithWindows.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -803,7 +905,7 @@
   </data>
   <data name="gbWindows.Text" xml:space="preserve">
     <value>Windows</value>
-  <comment>@Invariant</comment></data>
+  </data>
   <data name="&gt;&gt;gbWindows.Name" xml:space="preserve">
     <value>gbWindows</value>
   </data>
@@ -814,7 +916,7 @@
     <value>tpIntegration</value>
   </data>
   <data name="&gt;&gt;gbWindows.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tpIntegration.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -917,7 +1019,7 @@
   </data>
   <data name="lblPreviewPersonalFolderPath.Text" xml:space="preserve">
     <value>...</value>
-  <comment>@Invariant</comment></data>
+  </data>
   <data name="&gt;&gt;lblPreviewPersonalFolderPath.Name" xml:space="preserve">
     <value>lblPreviewPersonalFolderPath</value>
   </data>
@@ -1160,7 +1262,7 @@
   </data>
   <data name="lblSaveImageSubFolderPatternPreview.Text" xml:space="preserve">
     <value>...</value>
-  <comment>@Invariant</comment></data>
+  </data>
   <data name="&gt;&gt;lblSaveImageSubFolderPatternPreview.Name" xml:space="preserve">
     <value>lblSaveImageSubFolderPatternPreview</value>
   </data>

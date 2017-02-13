@@ -489,18 +489,6 @@
   <data name="tsmiRectangleTransparent.Text" xml:space="preserve">
     <value>Region (Transparent)</value>
   </data>
-  <data name="tsmiPolygon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="tsmiPolygon.Text" xml:space="preserve">
-    <value>Polygon</value>
-  </data>
-  <data name="tsmiFreeHand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="tsmiFreeHand.Text" xml:space="preserve">
-    <value>Freehand</value>
-  </data>
   <data name="tsmiLastRegion.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 22</value>
   </data>
@@ -657,12 +645,6 @@
   <data name="tsmiRuler.Text" xml:space="preserve">
     <value>Ruler...</value>
   </data>
-  <data name="tsmiAutomate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
-  </data>
-  <data name="tsmiAutomate.Text" xml:space="preserve">
-    <value>Automate...</value>
-  </data>
   <data name="tsmiIndexFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 22</value>
   </data>
@@ -789,18 +771,6 @@
   <data name="tsddbDestinations.Text" xml:space="preserve">
     <value>Destinations</value>
   </data>
-  <data name="tsbApplicationSettings.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="tsbApplicationSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsbApplicationSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 20</value>
-  </data>
-  <data name="tsbApplicationSettings.Text" xml:space="preserve">
-    <value>Application settings...</value>
-  </data>
   <data name="tsbTaskSettings.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
@@ -812,6 +782,18 @@
   </data>
   <data name="tsbTaskSettings.Text" xml:space="preserve">
     <value>Task settings...</value>
+  </data>
+  <data name="tsbApplicationSettings.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="tsbApplicationSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsbApplicationSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 20</value>
+  </data>
+  <data name="tsbApplicationSettings.Text" xml:space="preserve">
+    <value>Application settings...</value>
   </data>
   <data name="tsbHotkeySettings.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -964,67 +946,82 @@
     <value>286, 17</value>
   </metadata>
   <data name="tsmiShowErrors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiShowErrors.Text" xml:space="preserve">
     <value>Show errors</value>
   </data>
   <data name="tsmiStopUpload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiStopUpload.Text" xml:space="preserve">
     <value>Stop upload</value>
   </data>
+  <data name="tsmiOpenURL.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Enter</value>
+  </data>
   <data name="tsmiOpenURL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="tsmiOpenURL.Text" xml:space="preserve">
     <value>URL</value>
   </data>
   <data name="tsmiOpenShortenedURL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="tsmiOpenShortenedURL.Text" xml:space="preserve">
     <value>Shortened URL</value>
   </data>
   <data name="tsmiOpenThumbnailURL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="tsmiOpenThumbnailURL.Text" xml:space="preserve">
     <value>Thumbnail URL</value>
   </data>
   <data name="tsmiOpenDeletionURL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="tsmiOpenDeletionURL.Text" xml:space="preserve">
     <value>Deletion URL</value>
   </data>
   <data name="tssOpen1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 6</value>
+    <value>170, 6</value>
+  </data>
+  <data name="tsmiOpenFile.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+Enter</value>
   </data>
   <data name="tsmiOpenFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="tsmiOpenFile.Text" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="tsmiOpenFolder.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Shift+Enter</value>
+  </data>
   <data name="tsmiOpenFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="tsmiOpenFolder.Text" xml:space="preserve">
     <value>Folder</value>
   </data>
   <data name="tsmiOpenThumbnailFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="tsmiOpenThumbnailFile.Text" xml:space="preserve">
     <value>Thumbnail file</value>
   </data>
+  <data name="tsmiOpen.ShortcutKeyDisplayString" xml:space="preserve">
+    <value />
+  </data>
   <data name="tsmiOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiOpen.Text" xml:space="preserve">
     <value>Open</value>
+  </data>
+  <data name="tsmiCopyURL.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+C</value>
   </data>
   <data name="tsmiCopyURL.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
@@ -1053,11 +1050,17 @@
   <data name="tssCopy1.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 6</value>
   </data>
+  <data name="tsmiCopyFile.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Shift+C</value>
+  </data>
   <data name="tsmiCopyFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
   </data>
   <data name="tsmiCopyFile.Text" xml:space="preserve">
     <value>File</value>
+  </data>
+  <data name="tsmiCopyImage.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Alt+C</value>
   </data>
   <data name="tsmiCopyImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
@@ -1128,6 +1131,9 @@
   <data name="tssCopy4.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 6</value>
   </data>
+  <data name="tsmiCopyFilePath.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+Shift+C</value>
+  </data>
   <data name="tsmiCopyFilePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
   </data>
@@ -1158,71 +1164,104 @@
   <data name="tssCopy5.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmiCopy.ShortcutKeyDisplayString" xml:space="preserve">
+    <value />
+  </data>
   <data name="tsmiCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiCopy.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
+  <data name="tsmiUploadSelectedFile.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+U</value>
+  </data>
   <data name="tsmiUploadSelectedFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiUploadSelectedFile.Text" xml:space="preserve">
     <value>Upload</value>
   </data>
+  <data name="tsmiDownloadSelectedURL.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+D</value>
+  </data>
+  <data name="tsmiDownloadSelectedURL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 22</value>
+  </data>
+  <data name="tsmiDownloadSelectedURL.Text" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="tsmiEditSelectedFile.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+E</value>
+  </data>
   <data name="tsmiEditSelectedFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiEditSelectedFile.Text" xml:space="preserve">
     <value>Edit image...</value>
   </data>
+  <data name="tsmiDeleteSelectedFile.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Shift+Del</value>
+  </data>
   <data name="tsmiDeleteSelectedFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiDeleteSelectedFile.Text" xml:space="preserve">
     <value>Delete file locally...</value>
   </data>
   <data name="tsmiShortenSelectedURL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiShortenSelectedURL.Text" xml:space="preserve">
     <value>Shorten URL</value>
   </data>
   <data name="tsmiShareSelectedURL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiShareSelectedURL.Text" xml:space="preserve">
     <value>Share URL</value>
   </data>
   <data name="tsmiShowQRCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiShowQRCode.Text" xml:space="preserve">
     <value>Show QR code...</value>
   </data>
+  <data name="tsmiOCRImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 22</value>
+  </data>
+  <data name="tsmiOCRImage.Text" xml:space="preserve">
+    <value>OCR image...</value>
+  </data>
+  <data name="tsmiCombineImages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 22</value>
+  </data>
+  <data name="tsmiCombineImages.Text" xml:space="preserve">
+    <value>Combine images...</value>
+  </data>
   <data name="tsmiShowResponse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiShowResponse.Text" xml:space="preserve">
     <value>Show response...</value>
   </data>
   <data name="tsmiClearList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiClearList.Text" xml:space="preserve">
     <value>Clear list</value>
   </data>
   <data name="tssUploadInfo1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 6</value>
+    <value>225, 6</value>
   </data>
   <data name="tsmiHideMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiHideMenu.Text" xml:space="preserve">
     <value>Hide menu</value>
   </data>
   <data name="tsmiHideColumns.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiHideColumns.Text" xml:space="preserve">
     <value>Hide columns</value>
@@ -1246,13 +1285,13 @@
     <value>Automatic</value>
   </data>
   <data name="tsmiImagePreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>228, 22</value>
   </data>
   <data name="tsmiImagePreview.Text" xml:space="preserve">
     <value>Image preview</value>
   </data>
   <data name="cmsTaskInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 340</value>
+    <value>229, 428</value>
   </data>
   <data name="&gt;&gt;cmsTaskInfo.Name" xml:space="preserve">
     <value>cmsTaskInfo</value>
@@ -1302,18 +1341,6 @@
   <data name="tsmiTrayRectangleTransparent.Text" xml:space="preserve">
     <value>Region (Transparent)</value>
   </data>
-  <data name="tsmiTrayPolygon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="tsmiTrayPolygon.Text" xml:space="preserve">
-    <value>Polygon</value>
-  </data>
-  <data name="tsmiTrayFreeHand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="tsmiTrayFreeHand.Text" xml:space="preserve">
-    <value>Freehand</value>
-  </data>
   <data name="tsmiTrayLastRegion.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 22</value>
   </data>
@@ -1357,7 +1384,7 @@
     <value>Auto capture...</value>
   </data>
   <data name="tsmiTrayCapture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayCapture.Text" xml:space="preserve">
     <value>Capture</value>
@@ -1393,13 +1420,13 @@
     <value>Drag and drop upload...</value>
   </data>
   <data name="tsmiTrayUpload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayUpload.Text" xml:space="preserve">
     <value>Upload</value>
   </data>
   <data name="tsmiTrayWorkflows.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayWorkflows.Text" xml:space="preserve">
     <value>Workflows</value>
@@ -1452,12 +1479,6 @@
   <data name="tsmiTrayRuler.Text" xml:space="preserve">
     <value>Ruler...</value>
   </data>
-  <data name="tsmiTrayAutomate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
-  </data>
-  <data name="tsmiTrayAutomate.Text" xml:space="preserve">
-    <value>Automate...</value>
-  </data>
   <data name="tsmiTrayIndexFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 22</value>
   </data>
@@ -1495,22 +1516,22 @@
     <value>Monitor test...</value>
   </data>
   <data name="tsmiTrayTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayTools.Text" xml:space="preserve">
     <value>Tools</value>
   </data>
   <data name="tssTray1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 6</value>
+    <value>189, 6</value>
   </data>
   <data name="tsmiTrayAfterCaptureTasks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayAfterCaptureTasks.Text" xml:space="preserve">
     <value>After capture tasks</value>
   </data>
   <data name="tsmiTrayAfterUploadTasks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayAfterUploadTasks.Text" xml:space="preserve">
     <value>After upload tasks</value>
@@ -1555,52 +1576,52 @@
     <value>Destination settings...</value>
   </data>
   <data name="tsmiTrayDestinations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayDestinations.Text" xml:space="preserve">
     <value>Destinations</value>
   </data>
-  <data name="tsmiTrayApplicationSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
-  </data>
-  <data name="tsmiTrayApplicationSettings.Text" xml:space="preserve">
-    <value>Application settings...</value>
-  </data>
   <data name="tsmiTrayTaskSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayTaskSettings.Text" xml:space="preserve">
     <value>Task settings...</value>
   </data>
+  <data name="tsmiTrayApplicationSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="tsmiTrayApplicationSettings.Text" xml:space="preserve">
+    <value>Application settings...</value>
+  </data>
   <data name="tsmiTrayHotkeySettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayHotkeySettings.Text" xml:space="preserve">
     <value>Hotkey settings...</value>
   </data>
   <data name="tsmiTrayToggleHotkeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayToggleHotkeys.Text" xml:space="preserve">
     <value>Disable hotkeys</value>
   </data>
   <data name="tssTray2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 6</value>
+    <value>189, 6</value>
   </data>
   <data name="tsmiScreenshotsFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiScreenshotsFolder.Text" xml:space="preserve">
     <value>Screenshots folder...</value>
   </data>
   <data name="tsmiTrayHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayHistory.Text" xml:space="preserve">
     <value>History...</value>
   </data>
   <data name="tsmiTrayImageHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayImageHistory.Text" xml:space="preserve">
     <value>Image history...</value>
@@ -1642,28 +1663,28 @@
     <value>Test URL sharing</value>
   </data>
   <data name="tsmiTrayDebug.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayDebug.Text" xml:space="preserve">
     <value>Debug</value>
   </data>
   <data name="tsmiTrayDonate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayDonate.Text" xml:space="preserve">
     <value>Donate...</value>
   </data>
   <data name="tsmiTrayAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayAbout.Text" xml:space="preserve">
     <value>About...</value>
   </data>
   <data name="tssTray3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 6</value>
+    <value>189, 6</value>
   </data>
   <data name="tsmiTrayRecentItems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayRecentItems.Text" xml:space="preserve">
     <value>Recent links</value>
@@ -1671,20 +1692,26 @@
   <data name="tsmiTrayRecentItems.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmiOpenActionsToolbar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="tsmiOpenActionsToolbar.Text" xml:space="preserve">
+    <value>Toggle actions toolbar</value>
+  </data>
   <data name="tsmiTrayShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayShow.Text" xml:space="preserve">
     <value>Open main window</value>
   </data>
   <data name="tsmiTrayExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="tsmiTrayExit.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="cmsTray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 462</value>
+    <value>193, 484</value>
   </data>
   <data name="&gt;&gt;cmsTray.Name" xml:space="preserve">
     <value>cmsTray</value>
@@ -1694,7 +1721,7 @@
   </data>
   <data name="niTray.Text" xml:space="preserve">
     <value>ShareX</value>
-  <comment>@Invariant</comment></data>
+  </data>
   <metadata name="timerTraySingleClick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>405, 17</value>
   </metadata>
@@ -1863,18 +1890,6 @@
   <data name="&gt;&gt;tsmiRectangleTransparent.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsmiPolygon.Name" xml:space="preserve">
-    <value>tsmiPolygon</value>
-  </data>
-  <data name="&gt;&gt;tsmiPolygon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiFreeHand.Name" xml:space="preserve">
-    <value>tsmiFreeHand</value>
-  </data>
-  <data name="&gt;&gt;tsmiFreeHand.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tsmiLastRegion.Name" xml:space="preserve">
     <value>tsmiLastRegion</value>
   </data>
@@ -2013,12 +2028,6 @@
   <data name="&gt;&gt;tsmiRuler.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsmiAutomate.Name" xml:space="preserve">
-    <value>tsmiAutomate</value>
-  </data>
-  <data name="&gt;&gt;tsmiAutomate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tsmiIndexFolder.Name" xml:space="preserve">
     <value>tsmiIndexFolder</value>
   </data>
@@ -2121,16 +2130,16 @@
   <data name="&gt;&gt;tsmiDestinationSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsbApplicationSettings.Name" xml:space="preserve">
-    <value>tsbApplicationSettings</value>
-  </data>
-  <data name="&gt;&gt;tsbApplicationSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tsbTaskSettings.Name" xml:space="preserve">
     <value>tsbTaskSettings</value>
   </data>
   <data name="&gt;&gt;tsbTaskSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbApplicationSettings.Name" xml:space="preserve">
+    <value>tsbApplicationSettings</value>
+  </data>
+  <data name="&gt;&gt;tsbApplicationSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbHotkeySettings.Name" xml:space="preserve">
@@ -2439,6 +2448,12 @@
   <data name="&gt;&gt;tsmiUploadSelectedFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tsmiDownloadSelectedURL.Name" xml:space="preserve">
+    <value>tsmiDownloadSelectedURL</value>
+  </data>
+  <data name="&gt;&gt;tsmiDownloadSelectedURL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tsmiEditSelectedFile.Name" xml:space="preserve">
     <value>tsmiEditSelectedFile</value>
   </data>
@@ -2467,6 +2482,18 @@
     <value>tsmiShowQRCode</value>
   </data>
   <data name="&gt;&gt;tsmiShowQRCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiOCRImage.Name" xml:space="preserve">
+    <value>tsmiOCRImage</value>
+  </data>
+  <data name="&gt;&gt;tsmiOCRImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiCombineImages.Name" xml:space="preserve">
+    <value>tsmiCombineImages</value>
+  </data>
+  <data name="&gt;&gt;tsmiCombineImages.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiShowResponse.Name" xml:space="preserve">
@@ -2569,18 +2596,6 @@
     <value>tsmiTrayRectangleTransparent</value>
   </data>
   <data name="&gt;&gt;tsmiTrayRectangleTransparent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiTrayPolygon.Name" xml:space="preserve">
-    <value>tsmiTrayPolygon</value>
-  </data>
-  <data name="&gt;&gt;tsmiTrayPolygon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiTrayFreeHand.Name" xml:space="preserve">
-    <value>tsmiTrayFreeHand</value>
-  </data>
-  <data name="&gt;&gt;tsmiTrayFreeHand.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTrayLastRegion.Name" xml:space="preserve">
@@ -2721,12 +2736,6 @@
   <data name="&gt;&gt;tsmiTrayRuler.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsmiTrayAutomate.Name" xml:space="preserve">
-    <value>tsmiTrayAutomate</value>
-  </data>
-  <data name="&gt;&gt;tsmiTrayAutomate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tsmiTrayIndexFolder.Name" xml:space="preserve">
     <value>tsmiTrayIndexFolder</value>
   </data>
@@ -2829,16 +2838,16 @@
   <data name="&gt;&gt;tsmiTrayDestinationSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsmiTrayApplicationSettings.Name" xml:space="preserve">
-    <value>tsmiTrayApplicationSettings</value>
-  </data>
-  <data name="&gt;&gt;tsmiTrayApplicationSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tsmiTrayTaskSettings.Name" xml:space="preserve">
     <value>tsmiTrayTaskSettings</value>
   </data>
   <data name="&gt;&gt;tsmiTrayTaskSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiTrayApplicationSettings.Name" xml:space="preserve">
+    <value>tsmiTrayApplicationSettings</value>
+  </data>
+  <data name="&gt;&gt;tsmiTrayApplicationSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTrayHotkeySettings.Name" xml:space="preserve">
@@ -2943,6 +2952,12 @@
   <data name="&gt;&gt;tsmiTrayRecentItems.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tsmiOpenActionsToolbar.Name" xml:space="preserve">
+    <value>tsmiOpenActionsToolbar</value>
+  </data>
+  <data name="&gt;&gt;tsmiOpenActionsToolbar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tsmiTrayShow.Name" xml:space="preserve">
     <value>tsmiTrayShow</value>
   </data>
@@ -2971,6 +2986,6 @@
     <value>MainForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>ShareX.HotkeyForm, ShareX, Version=11.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ShareX.HotkeyForm, ShareX, Version=11.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

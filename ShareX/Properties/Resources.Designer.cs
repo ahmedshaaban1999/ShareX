@@ -88,15 +88,6 @@ namespace ShareX.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Issues.
-        /// </summary>
-        public static string AboutForm_AboutForm_Issues {
-            get {
-                return ResourceManager.GetString("AboutForm_AboutForm_Issues", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Project page.
         /// </summary>
         public static string AboutForm_AboutForm_Project_page {
@@ -187,6 +178,16 @@ namespace ShareX.Properties {
         public static System.Drawing.Bitmap application_browser {
             get {
                 object obj = ResourceManager.GetObject("application_browser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap application_home {
+            get {
+                object obj = ResourceManager.GetObject("application_home", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -428,6 +429,26 @@ namespace ShareX.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap camcorder__arrow {
+            get {
+                object obj = ResourceManager.GetObject("camcorder__arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap camcorder__exclamation {
+            get {
+                object obj = ResourceManager.GetObject("camcorder__exclamation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap camcorder_image {
             get {
                 object obj = ResourceManager.GetObject("camcorder_image", resourceCulture);
@@ -563,6 +584,16 @@ namespace ShareX.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap clipboard_task {
+            get {
+                object obj = ResourceManager.GetObject("clipboard_task", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supported variables: {0} and other variables such as {1} etc..
         /// </summary>
         public static string ClipboardFormatForm_ClipboardFormatForm_Supported_variables___0__and_other_variables_such_as__1__etc_ {
@@ -578,6 +609,16 @@ namespace ShareX.Properties {
         public static System.Drawing.Bitmap clock {
             get {
                 object obj = ResourceManager.GetObject("clock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap clock__arrow {
+            get {
+                object obj = ResourceManager.GetObject("clock__arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -755,9 +796,29 @@ namespace ShareX.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap drive_download {
+            get {
+                object obj = ResourceManager.GetObject("drive_download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap drive_globe {
             get {
                 object obj = ResourceManager.GetObject("drive_globe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap drive_upload {
+            get {
+                object obj = ResourceManager.GetObject("drive_upload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -873,6 +934,16 @@ namespace ShareX.Properties {
         public static System.Drawing.Bitmap film {
             get {
                 object obj = ResourceManager.GetObject("film", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap film__arrow {
+            get {
+                object obj = ResourceManager.GetObject("film__arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1068,9 +1139,9 @@ namespace ShareX.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Reset all hotkeys to defaults?.
         /// </summary>
-        public static string HotkeySettingsForm_btnReset_Click_Reset_all_hotkeys_to_defaults_ {
+        public static string HotkeySettingsForm_Reset_all_hotkeys_to_defaults_Confirmation {
             get {
-                return ResourceManager.GetString("HotkeySettingsForm_btnReset_Click_Reset_all_hotkeys_to_defaults_", resourceCulture);
+                return ResourceManager.GetString("HotkeySettingsForm_Reset_all_hotkeys_to_defaults_Confirmation", resourceCulture);
             }
         }
         
@@ -1206,6 +1277,16 @@ namespace ShareX.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap layer__arrow {
+            get {
+                object obj = ResourceManager.GetObject("layer__arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap layer_fullscreen {
             get {
                 object obj = ResourceManager.GetObject("layer_fullscreen", resourceCulture);
@@ -1326,6 +1407,26 @@ namespace ShareX.Properties {
         public static string MainForm_UpdateMainFormTip_Currently_configured_hotkeys_ {
             get {
                 return ResourceManager.GetString("MainForm_UpdateMainFormTip_Currently_configured_hotkeys_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main window tips:
+        ///- Drag files, image or text to main window to upload them.
+        ///- Drag items from task list to copy files to anywhere. Hold &quot;Ctrl&quot; before dragging to copy URL or file path instead of file.
+        ///
+        ///Main window task list hotkeys:
+        ///[Enter] Open URL or file
+        ///[Ctrl + Enter] Open file
+        ///[Ctrl + C] Copy URL or file path
+        ///[Shift + C] Copy file
+        ///[Ctrl + Shift + C] Copy file path
+        ///[Ctrl + X] Copy URL or file path then remove selected items from list
+        ///[Ctrl + V] Open clipboard content viewer so you can upload [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string MainForm_UpdateMainFormTip_Tips {
+            get {
+                return ResourceManager.GetString("MainForm_UpdateMainFormTip_Tips", resourceCulture);
             }
         }
         
@@ -1582,16 +1683,6 @@ namespace ShareX.Properties {
         public static System.Drawing.Bitmap Rectangle {
             get {
                 object obj = ResourceManager.GetObject("Rectangle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap robot {
-            get {
-                object obj = ResourceManager.GetObject("robot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2082,6 +2173,26 @@ namespace ShareX.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ui_splitter {
+            get {
+                object obj = ResourceManager.GetObject("ui_splitter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ui_toolbar__arrow {
+            get {
+                object obj = ResourceManager.GetObject("ui_toolbar__arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap upload_cloud {
             get {
                 object obj = ResourceManager.GetObject("upload_cloud", resourceCulture);
@@ -2307,6 +2418,16 @@ namespace ShareX.Properties {
             get {
                 object obj = ResourceManager.GetObject("vn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} configuration is invalid or missing. Please check &quot;Destination settings&quot; window to configure it..
+        /// </summary>
+        public static string WorkerTask_GetInvalidConfigResult__0__configuration_is_invalid_or_missing__Please_check__Destination_settings__window_to_configure_it_ {
+            get {
+                return ResourceManager.GetString("WorkerTask_GetInvalidConfigResult__0__configuration_is_invalid_or_missing__Please" +
+                        "_check__Destination_settings__window_to_configure_it_", resourceCulture);
             }
         }
         

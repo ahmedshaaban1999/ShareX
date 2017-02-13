@@ -225,9 +225,6 @@
   <data name="ClipboardContentViewer_ClipboardContentViewer_Load_Clipboard_is_empty_or_contains_unknown_data_" xml:space="preserve">
     <value>Pano boş veya bilinmeyen içeriğe sahip.</value>
   </data>
-  <data name="RegistryHelpers_ShellExtDesc_Upload_with__0_" xml:space="preserve">
-    <value>{0} ile yükle</value>
-  </data>
   <data name="PrintTextForm_LoadSettings_Name___0___Size___1_" xml:space="preserve">
     <value>Ad: {0}, Boyut: {1}</value>
   </data>
@@ -392,9 +389,6 @@ Dosya boyutu: {2:n0} / {3:n0} KB</value>
   <data name="HotkeyType_FolderUpload" xml:space="preserve">
     <value>Dizin yükle</value>
   </data>
-  <data name="HotkeyType_FreeHandRegion" xml:space="preserve">
-    <value>Serbest bölge yakala</value>
-  </data>
   <data name="HotkeyType_FTPClient" xml:space="preserve">
     <value>FTP istemci</value>
   </data>
@@ -415,9 +409,6 @@ Dosya boyutu: {2:n0} / {3:n0} KB</value>
   </data>
   <data name="HotkeyType_OpenScreenshotsFolder" xml:space="preserve">
     <value>Ekran görüntüleri dizinini aç</value>
-  </data>
-  <data name="HotkeyType_PolygonRegion" xml:space="preserve">
-    <value>Çokgen bölge yakala</value>
   </data>
   <data name="HotkeyType_PrintScreen" xml:space="preserve">
     <value>Tüm ekranı yakala</value>
@@ -588,9 +579,6 @@ Dosya boyutu: {2:n0} / {3:n0} KB</value>
   <data name="HotkeyType_StartScreenRecorderGIF" xml:space="preserve">
     <value>Son bölgeyi kullanarak ekran kaydet (GIF)</value>
   </data>
-  <data name="HotkeyType_Automate" xml:space="preserve">
-    <value>Aç/Durdur otomatikleştirme aracını</value>
-  </data>
   <data name="HotkeyType_RectangleTransparent" xml:space="preserve">
     <value>Bölge yakala (Saydam)</value>
   </data>
@@ -615,9 +603,6 @@ Dosya boyutu: {2:n0} / {3:n0} KB</value>
   <data name="HotkeyType_AutoCapture_Category" xml:space="preserve">
     <value>Ekran yakalama</value>
   </data>
-  <data name="HotkeyType_Automate_Category" xml:space="preserve">
-    <value>Araçlar</value>
-  </data>
   <data name="HotkeyType_ClipboardUploadWithContentViewer_Category" xml:space="preserve">
     <value>Yükle</value>
   </data>
@@ -639,9 +624,6 @@ Dosya boyutu: {2:n0} / {3:n0} KB</value>
   <data name="HotkeyType_FolderUpload_Category" xml:space="preserve">
     <value>Yükle</value>
   </data>
-  <data name="HotkeyType_FreeHandRegion_Category" xml:space="preserve">
-    <value>Ekran yakalama</value>
-  </data>
   <data name="HotkeyType_FTPClient_Category" xml:space="preserve">
     <value>Araçlar</value>
   </data>
@@ -659,9 +641,6 @@ Dosya boyutu: {2:n0} / {3:n0} KB</value>
   </data>
   <data name="HotkeyType_OpenScreenshotsFolder_Category" xml:space="preserve">
     <value>Diğer</value>
-  </data>
-  <data name="HotkeyType_PolygonRegion_Category" xml:space="preserve">
-    <value>Ekran yakalama</value>
   </data>
   <data name="HotkeyType_PrintScreen_Category" xml:space="preserve">
     <value>Ekran yakalama</value>
@@ -795,12 +774,6 @@ Dosya boyutu: {2:n0} / {3:n0} KB</value>
   <data name="HotkeyType_ScrollingCapture_Category" xml:space="preserve">
     <value>Ekran yakalama</value>
   </data>
-  <data name="HotkeyType_IRCClient" xml:space="preserve">
-    <value>IRC istemcisi</value>
-  </data>
-  <data name="HotkeyType_IRCClient_Category" xml:space="preserve">
-    <value>Araçlar</value>
-  </data>
   <data name="HotkeyType_ImageCombiner" xml:space="preserve">
     <value>Resim birleştirici</value>
   </data>
@@ -880,10 +853,16 @@ Dosya boyutu: {2:n0} / {3:n0} KB</value>
   <data name="AfterCaptureTasks_DoOCR" xml:space="preserve">
     <value>Yazı tanı (OCR)</value>
   </data>
-  <data name="HotkeyType_RectangleAnnotate_Category" xml:space="preserve">
-    <value>Ekran yakalama</value>
+  <data name="HotkeyType_AbortScreenRecording_Category" xml:space="preserve">
+    <value>Ekran kaydetme</value>
   </data>
-  <data name="HotkeyType_RectangleAnnotate" xml:space="preserve">
-    <value>Bölge yakalama (Basit dipnot)</value>
+  <data name="HotkeyType_AbortScreenRecording" xml:space="preserve">
+    <value>Ekran kaydetme iptal et</value>
+  </data>
+  <data name="HotkeyType_ExitShareX_Category" xml:space="preserve">
+    <value>Diğer</value>
+  </data>
+  <data name="HotkeyType_ToggleActionsToolbar_Category" xml:space="preserve">
+    <value>Diğer</value>
   </data>
 </root>

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -24,13 +24,8 @@
 #endregion License Information (GPL v3)
 
 using ShareX.HelpersLib;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace ShareX.ScreenCaptureLib
 {
@@ -38,25 +33,77 @@ namespace ShareX.ScreenCaptureLib
     {
         public override ShapeType ShapeType { get; } = ShapeType.DrawingRectangle;
 
+        public int CornerRadius { get; set; }
+
+        public override void OnConfigLoad()
+        {
+            base.OnConfigLoad();
+            CornerRadius = AnnotationOptions.DrawingCornerRadius;
+        }
+
+        public override void OnConfigSave()
+        {
+            base.OnConfigSave();
+            AnnotationOptions.DrawingCornerRadius = CornerRadius;
+        }
+
         public override void OnDraw(Graphics g)
         {
-            if (FillColor.A > 0)
+            DrawRectangle(g);
+        }
+
+        protected void DrawRectangle(Graphics g)
+        {
+            if (Shadow && IsBorderVisible)
             {
-                using (Brush brush = new SolidBrush(FillColor))
-                {
-                    g.FillRectangle(brush, Rectangle);
-                }
+                DrawRectangle(g, ShadowColor, BorderSize, Color.Transparent, Rectangle.LocationOffset(ShadowOffset), CornerRadius);
             }
 
-            if (BorderSize > 0 && BorderColor.A > 0)
-            {
-                Rectangle rect = Rectangle.Offset(BorderSize - 1);
+            DrawRectangle(g, BorderColor, BorderSize, FillColor, Rectangle, CornerRadius);
+        }
 
-                using (Pen pen = new Pen(BorderColor, BorderSize) { Alignment = PenAlignment.Inset })
+        protected void DrawRectangle(Graphics g, Color borderColor, int borderSize, Color fillColor, Rectangle rect, int cornerRadius)
+        {
+            Brush brush = null;
+            Pen pen = null;
+
+            try
+            {
+                if (fillColor.A > 0)
                 {
-                    g.DrawRectangleProper(pen, rect);
+                    brush = new SolidBrush(fillColor);
                 }
+
+                if (borderSize > 0 && borderColor.A > 0)
+                {
+                    pen = new Pen(borderColor, borderSize);
+                }
+
+                if (cornerRadius > 0)
+                {
+                    g.SmoothingMode = SmoothingMode.HighQuality;
+
+                    if (borderSize.IsEvenNumber())
+                    {
+                        g.PixelOffsetMode = PixelOffsetMode.Half;
+                    }
+                }
+
+                g.DrawRoundedRectangle(brush, pen, rect, cornerRadius);
+
+                g.SmoothingMode = SmoothingMode.None;
+                g.PixelOffsetMode = PixelOffsetMode.Default;
             }
+            finally
+            {
+                if (brush != null) brush.Dispose();
+                if (pen != null) pen.Dispose();
+            }
+        }
+
+        public override void OnShapePathRequested(GraphicsPath gp, Rectangle rect)
+        {
+            gp.AddRoundedRectangle(rect, CornerRadius);
         }
     }
 }

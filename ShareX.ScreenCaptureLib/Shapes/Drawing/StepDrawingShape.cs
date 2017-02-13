@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -25,22 +25,16 @@
 
 using ShareX.HelpersLib;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace ShareX.ScreenCaptureLib
 {
-    public class StepDrawingShape : BaseDrawingShape
+    public class StepDrawingShape : EllipseDrawingShape
     {
         private const int DefaultSize = 30;
 
         public override ShapeType ShapeType { get; } = ShapeType.DrawingStep;
-        public override NodeType NodeType { get; } = NodeType.Point;
 
         public int Number { get; set; }
 
@@ -49,53 +43,60 @@ namespace ShareX.ScreenCaptureLib
             Rectangle = new Rectangle(0, 0, DefaultSize, DefaultSize);
         }
 
-        public override void UpdateShapeConfig()
+        public override void ShowNodes()
+        {
+        }
+
+        public override void OnCreating()
+        {
+            Manager.IsMoving = true;
+            Point pos = InputManager.MousePosition0Based;
+            Rectangle = new Rectangle(new Point(pos.X - Rectangle.Width / 2, pos.Y - Rectangle.Height / 2), Rectangle.Size);
+        }
+
+        public override void OnConfigLoad()
         {
             BorderColor = AnnotationOptions.StepBorderColor;
             BorderSize = AnnotationOptions.StepBorderSize;
             FillColor = AnnotationOptions.StepFillColor;
+            Shadow = AnnotationOptions.Shadow;
         }
 
-        public override void ApplyShapeConfig()
+        public override void OnConfigSave()
         {
             AnnotationOptions.StepBorderColor = BorderColor;
             AnnotationOptions.StepBorderSize = BorderSize;
             AnnotationOptions.StepFillColor = FillColor;
+            AnnotationOptions.Shadow = Shadow;
         }
 
         public override void OnDraw(Graphics g)
         {
-            g.SmoothingMode = SmoothingMode.HighQuality;
+            DrawEllipse(g);
+            DrawNumber(g);
+        }
 
-            if (FillColor.A > 0)
+        protected void DrawNumber(Graphics g)
+        {
+            if (Shadow)
             {
-                using (Brush brush = new SolidBrush(FillColor))
-                {
-                    g.FillEllipse(brush, Rectangle);
-                }
+                DrawNumber(g, Number, ShadowColor, Rectangle.LocationOffset(ShadowOffset));
             }
 
-            if (BorderSize > 0 && BorderColor.A > 0)
-            {
-                //g.DrawEllipse(Pens.Black, Rectangle.LocationOffset(0, 1));
+            DrawNumber(g, Number, BorderColor, Rectangle);
+        }
 
-                using (Pen pen = new Pen(BorderColor, BorderSize))
-                {
-                    g.DrawEllipse(pen, Rectangle);
-                }
-            }
-
-            g.SmoothingMode = SmoothingMode.None;
-
-            if (Rectangle.Width > 20 && Rectangle.Height > 20)
+        protected void DrawNumber(Graphics g, int number, Color textColor, Rectangle rect)
+        {
+            if (rect.Width > 20 && rect.Height > 20)
             {
                 int offset;
 
-                if (Number > 99)
+                if (number > 99)
                 {
                     offset = 20;
                 }
-                else if (Number > 9)
+                else if (number > 9)
                 {
                     offset = 15;
                 }
@@ -104,23 +105,22 @@ namespace ShareX.ScreenCaptureLib
                     offset = 10;
                 }
 
-                int fontSize = Math.Min(Rectangle.Width, Rectangle.Height) - offset;
+                int fontSize = Math.Min(rect.Width, rect.Height) - offset;
 
                 using (Font font = new Font(FontFamily.GenericSansSerif, fontSize, FontStyle.Bold, GraphicsUnit.Pixel))
                 using (StringFormat sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
-                using (Brush textBrush = new SolidBrush(BorderColor))
+                using (Brush textBrush = new SolidBrush(textColor))
                 {
                     g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-                    //g.DrawString(Number.ToString(), font, Brushes.Black, Rectangle.LocationOffset(1, 1), sf);
-                    g.DrawString(Number.ToString(), font, textBrush, Rectangle, sf);
+                    g.DrawString(number.ToString(), font, textBrush, rect, sf);
                     g.TextRenderingHint = TextRenderingHint.SystemDefault;
                 }
             }
         }
 
-        public override void AddShapePath(GraphicsPath gp, Rectangle rect)
+        public override void Resize(int x, int y, bool fromBottomRight)
         {
-            gp.AddEllipse(rect);
+            Move(x, y);
         }
     }
 }

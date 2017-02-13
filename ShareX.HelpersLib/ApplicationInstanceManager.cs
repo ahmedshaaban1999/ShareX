@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -36,7 +36,7 @@ namespace ShareX.HelpersLib
     {
         private static readonly string MutexName = "82E6AC09-0FEF-4390-AD9F-0DD3F5561EFC";
         private static readonly string AppName = "ShareX";
-        private static readonly string EventName = string.Format("{0}-{1}", Environment.MachineName, AppName);
+        private static readonly string EventName = string.Format("{0}-{1}-{2}", Environment.MachineName, Environment.UserName, AppName);
         private static readonly string SemaphoreName = string.Format("{0}{1}", EventName, "Semaphore");
 
         public bool IsSingleInstance { get; private set; }
@@ -151,7 +151,7 @@ namespace ShareX.HelpersLib
             IpcClientChannel clientChannel = new IpcClientChannel();
             ChannelServices.RegisterChannel(clientChannel, true);
 
-            InstanceProxy proxy = Activator.GetObject(typeof(InstanceProxy), string.Format("ipc://{0}{1}/{1}", Environment.MachineName, uri)) as InstanceProxy;
+            InstanceProxy proxy = Activator.GetObject(typeof(InstanceProxy), string.Format("ipc://{0}{1}{2}/{2}", Environment.MachineName, Environment.UserName, uri)) as InstanceProxy;
 
             if (proxy != null)
             {
@@ -163,7 +163,7 @@ namespace ShareX.HelpersLib
 
         private void RegisterRemoteType(string uri)
         {
-            serverChannel = new IpcServerChannel(Environment.MachineName + uri);
+            serverChannel = new IpcServerChannel(Environment.MachineName + Environment.UserName + uri);
             ChannelServices.RegisterChannel(serverChannel, true);
 
             RemotingConfiguration.RegisterWellKnownServiceType(typeof(InstanceProxy), uri, WellKnownObjectMode.Singleton);

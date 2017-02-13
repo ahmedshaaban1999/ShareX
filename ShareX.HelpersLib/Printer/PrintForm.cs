@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -45,10 +45,6 @@ namespace ShareX.HelpersLib
             LoadSettings();
         }
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -65,6 +61,11 @@ namespace ShareX.HelpersLib
             }
 
             base.Dispose(disposing);
+        }
+
+        private void PrintForm_Shown(object sender, EventArgs e)
+        {
+            this.ForceActivate();
         }
 
         private void LoadSettings()

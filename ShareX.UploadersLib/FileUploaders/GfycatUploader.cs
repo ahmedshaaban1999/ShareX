@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -68,7 +68,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("signature", "mk9t/U/wRN4/uU01mXfeTe2Kcoc=");
             args.Add("Content-Type", Helpers.GetMimeType(fileName));
 
-            UploadResult result = UploadData(stream, "https://gifaffe.s3.amazonaws.com/", fileName, "file", args);
+            UploadResult result = SendRequestFile("https://gifaffe.s3.amazonaws.com/", stream, fileName, "file", args);
 
             if (!result.IsError)
             {
@@ -84,8 +84,7 @@ namespace ShareX.UploadersLib.FileUploaders
             if (NoResize) args.Add("noResize", "true");
             if (IgnoreExisting) args.Add("noMd5", "true");
 
-            string url = CreateQuery("https://upload.gfycat.com/transcodeRelease/" + key, args);
-            string transcodeJson = SendRequest(HttpMethod.GET, url);
+            string transcodeJson = SendRequest(HttpMethod.GET, "https://upload.gfycat.com/transcodeRelease/" + key, args);
             GfycatTranscodeResponse transcodeResponse = JsonConvert.DeserializeObject<GfycatTranscodeResponse>(transcodeJson);
 
             if (transcodeResponse.IsOk)

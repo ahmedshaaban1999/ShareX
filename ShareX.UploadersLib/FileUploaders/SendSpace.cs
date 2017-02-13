@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -272,7 +272,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("email", email);
             args.Add("password", password);
 
-            string response = SendRequest(HttpMethod.POST, APIURL, args);
+            string response = SendRequestMultiPart(APIURL, args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -296,7 +296,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("app_version", AppVersion); // Application specific, formatting / style is up to you
             args.Add("response_format", "xml"); // Value must be: XML
 
-            string response = SendRequest(HttpMethod.POST, APIURL, args);
+            string response = SendRequestMultiPart(APIURL, args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -329,7 +329,7 @@ namespace ShareX.UploadersLib.FileUploaders
             string passwordHash = TranslatorHelper.TextToHash(password, HashType.MD5);
             args.Add("tokened_password", TranslatorHelper.TextToHash(token + passwordHash, HashType.MD5));
 
-            string response = SendRequest(HttpMethod.POST, APIURL, args);
+            string response = SendRequestMultiPart(APIURL, args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -357,7 +357,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("method", "auth.checkSession");
             args.Add("session_key", sessionKey);
 
-            string response = SendRequest(HttpMethod.POST, APIURL, args);
+            string response = SendRequestMultiPart(APIURL, args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -389,7 +389,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("method", "auth.logout");
             args.Add("session_key", sessionKey);
 
-            string response = SendRequest(HttpMethod.POST, APIURL, args);
+            string response = SendRequestMultiPart(APIURL, args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -507,7 +507,7 @@ namespace ShareX.UploadersLib.FileUploaders
             {
                 Dictionary<string, string> args = PrepareArguments(uploadInfo.MaxFileSize, uploadInfo.UploadIdentifier, uploadInfo.ExtraInfo);
 
-                result = UploadData(stream, uploadInfo.URL, fileName, "userfile", args);
+                result = SendRequestFile(uploadInfo.URL, stream, fileName, "userfile", args);
 
                 if (result.IsSuccess)
                 {
@@ -555,7 +555,10 @@ namespace ShareX.UploadersLib.FileUploaders
                     time = DateTime.Now;
                     try
                     {
-                        progressInfo.ParseResponse(sendSpace.SendRequest(HttpMethod.POST, url));
+                        string response = sendSpace.SendRequest(HttpMethod.POST, url);
+
+                        progressInfo.ParseResponse(response);
+
                         if (progressInfo.Status != "fail" && !string.IsNullOrEmpty(progressInfo.Meter))
                         {
                             if (int.TryParse(progressInfo.Meter, out progress))

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -80,12 +80,12 @@ namespace ShareX.HelpersLib
                 POINT sourceLocation = new POINT(0, 0);
                 POINT newLocation = new POINT(Left, Top);
                 BLENDFUNCTION blend = new BLENDFUNCTION();
-                blend.BlendOp = NativeMethods.AC_SRC_OVER;
+                blend.BlendOp = NativeConstants.AC_SRC_OVER;
                 blend.BlendFlags = 0;
                 blend.SourceConstantAlpha = (byte)opacity;
-                blend.AlphaFormat = NativeMethods.AC_SRC_ALPHA;
+                blend.AlphaFormat = NativeConstants.AC_SRC_ALPHA;
 
-                NativeMethods.UpdateLayeredWindow(Handle, screenDc, ref newLocation, ref newSize, memDc, ref sourceLocation, 0, ref blend, NativeMethods.ULW_ALPHA);
+                NativeMethods.UpdateLayeredWindow(Handle, screenDc, ref newLocation, ref newSize, memDc, ref sourceLocation, 0, ref blend, NativeConstants.ULW_ALPHA);
             }
             finally
             {

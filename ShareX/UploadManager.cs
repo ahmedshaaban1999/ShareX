@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -441,13 +441,23 @@ namespace ShareX
             }
         }
 
+        public static void DownloadFile(string url, TaskSettings taskSettings = null)
+        {
+            DownloadFile(url, false, taskSettings);
+        }
+
         public static void DownloadAndUploadFile(string url, TaskSettings taskSettings = null)
+        {
+            DownloadFile(url, true, taskSettings);
+        }
+
+        private static void DownloadFile(string url, bool upload, TaskSettings taskSettings = null)
         {
             if (!string.IsNullOrEmpty(url))
             {
                 if (taskSettings == null) taskSettings = TaskSettings.GetDefaultTaskSettings();
 
-                WorkerTask task = WorkerTask.CreateDownloadUploadTask(url, taskSettings);
+                WorkerTask task = WorkerTask.CreateDownloadTask(url, upload, taskSettings);
 
                 if (task != null)
                 {

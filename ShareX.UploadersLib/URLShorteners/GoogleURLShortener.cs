@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -91,7 +91,7 @@ namespace ShareX.UploadersLib.URLShorteners
             args.Add("redirect_uri", "urn:ietf:wg:oauth:2.0:oob");
             args.Add("grant_type", "authorization_code");
 
-            string response = SendRequest(HttpMethod.POST, "https://accounts.google.com/o/oauth2/token", args);
+            string response = SendRequestMultiPart("https://accounts.google.com/o/oauth2/token", args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -118,7 +118,7 @@ namespace ShareX.UploadersLib.URLShorteners
                 args.Add("client_secret", AuthInfo.Client_Secret);
                 args.Add("grant_type", "refresh_token");
 
-                string response = SendRequest(HttpMethod.POST, "https://accounts.google.com/o/oauth2/token", args);
+                string response = SendRequestMultiPart("https://accounts.google.com/o/oauth2/token", args);
 
                 if (!string.IsNullOrEmpty(response))
                 {
@@ -183,7 +183,7 @@ namespace ShareX.UploadersLib.URLShorteners
 
                 string json = JsonConvert.SerializeObject(new { longUrl = url });
 
-                result.Response = SendRequestJSON(query, json);
+                result.Response = SendRequest(HttpMethod.POST, query, json, ContentTypeJSON);
 
                 if (!string.IsNullOrEmpty(result.Response))
                 {

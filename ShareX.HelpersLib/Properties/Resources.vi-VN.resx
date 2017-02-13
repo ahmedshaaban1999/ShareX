@@ -147,9 +147,6 @@
   <data name="ClipboardContentViewer_ClipboardContentViewer_Load_Clipboard_is_empty_or_contains_unknown_data_" xml:space="preserve">
     <value>Vùng nhớ tạm trống hoặc chứa dữ liệu chưa biết.</value>
   </data>
-  <data name="RegistryHelpers_ShellExtDesc_Upload_with__0_" xml:space="preserve">
-    <value>Tải lên với {0}</value>
-  </data>
   <data name="PrintTextForm_LoadSettings_Name___0___Size___1_" xml:space="preserve">
     <value>Tên: {0}, Kích thước: {1}</value>
   </data>
@@ -314,9 +311,6 @@ Kích thước tệp: {2:n0} / {3:n0} KB</value>
   <data name="HotkeyType_FolderUpload" xml:space="preserve">
     <value>Tải lên thư mục</value>
   </data>
-  <data name="HotkeyType_FreeHandRegion" xml:space="preserve">
-    <value>Chụp lại vùng tạo bằng tay</value>
-  </data>
   <data name="HotkeyType_FTPClient" xml:space="preserve">
     <value>Trình FTP</value>
   </data>
@@ -337,9 +331,6 @@ Kích thước tệp: {2:n0} / {3:n0} KB</value>
   </data>
   <data name="HotkeyType_OpenScreenshotsFolder" xml:space="preserve">
     <value>Mở thư mục lưu ảnh chụp màn hình</value>
-  </data>
-  <data name="HotkeyType_PolygonRegion" xml:space="preserve">
-    <value>Chụp vùng đa giác</value>
   </data>
   <data name="HotkeyType_PrintScreen" xml:space="preserve">
     <value>Chụp toàn màn hình</value>
@@ -507,9 +498,6 @@ Bạn có muốn tải về và cài đặt không?</value>
   <data name="HotkeyType_StartScreenRecorderGIF" xml:space="preserve">
     <value>Bắt đầu ghi lại màn hình (dạng ảnh GIF) sử dụng vùng lần trước</value>
   </data>
-  <data name="HotkeyType_Automate" xml:space="preserve">
-    <value>Mở/Dừng công cụ tự động hóa</value>
-  </data>
   <data name="HotkeyType_RectangleTransparent" xml:space="preserve">
     <value>Chụp theo vùng (Trong suốt)</value>
   </data>
@@ -534,9 +522,6 @@ Bạn có muốn tải về và cài đặt không?</value>
   <data name="HotkeyType_AutoCapture_Category" xml:space="preserve">
     <value>Chụp màn hình</value>
   </data>
-  <data name="HotkeyType_Automate_Category" xml:space="preserve">
-    <value>Công cụ</value>
-  </data>
   <data name="HotkeyType_ClipboardUploadWithContentViewer_Category" xml:space="preserve">
     <value>Tải lên</value>
   </data>
@@ -558,9 +543,6 @@ Bạn có muốn tải về và cài đặt không?</value>
   <data name="HotkeyType_FolderUpload_Category" xml:space="preserve">
     <value>Tải lên</value>
   </data>
-  <data name="HotkeyType_FreeHandRegion_Category" xml:space="preserve">
-    <value>Chụp màn hình</value>
-  </data>
   <data name="HotkeyType_FTPClient_Category" xml:space="preserve">
     <value>Công cụ</value>
   </data>
@@ -578,9 +560,6 @@ Bạn có muốn tải về và cài đặt không?</value>
   </data>
   <data name="HotkeyType_OpenScreenshotsFolder_Category" xml:space="preserve">
     <value>Khác</value>
-  </data>
-  <data name="HotkeyType_PolygonRegion_Category" xml:space="preserve">
-    <value>Chụp màn hình</value>
   </data>
   <data name="HotkeyType_PrintScreen_Category" xml:space="preserve">
     <value>Chụp màn hình</value>
@@ -713,12 +692,6 @@ Bạn có muốn tải về và cài đặt không?</value>
   </data>
   <data name="HotkeyType_ScrollingCapture_Category" xml:space="preserve">
     <value>Chụp màn hình</value>
-  </data>
-  <data name="HotkeyType_IRCClient" xml:space="preserve">
-    <value>Trình IRC</value>
-  </data>
-  <data name="HotkeyType_IRCClient_Category" xml:space="preserve">
-    <value>Công cụ</value>
   </data>
   <data name="HotkeyType_ImageCombiner" xml:space="preserve">
     <value>Trình gộp ảnh</value>

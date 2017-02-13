@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -74,6 +74,7 @@ namespace ShareX
         TextUpload,
         ShortenURL,
         ShareURL,
+        Download,
         DownloadUpload
     }
 
@@ -124,14 +125,12 @@ namespace ShareX
 
     public enum CaptureType
     {
-        Screen,
+        Fullscreen,
         Monitor,
         ActiveMonitor,
         Window,
         ActiveWindow,
-        Rectangle,
-        Polygon,
-        Freehand,
+        Region,
         CustomRegion,
         LastRegion
     }
@@ -163,9 +162,6 @@ namespace ShareX
         RectangleRegion,
         RectangleLight,
         RectangleTransparent,
-        RectangleAnnotate,
-        PolygonRegion,
-        FreeHandRegion,
         CustomRegion,
         LastRegion,
         ScrollingCapture,
@@ -182,6 +178,7 @@ namespace ShareX
         ScreenRecorderGIFActiveWindow,
         ScreenRecorderGIFCustomRegion,
         StartScreenRecorderGIF,
+        AbortScreenRecording,
         // Tools
         ColorPicker,
         ScreenColorPicker,
@@ -191,7 +188,6 @@ namespace ShareX
         DNSChanger,
         QRCode,
         Ruler,
-        Automate,
         IndexFolder,
         ImageCombiner,
         VideoThumbnailer,
@@ -203,14 +199,9 @@ namespace ShareX
         OpenMainWindow,
         OpenScreenshotsFolder,
         OpenHistory,
-        OpenImageHistory
-    }
-
-    public enum HotkeyStatus
-    {
-        Registered,
-        Failed,
-        NotConfigured
+        OpenImageHistory,
+        ToggleActionsToolbar,
+        ExitShareX
     }
 
     public enum PopUpNotificationType // Localized

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -23,25 +23,26 @@
 
 #endregion License Information (GPL v3)
 
-using System;
-
 namespace ShareX.HelpersLib
 {
     public abstract class CodeMenuEntry
     {
-        protected readonly string _value, _description, _category;
+        protected abstract string Prefix { get; }
+
+        public string Value { get; private set; }
+        public string Description { get; private set; }
+        public string Category { get; private set; }
 
         public CodeMenuEntry(string value, string description, string category = null)
         {
-            _value = value;
-            _description = description;
-            _category = category;
+            Value = value;
+            Description = description;
+            Category = category;
         }
 
-        public string Value { get { return _value; } }
-        public string Description { get { return _description; } }
-        public string Category { get { return _category; } }
-
-        public abstract string ToPrefixString();
+        public string ToPrefixString()
+        {
+            return Prefix + Value;
+        }
     }
 }

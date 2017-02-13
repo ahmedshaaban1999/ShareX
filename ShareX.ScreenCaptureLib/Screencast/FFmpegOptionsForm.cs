@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -24,11 +24,13 @@
 #endregion License Information (GPL v3)
 
 using ShareX.HelpersLib;
+using ShareX.MediaLib;
 using ShareX.ScreenCaptureLib.Properties;
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ShareX.ScreenCaptureLib
@@ -51,6 +53,7 @@ namespace ShareX.ScreenCaptureLib
             cboAudioCodec.Items.AddRange(Helpers.GetEnumDescriptions<FFmpegAudioCodec>());
             cbx264Preset.Items.AddRange(Helpers.GetEnumDescriptions<FFmpegPreset>());
             cbGIFStatsMode.Items.AddRange(Helpers.GetEnumDescriptions<FFmpegPaletteGenStatsMode>());
+            cbNVENCPreset.Items.AddRange(Helpers.GetEnums<FFmpegNVENCPreset>().Select(x => $"{x} ({x.GetDescription()})").ToArray());
             cbGIFDither.Items.AddRange(Helpers.GetEnumDescriptions<FFmpegPaletteUseDither>());
 
             SettingsLoad();
@@ -88,6 +91,10 @@ namespace ShareX.ScreenCaptureLib
 
             // Xvid
             nudXvidQscale.SetValue(Options.FFmpeg.XviD_qscale);
+
+            // NVENC
+            nudNVENCBitrate.SetValue(Options.FFmpeg.NVENC_bitrate);
+            cbNVENCPreset.SelectedIndex = (int)Options.FFmpeg.NVENC_preset;
 
             // GIF
             cbGIFStatsMode.SelectedIndex = (int)Options.FFmpeg.GIFStatsMode;
@@ -301,8 +308,12 @@ namespace ShareX.ScreenCaptureLib
                     case FFmpegVideoCodec.libxvid:
                         tcFFmpegVideoCodecs.SelectedIndex = 2;
                         break;
-                    case FFmpegVideoCodec.gif:
+                    case FFmpegVideoCodec.h264_nvenc:
+                    case FFmpegVideoCodec.hevc_nvenc:
                         tcFFmpegVideoCodecs.SelectedIndex = 3;
+                        break;
+                    case FFmpegVideoCodec.gif:
+                        tcFFmpegVideoCodecs.SelectedIndex = 4;
                         break;
                 }
             }
@@ -355,6 +366,18 @@ namespace ShareX.ScreenCaptureLib
         private void nudQscale_ValueChanged(object sender, EventArgs e)
         {
             Options.FFmpeg.XviD_qscale = (int)nudXvidQscale.Value;
+            UpdateUI();
+        }
+
+        private void cbNVENCPreset_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Options.FFmpeg.NVENC_preset = (FFmpegNVENCPreset)cbNVENCPreset.SelectedIndex;
+            UpdateUI();
+        }
+
+        private void nudNVENCBitrate_ValueChanged(object sender, EventArgs e)
+        {
+            Options.FFmpeg.NVENC_bitrate = (int)nudNVENCBitrate.Value;
             UpdateUI();
         }
 

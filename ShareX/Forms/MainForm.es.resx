@@ -153,12 +153,6 @@
   <data name="tsmiRectangleTransparent.Text" xml:space="preserve">
     <value>Rectángulo (Transparente)</value>
   </data>
-  <data name="tsmiPolygon.Text" xml:space="preserve">
-    <value>Polígono</value>
-  </data>
-  <data name="tsmiFreeHand.Text" xml:space="preserve">
-    <value>Dibujo a mano alzada</value>
-  </data>
   <data name="tsmiLastRegion.Text" xml:space="preserve">
     <value>Ultima región</value>
   </data>
@@ -218,9 +212,6 @@
   </data>
   <data name="tsmiRuler.Text" xml:space="preserve">
     <value>Regla...</value>
-  </data>
-  <data name="tsmiAutomate.Text" xml:space="preserve">
-    <value>Automatizar...</value>
   </data>
   <data name="tsmiIndexFolder.Text" xml:space="preserve">
     <value>Carpeta de índice...</value>
@@ -447,12 +438,6 @@
   <data name="tsmiTrayRectangleTransparent.Text" xml:space="preserve">
     <value>Rectángulo (Transparente)</value>
   </data>
-  <data name="tsmiTrayPolygon.Text" xml:space="preserve">
-    <value>Polígono</value>
-  </data>
-  <data name="tsmiTrayFreeHand.Text" xml:space="preserve">
-    <value>Dibujo a mano alzada</value>
-  </data>
   <data name="tsmiTrayLastRegion.Text" xml:space="preserve">
     <value>Ultima región</value>
   </data>
@@ -512,9 +497,6 @@
   </data>
   <data name="tsmiTrayRuler.Text" xml:space="preserve">
     <value>Regla...</value>
-  </data>
-  <data name="tsmiTrayAutomate.Text" xml:space="preserve">
-    <value>Automatizar...</value>
   </data>
   <data name="tsmiTrayIndexFolder.Text" xml:space="preserve">
     <value>Carpeta de índice...</value>

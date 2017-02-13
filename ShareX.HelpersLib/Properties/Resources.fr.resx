@@ -141,9 +141,6 @@
   <data name="ClipboardContentViewer_ClipboardContentViewer_Load_Clipboard_is_empty_or_contains_unknown_data_" xml:space="preserve">
     <value>Le presse-papier est vide ou contient des données inconnues.</value>
   </data>
-  <data name="RegistryHelpers_ShellExtDesc_Upload_with__0_" xml:space="preserve">
-    <value>Mettre en ligne avec {0}</value>
-  </data>
   <data name="PrintTextForm_LoadSettings_Name___0___Size___1_" xml:space="preserve">
     <value>Nom : {0}, taille : {1}</value>
   </data>
@@ -308,9 +305,6 @@ Taille du fichier : {2:n0} / {3:n0} Ko</value>
   <data name="HotkeyType_FolderUpload" xml:space="preserve">
     <value>Mise en ligne d'un dossier</value>
   </data>
-  <data name="HotkeyType_FreeHandRegion" xml:space="preserve">
-    <value>Capturer une région à main levée</value>
-  </data>
   <data name="HotkeyType_FTPClient" xml:space="preserve">
     <value>Client FTP</value>
   </data>
@@ -331,9 +325,6 @@ Taille du fichier : {2:n0} / {3:n0} Ko</value>
   </data>
   <data name="HotkeyType_OpenScreenshotsFolder" xml:space="preserve">
     <value>Ouvrir le dossier des captures d'écran</value>
-  </data>
-  <data name="HotkeyType_PolygonRegion" xml:space="preserve">
-    <value>Capturer une région en polygone</value>
   </data>
   <data name="HotkeyType_PrintScreen" xml:space="preserve">
     <value>Capturer tout l'écran</value>
@@ -504,9 +495,6 @@ Voulez-vous la télécharger et l'installer ?</value>
   <data name="HotkeyType_StartScreenRecorderGIF" xml:space="preserve">
     <value>Débuter l'enregistrement de l'écran (GIF) en utilisant la dernière région</value>
   </data>
-  <data name="HotkeyType_Automate" xml:space="preserve">
-    <value>Ouvrir/Arrêter l'outil d'automatisation</value>
-  </data>
   <data name="HotkeyType_RectangleTransparent" xml:space="preserve">
     <value>Capturer une région (Transparent)</value>
   </data>
@@ -531,9 +519,6 @@ Voulez-vous la télécharger et l'installer ?</value>
   <data name="HotkeyType_AutoCapture_Category" xml:space="preserve">
     <value>Capture d'écran</value>
   </data>
-  <data name="HotkeyType_Automate_Category" xml:space="preserve">
-    <value>Outils</value>
-  </data>
   <data name="HotkeyType_ClipboardUploadWithContentViewer_Category" xml:space="preserve">
     <value>Mise en ligne</value>
   </data>
@@ -555,9 +540,6 @@ Voulez-vous la télécharger et l'installer ?</value>
   <data name="HotkeyType_FolderUpload_Category" xml:space="preserve">
     <value>Mise en ligne</value>
   </data>
-  <data name="HotkeyType_FreeHandRegion_Category" xml:space="preserve">
-    <value>Capture d'écran</value>
-  </data>
   <data name="HotkeyType_FTPClient_Category" xml:space="preserve">
     <value>Outils</value>
   </data>
@@ -575,9 +557,6 @@ Voulez-vous la télécharger et l'installer ?</value>
   </data>
   <data name="HotkeyType_OpenScreenshotsFolder_Category" xml:space="preserve">
     <value>Autre</value>
-  </data>
-  <data name="HotkeyType_PolygonRegion_Category" xml:space="preserve">
-    <value>Capture d'écran</value>
   </data>
   <data name="HotkeyType_PrintScreen_Category" xml:space="preserve">
     <value>Capture d'écran</value>
@@ -710,12 +689,6 @@ Voulez-vous la télécharger et l'installer ?</value>
   </data>
   <data name="HotkeyType_ScrollingCapture_Category" xml:space="preserve">
     <value>Capture d'écran</value>
-  </data>
-  <data name="HotkeyType_IRCClient" xml:space="preserve">
-    <value>Client IRC</value>
-  </data>
-  <data name="HotkeyType_IRCClient_Category" xml:space="preserve">
-    <value>Outils</value>
   </data>
   <data name="HotkeyType_ImageCombiner" xml:space="preserve">
     <value>Combineur d'images</value>
@@ -879,5 +852,86 @@ Voulez-vous la télécharger ?</value>
   </data>
   <data name="AfterCaptureTasks_DoOCR" xml:space="preserve">
     <value>Reconnaître un texte (OCR)</value>
+  </data>
+  <data name="RegionCaptureAction_RemoveShape" xml:space="preserve">
+    <value>Supprimer une forme</value>
+  </data>
+  <data name="RegionCaptureAction_RemoveShapeCancelCapture" xml:space="preserve">
+    <value>Supprimer une forme ou annuler la capture</value>
+  </data>
+  <data name="ScrollingCaptureScrollMethod_MouseWheel" xml:space="preserve">
+    <value>Simuler un défilement à la souris</value>
+  </data>
+  <data name="ScrollingCaptureScrollTopMethod_None" xml:space="preserve">
+    <value>Désactiver le défilement jusqu'en haut</value>
+  </data>
+  <data name="RegionCaptureAction_CancelCapture" xml:space="preserve">
+    <value>Annuler la capture</value>
+  </data>
+  <data name="RegionCaptureAction_None" xml:space="preserve">
+    <value>Ne rien faire</value>
+  </data>
+  <data name="HotkeyType_AbortScreenRecording_Category" xml:space="preserve">
+    <value>Enregistrer l'écran</value>
+  </data>
+  <data name="HotkeyType_AbortScreenRecording" xml:space="preserve">
+    <value>Annuler l'enregistrement d'écran</value>
+  </data>
+  <data name="RegionCaptureAction_CaptureFullscreen" xml:space="preserve">
+    <value>Capture plein écran</value>
+  </data>
+  <data name="RegionCaptureAction_CaptureActiveMonitor" xml:space="preserve">
+    <value>Capturer l'écran actif</value>
+  </data>
+  <data name="ShapeType_DrawingArrow" xml:space="preserve">
+    <value>Dessin : Flèche</value>
+  </data>
+  <data name="ShapeType_DrawingEllipse" xml:space="preserve">
+    <value>Dessin : Ellipse</value>
+  </data>
+  <data name="ShapeType_DrawingLine" xml:space="preserve">
+    <value>Dessin : Ligne</value>
+  </data>
+  <data name="ShapeType_DrawingRectangle" xml:space="preserve">
+    <value>Dessin : Rectangle</value>
+  </data>
+  <data name="ShapeType_DrawingStep" xml:space="preserve">
+    <value>Dessin : Etape</value>
+  </data>
+  <data name="ShapeType_DrawingText" xml:space="preserve">
+    <value>Dessin : Texte</value>
+  </data>
+  <data name="ShapeType_DrawingFreehand" xml:space="preserve">
+    <value>Dessin : Main levée</value>
+  </data>
+  <data name="ShapeType_DrawingImage" xml:space="preserve">
+    <value>Dessin : Image</value>
+  </data>
+  <data name="ShapeType_DrawingSpeechBalloon" xml:space="preserve">
+    <value>Dessin : Bulle de dialogue</value>
+  </data>
+  <data name="ShapeType_RegionEllipse" xml:space="preserve">
+    <value>Région : Ellipse</value>
+  </data>
+  <data name="ShapeType_RegionRectangle" xml:space="preserve">
+    <value>Région : Rectangle</value>
+  </data>
+  <data name="ShapeType_RegionFreehand" xml:space="preserve">
+    <value>Région : Main levée</value>
+  </data>
+  <data name="ShapeType_EffectBlur" xml:space="preserve">
+    <value>Effet : Flou</value>
+  </data>
+  <data name="ShapeType_EffectPixelate" xml:space="preserve">
+    <value>Effet : Pixeliser</value>
+  </data>
+  <data name="ShapeType_EffectHighlight" xml:space="preserve">
+    <value>Effet : Surligner</value>
+  </data>
+  <data name="ScrollingCaptureScrollTopMethod_KeyPressHome" xml:space="preserve">
+    <value>Simuler un appui de la touche "Début"</value>
+  </data>
+  <data name="ScrollingCaptureScrollMethod_Automatic" xml:space="preserve">
+    <value>Automatiquement essayer toutes les méthodes jusqu'à ce qu'une fonctionne</value>
   </data>
 </root>

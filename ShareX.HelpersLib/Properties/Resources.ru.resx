@@ -144,9 +144,6 @@
   <data name="ClipboardContentViewer_ClipboardContentViewer_Load_Clipboard_is_empty_or_contains_unknown_data_" xml:space="preserve">
     <value>Буфер пуст либо содержит неизвестную информацию.</value>
   </data>
-  <data name="RegistryHelpers_ShellExtDesc_Upload_with__0_" xml:space="preserve">
-    <value>Загрузить через {0}</value>
-  </data>
   <data name="PrintTextForm_LoadSettings_Name___0___Size___1_" xml:space="preserve">
     <value>Имя: {0}, Размер: {1}</value>
   </data>
@@ -311,9 +308,6 @@
   <data name="HotkeyType_FolderUpload" xml:space="preserve">
     <value>Загрузка папки</value>
   </data>
-  <data name="HotkeyType_FreeHandRegion" xml:space="preserve">
-    <value>Захват области произвольной формы</value>
-  </data>
   <data name="HotkeyType_FTPClient" xml:space="preserve">
     <value>Клиент FTP</value>
   </data>
@@ -334,9 +328,6 @@
   </data>
   <data name="HotkeyType_OpenScreenshotsFolder" xml:space="preserve">
     <value>Открыть папку скриншотов</value>
-  </data>
-  <data name="HotkeyType_PolygonRegion" xml:space="preserve">
-    <value>Захват многоугольной области</value>
   </data>
   <data name="HotkeyType_PrintScreen" xml:space="preserve">
     <value>Захват всего экрана</value>
@@ -507,9 +498,6 @@
   <data name="HotkeyType_StartScreenRecorderGIF" xml:space="preserve">
     <value>Начать запись последней области экрана (GIF)</value>
   </data>
-  <data name="HotkeyType_Automate" xml:space="preserve">
-    <value>Открыть/Остановить Автоматизацию</value>
-  </data>
   <data name="HotkeyType_RectangleTransparent" xml:space="preserve">
     <value>Захват области (Прозрачный фон)</value>
   </data>
@@ -534,9 +522,6 @@
   <data name="HotkeyType_AutoCapture_Category" xml:space="preserve">
     <value>Захват экрана</value>
   </data>
-  <data name="HotkeyType_Automate_Category" xml:space="preserve">
-    <value>Инструменты</value>
-  </data>
   <data name="HotkeyType_ClipboardUploadWithContentViewer_Category" xml:space="preserve">
     <value>Загрузка</value>
   </data>
@@ -558,9 +543,6 @@
   <data name="HotkeyType_FolderUpload_Category" xml:space="preserve">
     <value>Загрузка</value>
   </data>
-  <data name="HotkeyType_FreeHandRegion_Category" xml:space="preserve">
-    <value>Захват экрана</value>
-  </data>
   <data name="HotkeyType_FTPClient_Category" xml:space="preserve">
     <value>Инструменты</value>
   </data>
@@ -578,9 +560,6 @@
   </data>
   <data name="HotkeyType_OpenScreenshotsFolder_Category" xml:space="preserve">
     <value>Другие</value>
-  </data>
-  <data name="HotkeyType_PolygonRegion_Category" xml:space="preserve">
-    <value>Захват экрана</value>
   </data>
   <data name="HotkeyType_PrintScreen_Category" xml:space="preserve">
     <value>Захват экрана</value>
@@ -714,12 +693,6 @@
   <data name="HotkeyType_ScrollingCapture_Category" xml:space="preserve">
     <value>Захват экрана</value>
   </data>
-  <data name="HotkeyType_IRCClient" xml:space="preserve">
-    <value>Клиент IRC</value>
-  </data>
-  <data name="HotkeyType_IRCClient_Category" xml:space="preserve">
-    <value>Инструменты</value>
-  </data>
   <data name="HotkeyType_ImageCombiner" xml:space="preserve">
     <value>Объединитель изображений</value>
   </data>
@@ -788,7 +761,7 @@
     <value>Получает AM/PM</value>
   </data>
   <data name="ReplCodeMenuEntry_pn_Process_name_of_active_window" xml:space="preserve">
-    <value>Получить имя активного окна</value>
+    <value>Имя процесса активного окна</value>
   </data>
   <data name="ReplCodeMenuEntry_s_Current_second" xml:space="preserve">
     <value>Текущая секунда</value>
@@ -803,7 +776,7 @@
     <value>Имя пользователя</value>
   </data>
   <data name="ReplCodeMenuEntry_unix_Unix_timestamp" xml:space="preserve">
-    <value>временная метка UNIX</value>
+    <value>Временная метка UNIX</value>
   </data>
   <data name="ReplCodeMenuEntry_width_Gets_image_width" xml:space="preserve">
     <value>Ширина картинки</value>
@@ -836,10 +809,10 @@
     <value>Открыть окно истории</value>
   </data>
   <data name="HotkeyType_OpenHistory_Category" xml:space="preserve">
-    <value>Другое</value>
+    <value>Другие</value>
   </data>
   <data name="HotkeyType_OpenImageHistory_Category" xml:space="preserve">
-    <value>Другое</value>
+    <value>Другие</value>
   </data>
   <data name="Helpers_OpenFile_File_not_exist_" xml:space="preserve">
     <value>Файл не существует:</value>
@@ -852,5 +825,128 @@
   </data>
   <data name="HotkeyType_OpenImageHistory" xml:space="preserve">
     <value>Открыть окно истории изображений</value>
+  </data>
+  <data name="HotkeyType_TextCapture_Category" xml:space="preserve">
+    <value>Захват экрана</value>
+  </data>
+  <data name="HotkeyType_TextCapture" xml:space="preserve">
+    <value>Захват текста (ORC)</value>
+  </data>
+  <data name="AfterCaptureTasks_DoOCR" xml:space="preserve">
+    <value>Распознать текст (OCR)</value>
+  </data>
+  <data name="HotkeyType_ScreenRecorderGIFCustomRegion_Category" xml:space="preserve">
+    <value>Запись экрана</value>
+  </data>
+  <data name="HotkeyType_ScreenRecorderCustomRegion_Category" xml:space="preserve">
+    <value>Запись экрана</value>
+  </data>
+  <data name="HotkeyType_ScreenRecorderCustomRegion" xml:space="preserve">
+    <value>Начать запись экрана, используя пользовательскую область</value>
+  </data>
+  <data name="HotkeyType_ScreenRecorderGIFCustomRegion" xml:space="preserve">
+    <value>Начать запись экрана (GIF), используя пользовательскую область</value>
+  </data>
+  <data name="HotkeyType_OpenMainWindow" xml:space="preserve">
+    <value>Открыть главное окно</value>
+  </data>
+  <data name="HotkeyType_OpenMainWindow_Category" xml:space="preserve">
+    <value>Другие</value>
+  </data>
+  <data name="RegionCaptureAction_CancelCapture" xml:space="preserve">
+    <value>Отменить захват</value>
+  </data>
+  <data name="RegionCaptureAction_RemoveShapeCancelCapture" xml:space="preserve">
+    <value>Убрать фигуру или отменить захват</value>
+  </data>
+  <data name="RegionCaptureAction_CaptureActiveMonitor" xml:space="preserve">
+    <value>Захват активного монитора</value>
+  </data>
+  <data name="ShapeType_DrawingArrow" xml:space="preserve">
+    <value>Рисование: Стрелка</value>
+  </data>
+  <data name="ShapeType_EffectBlur" xml:space="preserve">
+    <value>Эффект: размытие</value>
+  </data>
+  <data name="ShapeType_DrawingEllipse" xml:space="preserve">
+    <value>Рисование: Эллипс</value>
+  </data>
+  <data name="ShapeType_EffectHighlight" xml:space="preserve">
+    <value>Эффект: Подсветить область</value>
+  </data>
+  <data name="ShapeType_DrawingLine" xml:space="preserve">
+    <value>Рисование: Линия</value>
+  </data>
+  <data name="ShapeType_EffectPixelate" xml:space="preserve">
+    <value>Эффект: Пикселизация</value>
+  </data>
+  <data name="ShapeType_DrawingRectangle" xml:space="preserve">
+    <value>Рисование: Прямоугольник</value>
+  </data>
+  <data name="ShapeType_DrawingStep" xml:space="preserve">
+    <value>Рисование: Шаг</value>
+  </data>
+  <data name="ShapeType_DrawingText" xml:space="preserve">
+    <value>Рисование: Текст</value>
+  </data>
+  <data name="ShapeType_RegionEllipse" xml:space="preserve">
+    <value>Область: Эллипс</value>
+  </data>
+  <data name="ShapeType_RegionRectangle" xml:space="preserve">
+    <value>Область: Прямоугольник</value>
+  </data>
+  <data name="ShapeType_RegionFreehand" xml:space="preserve">
+    <value>Область: От руки</value>
+  </data>
+  <data name="ShapeType_DrawingFreehand" xml:space="preserve">
+    <value>Рисование: От руки</value>
+  </data>
+  <data name="RegionCaptureAction_CaptureFullscreen" xml:space="preserve">
+    <value>Захват всего экрана</value>
+  </data>
+  <data name="HotkeyType_AbortScreenRecording_Category" xml:space="preserve">
+    <value>Запись экрана</value>
+  </data>
+  <data name="HotkeyType_AbortScreenRecording" xml:space="preserve">
+    <value>Отменить запись экрана</value>
+  </data>
+  <data name="RegionCaptureAction_RemoveShape" xml:space="preserve">
+    <value>Убрать фигуру</value>
+  </data>
+  <data name="ScrollingCaptureScrollMethod_Automatic" xml:space="preserve">
+    <value>Автоматически пробовать все методы пока один не сработает</value>
+  </data>
+  <data name="ScrollingCaptureScrollMethod_KeyPressPageDown" xml:space="preserve">
+    <value>Симулировать нажатие клавиши "Page down"</value>
+  </data>
+  <data name="ScrollingCaptureScrollTopMethod_KeyPressHome" xml:space="preserve">
+    <value>Симулировать нажатие клавиши "Home"</value>
+  </data>
+  <data name="ScrollingCaptureScrollMethod_MouseWheel" xml:space="preserve">
+    <value>Симулировать прокрутку мыши</value>
+  </data>
+  <data name="ScrollingCaptureScrollTopMethod_All" xml:space="preserve">
+    <value>Сначала симулировать нажатие клавиши "Home", потом отправить сообщение "scroll top"</value>
+  </data>
+  <data name="RegionCaptureAction_SwapToolType" xml:space="preserve">
+    <value>Сменить тип инструмента</value>
+  </data>
+  <data name="ScrollingCaptureScrollTopMethod_SendMessageTop" xml:space="preserve">
+    <value>Отправить сообщение "scroll top"</value>
+  </data>
+  <data name="ScrollingCaptureScrollMethod_SendMessageScroll" xml:space="preserve">
+    <value>Отправить окну или элементу сообщение "scroll"</value>
+  </data>
+  <data name="RegionCaptureAction_None" xml:space="preserve">
+    <value>Ничего не делать</value>
+  </data>
+  <data name="ScrollingCaptureScrollTopMethod_None" xml:space="preserve">
+    <value>Отключить прокрутку вверх</value>
+  </data>
+  <data name="ShapeType_DrawingImage" xml:space="preserve">
+    <value>Рисование: Картинка</value>
+  </data>
+  <data name="ShapeType_DrawingSpeechBalloon" xml:space="preserve">
+    <value>Рисование: Сноска</value>
   </data>
 </root>

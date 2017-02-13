@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -78,7 +78,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("username", Config.Username);
             args.Add("password", Config.Password);
 
-            string response = SendRequest(HttpMethod.POST, URL_OAUTH_TOKEN, args);
+            string response = SendRequestMultiPart(URL_OAUTH_TOKEN, args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -106,7 +106,7 @@ namespace ShareX.UploadersLib.FileUploaders
                 args.Add("scope", AuthInfo.Token.scope);
                 args.Add("refresh_token", AuthInfo.Token.refresh_token);
 
-                string response = SendRequest(HttpMethod.POST, URL_OAUTH_TOKEN, args);
+                string response = SendRequestMultiPart(URL_OAUTH_TOKEN, args);
 
                 if (!string.IsNullOrEmpty(response))
                 {
@@ -196,7 +196,7 @@ namespace ShareX.UploadersLib.FileUploaders
 
             MinusFolder dir;
 
-            string response = SendRequest(HttpMethod.POST, GetActiveUserFolderURL(), args);
+            string response = SendRequestMultiPart(GetActiveUserFolderURL(), args);
             if (!string.IsNullOrEmpty(response))
             {
                 dir = JsonConvert.DeserializeObject<MinusFolder>(response);
@@ -246,7 +246,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("caption", fileName);
             args.Add("filename", fileName);
 
-            UploadResult result = UploadData(stream, url, fileName, "file", args);
+            UploadResult result = SendRequestFile(url, stream, fileName, "file", args);
 
             if (result.IsSuccess)
             {

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -82,7 +82,7 @@ namespace ShareX.UploadersLib.FileUploaders
 
             upArgs.Add("file_name", fileName);
 
-            string uploadRequest = SendRequest(HttpMethod.POST, apiRequestFileUploadURL, upArgs, headers);
+            string uploadRequest = SendRequestMultiPart(apiRequestFileUploadURL, upArgs, headers);
 
             if (uploadRequest == null) return null;
 
@@ -101,7 +101,7 @@ namespace ShareX.UploadersLib.FileUploaders
             upArgs.Add("policy", fileInfo.data.policy);
             upArgs.Add("content-type", fileInfo.data.content_type);
 
-            UploadResult uploadResult = UploadData(stream, fileInfo.upload_url, fileName, "file", upArgs);
+            UploadResult uploadResult = SendRequestFile(fileInfo.upload_url, stream, fileName, "file", upArgs);
 
             if (uploadResult == null) return null;
 
@@ -110,7 +110,7 @@ namespace ShareX.UploadersLib.FileUploaders
             pushArgs.Add("file_url", fileInfo.file_url);
             pushArgs.Add("body", "Sent via ShareX");
 
-            string pushResult = SendRequest(HttpMethod.POST, apiSendPushURL, pushArgs, headers);
+            string pushResult = SendRequestMultiPart(apiSendPushURL, pushArgs, headers);
 
             if (pushResult == null) return null;
 
@@ -140,7 +140,7 @@ namespace ShareX.UploadersLib.FileUploaders
                     args.Add("body", "Sent via ShareX");
             }
 
-            string response = SendRequest(HttpMethod.POST, apiSendPushURL, args, headers);
+            string response = SendRequestMultiPart(apiSendPushURL, args, headers);
 
             if (response == null) return null;
 

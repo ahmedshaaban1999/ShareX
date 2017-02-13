@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -58,7 +58,7 @@ namespace ShareX.UploadersLib.FileUploaders
                 arguments.Add("name", CustomName);
             }
 
-            UploadResult result = UploadData(stream, "https://uguu.se/api.php?d=upload-tool", fileName, "file", arguments);
+            UploadResult result = SendRequestFile("https://uguu.se/api.php?d=upload-tool", stream, fileName, "file", arguments);
 
             if (result.IsSuccess)
             {

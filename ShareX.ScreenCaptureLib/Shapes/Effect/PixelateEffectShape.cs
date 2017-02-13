@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -24,28 +24,22 @@
 #endregion License Information (GPL v3)
 
 using ShareX.HelpersLib;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace ShareX.ScreenCaptureLib
 {
     public class PixelateEffectShape : BaseEffectShape
     {
-        public override ShapeType ShapeType { get; } = ShapeType.DrawingPixelate;
+        public override ShapeType ShapeType { get; } = ShapeType.EffectPixelate;
 
         public int PixelSize { get; set; }
 
-        public override void UpdateShapeConfig()
+        public override void OnConfigLoad()
         {
             PixelSize = AnnotationOptions.PixelateSize;
         }
 
-        public override void ApplyShapeConfig()
+        public override void OnConfigSave()
         {
             AnnotationOptions.PixelateSize = PixelSize;
         }
@@ -81,10 +75,14 @@ namespace ShareX.ScreenCaptureLib
         {
             if (PixelSize > 1)
             {
-                using (Bitmap croppedImage = ImageHelpers.CropBitmap(bmp, Rectangle))
-                using (Bitmap pixelatedImage = ImageHelpers.Pixelate(croppedImage, PixelSize))
+                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                rect.Intersect(Rectangle);
+
+                using (Bitmap croppedImage = ImageHelpers.CropBitmap(bmp, rect))
                 {
-                    g.DrawImage(pixelatedImage, Rectangle);
+                    ImageHelpers.Pixelate(croppedImage, PixelSize);
+
+                    g.DrawImage(croppedImage, rect);
                 }
             }
         }

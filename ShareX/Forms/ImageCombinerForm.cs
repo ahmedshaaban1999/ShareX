@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -28,7 +28,7 @@ using ShareX.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ShareX
@@ -47,6 +47,17 @@ namespace ShareX
             cbOrientation.Items.AddRange(Enum.GetNames(typeof(Orientation)));
             cbOrientation.SelectedIndex = (int)Options.Orientation;
             nudSpace.SetValue(Options.Space);
+        }
+
+        public ImageCombinerForm(ImageCombinerOptions options, IEnumerable<string> imageFiles) : this(options)
+        {
+            if (imageFiles != null)
+            {
+                foreach (string image in imageFiles)
+                {
+                    lvImages.Items.Add(image);
+                }
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -103,13 +114,31 @@ namespace ShareX
         {
             if (lvImages.Items.Count > 0)
             {
-                IEnumerable<Image> images = null;
+                List<Image> images = new List<Image>();
 
                 try
                 {
-                    images = lvImages.Items.Cast<ListViewItem>().Select(x => ImageHelpers.LoadImage(x.Text)).Where(x => x != null);
-                    Image output = ImageHelpers.CombineImages(images, Options.Orientation, Options.Space);
-                    OnProcessRequested(output);
+                    foreach (ListViewItem lvi in lvImages.Items)
+                    {
+                        string filePath = lvi.Text;
+
+                        if (File.Exists(filePath))
+                        {
+                            Image img = ImageHelpers.LoadImage(filePath);
+
+                            if (img != null)
+                            {
+                                images.Add(img);
+                            }
+                        }
+                    }
+
+                    if (images.Count > 1)
+                    {
+                        Image output = ImageHelpers.CombineImages(images, Options.Orientation, Options.Space);
+
+                        OnProcessRequested(output);
+                    }
                 }
                 catch (Exception ex)
                 {

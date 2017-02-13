@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -23,6 +23,7 @@
 
 #endregion License Information (GPL v3)
 
+using System;
 using System.ComponentModel;
 
 namespace ShareX.UploadersLib
@@ -52,8 +53,6 @@ namespace ShareX.UploadersLib
         SomeImage,
         [Description("Imgland")]
         Imgland,
-        [Description("SLiMG")]
-        Slimg,
         CustomImageUploader, // Localized
         FileUploader // Localized
     }
@@ -79,6 +78,8 @@ namespace ShareX.UploadersLib
         Hastebin,
         [Description("OneTimeSecret")]
         OneTimeSecret,
+        [Description("Pastie")]
+        Pastie,
         CustomTextUploader, // Localized
         FileUploader // Localized
     }
@@ -102,6 +103,8 @@ namespace ShareX.UploadersLib
         Mega,
         [Description("Amazon S3")]
         AmazonS3,
+        [Description("Azure Storage")]
+        AzureStorage,
         [Description("ownCloud")]
         OwnCloud,
         [Description("MediaFire")]
@@ -130,8 +133,6 @@ namespace ShareX.UploadersLib
         Uguu,
         [Description("Dropfile")]
         Dropfile,
-        [Description("Up1")]
-        Up1,
         [Description("Seafile")]
         Seafile,
         [Description("Streamable")]
@@ -140,6 +141,10 @@ namespace ShareX.UploadersLib
         Sul,
         [Description("Lithiio")]
         Lithiio,
+        [Description("transfer.sh")]
+        Transfersh,
+        [Description("Uplea")]
+        Uplea,
         SharedFolder, // Localized
         Email, // Localized
         CustomFileUploader // Localized
@@ -308,6 +313,21 @@ namespace ShareX.UploadersLib
         Regex,
         Json,
         Xml
+    }
+
+    [Flags]
+    public enum CustomUploaderDestinationType
+    {
+        [Description("None")]
+        None = 0,
+        [Description("Image uploader")]
+        ImageUploader = 1,
+        [Description("Text uploader")]
+        TextUploader = 1 << 1,
+        [Description("File uploader")]
+        FileUploader = 1 << 2,
+        [Description("URL shortener")]
+        URLShortener = 1 << 3
     }
 
     public enum FTPSEncryption

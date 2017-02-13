@@ -174,9 +174,6 @@
   <data name="tsmiAutoCapture.Text" xml:space="preserve">
     <value>Tự động chụp...</value>
   </data>
-  <data name="tsmiAutomate.Text" xml:space="preserve">
-    <value>Tự động hóa...</value>
-  </data>
   <data name="tsmiClearList.Text" xml:space="preserve">
     <value>Xóa danh sách</value>
   </data>
@@ -273,9 +270,6 @@
   <data name="tsmiFileUploaders.Text" xml:space="preserve">
     <value>Dịch vụ tải lên tệp tin</value>
   </data>
-  <data name="tsmiFreeHand.Text" xml:space="preserve">
-    <value>Rảnh tay</value>
-  </data>
   <data name="tsmiFTPClient.Text" xml:space="preserve">
     <value>Trình FTP...</value>
   </data>
@@ -341,9 +335,6 @@
   </data>
   <data name="tsmiOpenURL.Text" xml:space="preserve">
     <value>URL</value>
-  </data>
-  <data name="tsmiPolygon.Text" xml:space="preserve">
-    <value>Đa giác</value>
   </data>
   <data name="tsmiQRCode.Text" xml:space="preserve">
     <value>Mã QR...</value>
@@ -432,9 +423,6 @@
   <data name="tsmiTrayAutoCapture.Text" xml:space="preserve">
     <value>Tự động chụp...</value>
   </data>
-  <data name="tsmiTrayAutomate.Text" xml:space="preserve">
-    <value>Tự động hóa...</value>
-  </data>
   <data name="tsmiTrayCapture.Text" xml:space="preserve">
     <value>Chụp</value>
   </data>
@@ -455,9 +443,6 @@
   </data>
   <data name="tsmiTrayFileUploaders.Text" xml:space="preserve">
     <value>Dịch vụ tải ảnh lên</value>
-  </data>
-  <data name="tsmiTrayFreeHand.Text" xml:space="preserve">
-    <value>Tự tạo bằng tay</value>
   </data>
   <data name="tsmiTrayFTPClient.Text" xml:space="preserve">
     <value>Trình FTP...</value>
@@ -503,9 +488,6 @@
   </data>
   <data name="tsmiTrayMonitorTest.Text" xml:space="preserve">
     <value>Kiểm tra màn hình</value>
-  </data>
-  <data name="tsmiTrayPolygon.Text" xml:space="preserve">
-    <value>Đa giác</value>
   </data>
   <data name="tsmiTrayQRCode.Text" xml:space="preserve">
     <value>Mã QR</value>

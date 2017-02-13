@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -52,7 +52,8 @@ namespace ShareX
 
             if (!Program.PortableApps)
             {
-                uclUpdate.CheckUpdate(TaskHelpers.CheckUpdate);
+                UpdateChecker updateChecker = Program.UpdateManager.CreateUpdateChecker();
+                uclUpdate.CheckUpdate(updateChecker);
             }
             else
             {
@@ -64,32 +65,13 @@ namespace ShareX
             lblBerk.Text = "Jaex (Berk)";
             lblMike.Text = "mcored (Michael Delpach)";
 
-            rtbShareXInfo.Text = string.Format(@"{0}: {1}
-{2}: {3}
-{4}: {5}
-{6}: {7}",
-Resources.AboutForm_AboutForm_Website, Links.URL_WEBSITE, Resources.AboutForm_AboutForm_Project_page, Links.URL_PROJECT, Resources.AboutForm_AboutForm_Issues, Links.URL_ISSUES,
-Resources.AboutForm_AboutForm_Changelog, Links.URL_CHANGELOG);
+            rtbShareXInfo.Text = $@"{Resources.AboutForm_AboutForm_Website}: {Links.URL_WEBSITE}
+{Resources.AboutForm_AboutForm_Project_page}: {Links.URL_PROJECT}
+{Resources.AboutForm_AboutForm_Changelog}: {Links.URL_CHANGELOG}";
 
             rtbCredits.Text = string.Format(@"{0}:
 
 https://github.com/ShareX/ShareX/graphs/contributors
-
-Mega, Gist and Jira support: https://github.com/gpailler
-Amazon S3 and DreamObjects support: https://github.com/alanedwardes
-Gfycat support: https://github.com/Dinnerbone
-AdFly support: https://github.com/LRNAB
-MediaFire support: https://github.com/michalx2
-Pushbullet support: https://github.com/BallisticLingonberries
-Lambda support: https://github.com/mstojcevich
-VideoBin support: https://github.com/corey-/
-Up1 support: https://github.com/Upload
-CoinURL, QRnet, VURL, 2gp, SomeImage, OneTimeSecret, Polr support: https://github.com/DanielMcAssey
-Seafile support: https://github.com/zikeji
-Streamable support: https://github.com/streamablevideo
-s-ul support: https://github.com/corin12355
-Imgland support: https://github.com/jibcore
-Lithiio support: https://github.com/lithium720
 
 {1}:
 
@@ -107,9 +89,9 @@ Russian: https://github.com/L1Q
 
 {2}:
 
-Greenshot Image Editor: https://bitbucket.org/greenshot/greenshot
+Greenshot Image Editor: https://github.com/greenshot/greenshot
 Json.NET: https://github.com/JamesNK/Newtonsoft.Json
-SSH.NET: https://sshnet.codeplex.com
+SSH.NET: https://github.com/sshnet/SSH.NET
 Icons: http://p.yusukekamiyamane.com
 ImageListView: https://github.com/oozcitak/imagelistview
 FFmpeg: http://www.ffmpeg.org
@@ -120,11 +102,10 @@ DirectShow video and audio device: https://github.com/rdp/screen-capture-recorde
 QrCode.Net: https://qrcodenet.codeplex.com
 System.Net.FtpClient: https://netftp.codeplex.com
 AWS SDK: http://aws.amazon.com/sdk-for-net/
-CLR Security: http://clrsecurity.codeplex.com
 Steamworks.NET: https://github.com/rlabrecque/Steamworks.NET
 OCR Space: http://ocr.space
 
-Copyright (c) 2007-2016 ShareX Team", Resources.AboutForm_AboutForm_Contributors, Resources.AboutForm_AboutForm_Translators, Resources.AboutForm_AboutForm_External_libraries);
+Copyright (c) 2007-2017 ShareX Team", Resources.AboutForm_AboutForm_Contributors, Resources.AboutForm_AboutForm_Translators, Resources.AboutForm_AboutForm_External_libraries);
         }
 
         private void AboutForm_Shown(object sender, EventArgs e)

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -90,7 +90,7 @@ namespace ShareX.HelpersLib
             string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                if (assembly.Location.StartsWith(directoryPath, StringComparison.InvariantCultureIgnoreCase))
+                if (!assembly.IsDynamic && assembly.Location.StartsWith(directoryPath, StringComparison.InvariantCultureIgnoreCase))
                 {
                     sb.AppendLine(assembly.ManifestModule.Name);
                 }

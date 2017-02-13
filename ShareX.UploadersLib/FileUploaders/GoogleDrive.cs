@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -59,6 +59,16 @@ namespace ShareX.UploadersLib.FileUploaders
         public override TabPage GetUploadersConfigTabPage(UploadersConfigForm form) => form.tpGoogleDrive;
     }
 
+    public enum GoogleDrivePermissionRole
+    {
+        owner, reader, writer
+    }
+
+    public enum GoogleDrivePermissionType
+    {
+        user, group, domain, anyone
+    }
+
     public sealed class GoogleDrive : FileUploader, IOAuth2
     {
         public OAuth2Info AuthInfo { get; set; }
@@ -91,7 +101,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("redirect_uri", "urn:ietf:wg:oauth:2.0:oob");
             args.Add("grant_type", "authorization_code");
 
-            string response = SendRequest(HttpMethod.POST, "https://accounts.google.com/o/oauth2/token", args);
+            string response = SendRequestMultiPart("https://accounts.google.com/o/oauth2/token", args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -118,7 +128,7 @@ namespace ShareX.UploadersLib.FileUploaders
                 args.Add("client_secret", AuthInfo.Client_Secret);
                 args.Add("grant_type", "refresh_token");
 
-                string response = SendRequest(HttpMethod.POST, "https://accounts.google.com/o/oauth2/token", args);
+                string response = SendRequestMultiPart("https://accounts.google.com/o/oauth2/token", args);
 
                 if (!string.IsNullOrEmpty(response))
                 {
@@ -207,7 +217,7 @@ namespace ShareX.UploadersLib.FileUploaders
                 withLink = withLink.ToString()
             });
 
-            string response = SendRequestJSON(url, json, GetAuthHeaders());
+            string response = SendRequest(HttpMethod.POST, url, json, ContentTypeJSON, null, GetAuthHeaders());
         }
 
         public List<GoogleDriveFile> GetFolders(bool trashed = false, bool writer = true)
@@ -250,7 +260,7 @@ namespace ShareX.UploadersLib.FileUploaders
 
             string metadata = GetMetadata(fileName, FolderID);
 
-            UploadResult result = UploadData(stream, "https://www.googleapis.com/upload/drive/v2/files?uploadType=multipart", fileName, headers: GetAuthHeaders(),
+            UploadResult result = SendRequestFile("https://www.googleapis.com/upload/drive/v2/files?uploadType=multipart", stream, fileName, headers: GetAuthHeaders(),
                 contentType: "multipart/related", metadata: metadata);
 
             if (!string.IsNullOrEmpty(result.Response))
@@ -286,29 +296,19 @@ namespace ShareX.UploadersLib.FileUploaders
 
             return result;
         }
+    }
 
-        public class GoogleDriveFile
-        {
-            public string id { get; set; }
-            public string alternateLink { get; set; }
-            public string webContentLink { get; set; }
-            public string title { get; set; }
-            public string description { get; set; }
-        }
+    public class GoogleDriveFile
+    {
+        public string id { get; set; }
+        public string alternateLink { get; set; }
+        public string webContentLink { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+    }
 
-        public class GoogleDriveFileList
-        {
-            public List<GoogleDriveFile> items { get; set; }
-        }
-
-        public enum GoogleDrivePermissionRole
-        {
-            owner, reader, writer
-        }
-
-        public enum GoogleDrivePermissionType
-        {
-            user, group, domain, anyone
-        }
+    public class GoogleDriveFileList
+    {
+        public List<GoogleDriveFile> items { get; set; }
     }
 }

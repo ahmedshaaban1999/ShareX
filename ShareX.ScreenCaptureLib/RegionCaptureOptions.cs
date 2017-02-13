@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -30,16 +30,24 @@ namespace ShareX.ScreenCaptureLib
 {
     public class RegionCaptureOptions
     {
+        public const int MagnifierPixelCountMinimum = 3;
+        public const int MagnifierPixelCountMaximum = 35;
+        public const int MagnifierPixelSizeMinimum = 3;
+        public const int MagnifierPixelSizeMaximum = 30;
+        public const int SnapDistance = 30;
+        public const int MoveSpeedMinimum = 1;
+        public const int MoveSpeedMaximum = 10;
+
         public bool QuickCrop = true;
-        public RegionCaptureAction MouseRightClickAction = RegionCaptureAction.OpenOptionsMenu;
-        public RegionCaptureAction MouseMiddleClickAction = RegionCaptureAction.CancelCapture;
-        public RegionCaptureAction Mouse4ClickAction = RegionCaptureAction.SwapToolType;
-        public RegionCaptureAction Mouse5ClickAction = RegionCaptureAction.CaptureFullscreen;
+        public RegionCaptureAction RegionCaptureActionRightClick = RegionCaptureAction.RemoveShapeCancelCapture;
+        public RegionCaptureAction RegionCaptureActionMiddleClick = RegionCaptureAction.SwapToolType;
+        public RegionCaptureAction RegionCaptureActionX1Click = RegionCaptureAction.CaptureFullscreen;
+        public RegionCaptureAction RegionCaptureActionX2Click = RegionCaptureAction.CaptureActiveMonitor;
         public bool DetectWindows = true;
         public bool DetectControls = true;
         public bool UseDimming = true;
         public bool UseCustomInfoText = false;
-        public string CustomInfoText = "X: $x, Y: $y$nR: $r, G: $g, B: $b$nHex: $hex"; // Formats: $x, $y, $r, $g, $b, $hex, $n
+        public string CustomInfoText = "X: $x, Y: $y$nR: $r, G: $g, B: $b$nHex: $hex"; // Formats: $x, $y, $r, $g, $b, $hex, $HEX, $n
         public List<SnapSize> SnapSizes = new List<SnapSize>()
         {
             new SnapSize(426, 240), // 240p
@@ -48,7 +56,7 @@ namespace ShareX.ScreenCaptureLib
             new SnapSize(1280, 720), // 720p
             new SnapSize(1920, 1080) // 1080p
         };
-        public bool ShowTips = true;
+        public bool ShowHotkeys = false;
         public bool ShowInfo = true;
         public bool ShowMagnifier = true;
         public bool UseSquareMagnifier = false;
@@ -58,10 +66,12 @@ namespace ShareX.ScreenCaptureLib
         public bool IsFixedSize = false;
         public Size FixedSize = new Size(250, 250);
         public bool ShowFPS = false;
+        public bool RememberMenuState = false;
+        public bool MenuCollapsed = false;
+        public Point MenuPosition = Point.Empty;
 
         public AnnotationOptions AnnotationOptions = new AnnotationOptions();
         public ShapeType LastRegionTool = ShapeType.RegionRectangle;
         public ShapeType LastAnnotationTool = ShapeType.DrawingRectangle;
-        public bool ShowMenuTip = true;
     }
 }

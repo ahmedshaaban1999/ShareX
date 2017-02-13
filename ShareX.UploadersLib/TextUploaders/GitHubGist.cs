@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -101,7 +101,7 @@ namespace ShareX.UploadersLib.TextUploaders
             WebHeaderCollection headers = new WebHeaderCollection();
             headers.Add("Accept", ContentTypeJSON);
 
-            string response = SendRequest(HttpMethod.POST, "https://github.com/login/oauth/access_token", args, headers);
+            string response = SendRequestMultiPart("https://github.com/login/oauth/access_token", args, headers);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -132,7 +132,7 @@ namespace ShareX.UploadersLib.TextUploaders
                     }
                 };
 
-                string argsJson = JsonConvert.SerializeObject(gistUploadObject);
+                string json = JsonConvert.SerializeObject(gistUploadObject);
 
                 string url = URLGists;
 
@@ -141,7 +141,7 @@ namespace ShareX.UploadersLib.TextUploaders
                     url += "?access_token=" + AuthInfo.Token.access_token;
                 }
 
-                string response = SendRequestJSON(url, argsJson);
+                string response = SendRequest(HttpMethod.POST, url, json, ContentTypeJSON);
 
                 if (response != null)
                 {

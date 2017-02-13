@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -42,7 +42,7 @@ namespace ShareX.UploadersLib.FileUploaders
 
         public override bool CheckConfig(UploadersConfig config)
         {
-            return config.LithiioSettings != null;
+            return config.LithiioSettings != null && !string.IsNullOrEmpty(config.LithiioSettings.UserAPIKey);
         }
 
         public override GenericUploader CreateUploader(UploadersConfig config, TaskReferenceHelper taskInfo)
@@ -62,20 +62,18 @@ namespace ShareX.UploadersLib.FileUploaders
             Config = config;
         }
 
-        private const string uploadUrl = "http://api.lithi.io/v2/";
-
-        public static string[] UploadURLs = new string[] { "https://i.lithi.io/", "https://lithi.io/i/", "https://i.mugi.io/", "https://mugi.io/i/" };
+        private const string uploadUrl = "http://api.lithi.io/v3/";
 
         public override UploadResult Upload(Stream stream, string fileName)
         {
             Dictionary<string, string> arguments = new Dictionary<string, string>();
             arguments.Add("key", Config.UserAPIKey);
-            arguments.Add("linktype", Config.UploadURL);
-            UploadResult result = UploadData(stream, uploadUrl, fileName, "file", arguments);
+            UploadResult result = SendRequestFile(uploadUrl, stream, fileName, "file", arguments);
 
             if (result.IsSuccess)
             {
                 LithiioResponse response = JsonConvert.DeserializeObject<LithiioResponse>(result.Response);
+
                 if (response.Success)
                 {
                     result.URL = response.URL;
@@ -100,6 +98,5 @@ namespace ShareX.UploadersLib.FileUploaders
     public class LithiioSettings
     {
         public string UserAPIKey { get; set; } = "";
-        public string UploadURL { get; set; } = "https://i.lithi.io/";
     }
 }

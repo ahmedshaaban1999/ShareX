@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -29,9 +29,9 @@ namespace ShareX.HelpersLib
     {
         public const string URL_WEBSITE = "https://getsharex.com";
         public const string URL_PROJECT = "https://github.com/ShareX/ShareX";
-        public const string URL_ISSUES = URL_PROJECT + "/issues";
+        public const string URL_ISSUES = URL_PROJECT + "/issues?q=is%3Aissue";
         public const string URL_CALLBACK = URL_WEBSITE + "/callback/";
-        public const string URL_CHANGELOG = URL_PROJECT + "/wiki/Changelog";
+        public const string URL_CHANGELOG = URL_WEBSITE + "/changelog";
         public const string URL_DONATE = URL_WEBSITE + "/donate/";
         public const string URL_BERK = "https://github.com/Jaex";
         public const string URL_MIKE = "https://github.com/McoreD";

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -25,7 +25,6 @@
 
 using ShareX.HelpersLib;
 using ShareX.Properties;
-using ShareX.ScreenCaptureLib;
 using ShareX.UploadersLib;
 using System;
 using System.Drawing;
@@ -39,6 +38,7 @@ namespace ShareX
         private const int MaxBufferSizePower = 14;
 
         private bool ready;
+        private string lastPersonalPath;
 
         public ApplicationSettingsForm()
         {
@@ -58,7 +58,14 @@ namespace ShareX
 
         private void SettingsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.WritePersonalPathConfig(txtPersonalFolderPath.Text);
+            string currentPersonalPath = txtPersonalFolderPath.Text;
+
+            if (!currentPersonalPath.Equals(lastPersonalPath, StringComparison.InvariantCultureIgnoreCase))
+            {
+                Program.WritePersonalPathConfig(currentPersonalPath);
+
+                MessageBox.Show("You must reopen ShareX for personal folder changes to take effect.", "ShareX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void InitializeControls()
@@ -79,7 +86,7 @@ namespace ShareX
             cbTrayLeftClickAction.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<HotkeyType>());
             cbTrayMiddleClickAction.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<HotkeyType>());
 
-            CodeMenu.Create<ReplCodeMenuEntry>(txtSaveImageSubFolderPattern, ReplCodeMenuEntry.t, ReplCodeMenuEntry.pn, ReplCodeMenuEntry.i, ReplCodeMenuEntry.width, ReplCodeMenuEntry.height, ReplCodeMenuEntry.n);
+            CodeMenu.Create<CodeMenuEntryFilename>(txtSaveImageSubFolderPattern, CodeMenuEntryFilename.t, CodeMenuEntryFilename.pn, CodeMenuEntryFilename.i, CodeMenuEntryFilename.width, CodeMenuEntryFilename.height, CodeMenuEntryFilename.n);
 
             cbProxyMethod.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<ProxyMethod>());
 
@@ -106,10 +113,20 @@ namespace ShareX
             cbTrayLeftClickAction.SelectedIndex = (int)Program.Settings.TrayLeftClickAction;
             cbTrayMiddleClickAction.SelectedIndex = (int)Program.Settings.TrayMiddleClickAction;
 
+#if STEAM
+            cbCheckPreReleaseUpdates.Visible = false;
+#else
+            cbCheckPreReleaseUpdates.Checked = Program.Settings.CheckPreReleaseUpdates;
+#endif
+
             // Integration
             cbStartWithWindows.Checked = IntegrationHelpers.CheckStartupShortcut();
             cbShellContextMenu.Checked = IntegrationHelpers.CheckShellContextMenuButton();
             cbSendToMenu.Checked = IntegrationHelpers.CheckSendToMenuButton();
+            cbChromeExtensionSupport.Checked = IntegrationHelpers.CheckChromeExtensionSupport();
+            btnChromeOpenExtensionPage.Enabled = cbChromeExtensionSupport.Checked;
+            cbFirefoxAddonSupport.Checked = IntegrationHelpers.CheckFirefoxAddonSupport();
+            btnFirefoxOpenAddonPage.Enabled = cbFirefoxAddonSupport.Checked;
 
 #if STEAM
             cbSteamShowInApp.Checked = IntegrationHelpers.CheckSteamShowInApp();
@@ -118,7 +135,8 @@ namespace ShareX
 #endif
 
             // Paths
-            txtPersonalFolderPath.Text = Program.ReadPersonalPathConfig();
+            lastPersonalPath = Program.ReadPersonalPathConfig();
+            txtPersonalFolderPath.Text = lastPersonalPath;
             UpdatePersonalFolderPathPreview();
             cbUseCustomScreenshotsPath.Checked = Program.Settings.UseCustomScreenshotsPath;
             txtCustomScreenshotsPath.Text = Program.Settings.CustomScreenshotsPath;
@@ -289,7 +307,18 @@ namespace ShareX
 
             if (string.IsNullOrEmpty(personalPath))
             {
-                personalPath = Program.DefaultPersonalFolder;
+                if (Program.PortableApps)
+                {
+                    personalPath = Program.PortableAppsPersonalFolder;
+                }
+                else if (Program.Portable)
+                {
+                    personalPath = Program.PortablePersonalFolder;
+                }
+                else
+                {
+                    personalPath = Program.DefaultPersonalFolder;
+                }
             }
             else
             {
@@ -306,11 +335,6 @@ namespace ShareX
         }
 
         #region General
-
-        private void llTranslators_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            URLHelpers.OpenURL("https://github.com/ShareX/ShareX/wiki/Translation");
-        }
 
         private void cbShowTray_CheckedChanged(object sender, EventArgs e)
         {
@@ -374,6 +398,11 @@ namespace ShareX
             new QuickTaskMenuEditorForm().ShowDialog();
         }
 
+        private void cbCheckPreReleaseUpdates_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.Settings.CheckPreReleaseUpdates = cbCheckPreReleaseUpdates.Checked;
+        }
+
         #endregion General
 
         #region Integration
@@ -402,9 +431,32 @@ namespace ShareX
             }
         }
 
-        private void btnChromeSupport_Click(object sender, EventArgs e)
+        private void cbChromeExtensionSupport_CheckedChanged(object sender, EventArgs e)
         {
-            new ChromeForm().Show();
+            if (ready)
+            {
+                IntegrationHelpers.CreateChromeExtensionSupport(cbChromeExtensionSupport.Checked);
+                btnChromeOpenExtensionPage.Enabled = cbChromeExtensionSupport.Checked;
+            }
+        }
+
+        private void btnChromeOpenExtensionPage_Click(object sender, EventArgs e)
+        {
+            URLHelpers.OpenURL("https://chrome.google.com/webstore/detail/sharex/nlkoigbdolhchiicbonbihbphgamnaoc");
+        }
+
+        private void cbFirefoxAddonSupport_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ready)
+            {
+                IntegrationHelpers.CreateFirefoxAddonSupport(cbFirefoxAddonSupport.Checked);
+                btnFirefoxOpenAddonPage.Enabled = cbFirefoxAddonSupport.Checked;
+            }
+        }
+
+        private void btnFirefoxOpenAddonPage_Click(object sender, EventArgs e)
+        {
+            URLHelpers.OpenURL("https://addons.mozilla.org/en-US/firefox/addon/sharex/");
         }
 
         private void cbSteamShowInApp_CheckedChanged(object sender, EventArgs e)
@@ -749,7 +801,7 @@ namespace ShareX
 
         private void btnShowImagePrintSettings_Click(object sender, EventArgs e)
         {
-            using (Image testImage = Screenshot.CaptureActiveMonitor())
+            using (Image testImage = TaskHelpers.GetScreenshot().CaptureActiveMonitor())
             using (PrintForm printForm = new PrintForm(testImage, Program.Settings.PrintSettings, true))
             {
                 printForm.ShowDialog();

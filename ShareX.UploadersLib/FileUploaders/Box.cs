@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -93,7 +93,7 @@ namespace ShareX.UploadersLib.FileUploaders
             args.Add("client_id", AuthInfo.Client_ID);
             args.Add("client_secret", AuthInfo.Client_Secret);
 
-            string response = SendRequest(HttpMethod.POST, "https://www.box.com/api/oauth2/token", args);
+            string response = SendRequestMultiPart("https://www.box.com/api/oauth2/token", args);
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -120,7 +120,7 @@ namespace ShareX.UploadersLib.FileUploaders
                 args.Add("client_id", AuthInfo.Client_ID);
                 args.Add("client_secret", AuthInfo.Client_Secret);
 
-                string response = SendRequest(HttpMethod.POST, "https://www.box.com/api/oauth2/token", args);
+                string response = SendRequestMultiPart("https://www.box.com/api/oauth2/token", args);
 
                 if (!string.IsNullOrEmpty(response))
                 {
@@ -220,7 +220,7 @@ namespace ShareX.UploadersLib.FileUploaders
             Dictionary<string, string> args = new Dictionary<string, string>();
             args.Add("parent_id", FolderID);
 
-            UploadResult result = UploadData(stream, "https://upload.box.com/api/2.0/files/content", fileName, "filename", args, GetAuthHeaders());
+            UploadResult result = SendRequestFile("https://upload.box.com/api/2.0/files/content", stream, fileName, "filename", args, GetAuthHeaders());
 
             if (result.IsSuccess)
             {

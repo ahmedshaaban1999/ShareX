@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -92,7 +92,7 @@ namespace ShareX.UploadersLib.ImageUploaders
             args.Add("auth_token", token);
             args.Add("api_sig", GetAPISig(args));
 
-            string response = SendRequest(HttpMethod.POST, API_URL, args);
+            string response = SendRequestMultiPart(API_URL, args);
 
             Auth = new FlickrAuthInfo(ParseResponse(response, "auth"));
 
@@ -110,7 +110,7 @@ namespace ShareX.UploadersLib.ImageUploaders
             args.Add("api_key", API_Key);
             args.Add("api_sig", GetAPISig(args));
 
-            string response = SendRequest(HttpMethod.POST, API_URL, args);
+            string response = SendRequestMultiPart(API_URL, args);
 
             XElement eFrob = ParseResponse(response, "frob");
 
@@ -142,7 +142,7 @@ namespace ShareX.UploadersLib.ImageUploaders
             args.Add("mini_token", frob);
             args.Add("api_sig", GetAPISig(args));
 
-            string response = SendRequest(HttpMethod.POST, API_URL, args);
+            string response = SendRequestMultiPart(API_URL, args);
 
             Auth = new FlickrAuthInfo(ParseResponse(response, "auth"));
 
@@ -162,7 +162,7 @@ namespace ShareX.UploadersLib.ImageUploaders
             args.Add("frob", frob);
             args.Add("api_sig", GetAPISig(args));
 
-            string response = SendRequest(HttpMethod.POST, API_URL, args);
+            string response = SendRequestMultiPart(API_URL, args);
 
             Auth = new FlickrAuthInfo(ParseResponse(response, "auth"));
 
@@ -261,7 +261,7 @@ namespace ShareX.UploadersLib.ImageUploaders
 
             args.Add("api_sig", GetAPISig(args));
 
-            UploadResult result = UploadData(stream, "https://up.flickr.com/services/upload/", fileName, "photo", args);
+            UploadResult result = SendRequestFile("https://up.flickr.com/services/upload/", stream, fileName, "photo", args);
 
             if (result.IsSuccess)
             {

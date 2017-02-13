@@ -81,6 +81,16 @@ namespace ShareX.UploadersLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AzureStorage {
+            get {
+                object obj = ResourceManager.GetObject("AzureStorage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Bitly {
@@ -469,6 +479,16 @@ namespace ShareX.UploadersLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pastie {
+            get {
+                object obj = ResourceManager.GetObject("Pastie", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Photobucket {
@@ -630,9 +650,9 @@ namespace ShareX.UploadersLib.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon Up1 {
+        internal static System.Drawing.Icon Upaste {
             get {
-                object obj = ResourceManager.GetObject("Up1", resourceCulture);
+                object obj = ResourceManager.GetObject("Upaste", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -640,9 +660,9 @@ namespace ShareX.UploadersLib.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon Upaste {
+        internal static System.Drawing.Icon Uplea {
             get {
-                object obj = ResourceManager.GetObject("Upaste", resourceCulture);
+                object obj = ResourceManager.GetObject("Uplea", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -24,13 +24,8 @@
 #endregion License Information (GPL v3)
 
 using ShareX.HelpersLib;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace ShareX.ScreenCaptureLib
 {
@@ -40,28 +35,43 @@ namespace ShareX.ScreenCaptureLib
 
         public override void OnDraw(Graphics g)
         {
+            DrawEllipse(g);
+        }
+
+        protected void DrawEllipse(Graphics g)
+        {
+            if (Shadow && IsBorderVisible)
+            {
+                DrawEllipse(g, ShadowColor, BorderSize, Color.Transparent, Rectangle.LocationOffset(ShadowOffset));
+            }
+
+            DrawEllipse(g, BorderColor, BorderSize, FillColor, Rectangle);
+        }
+
+        protected void DrawEllipse(Graphics g, Color borderColor, int borderSize, Color fillColor, Rectangle rect)
+        {
             g.SmoothingMode = SmoothingMode.HighQuality;
 
-            if (FillColor.A > 0)
+            if (fillColor.A > 0)
             {
-                using (Brush brush = new SolidBrush(FillColor))
+                using (Brush brush = new SolidBrush(fillColor))
                 {
-                    g.FillEllipse(brush, Rectangle);
+                    g.FillEllipse(brush, rect);
                 }
             }
 
-            if (BorderSize > 0 && BorderColor.A > 0)
+            if (borderSize > 0 && borderColor.A > 0)
             {
-                using (Pen pen = new Pen(BorderColor, BorderSize))
+                using (Pen pen = new Pen(borderColor, borderSize))
                 {
-                    g.DrawEllipse(pen, Rectangle);
+                    g.DrawEllipse(pen, rect);
                 }
             }
 
             g.SmoothingMode = SmoothingMode.None;
         }
 
-        public override void AddShapePath(GraphicsPath gp, Rectangle rect)
+        public override void OnShapePathRequested(GraphicsPath gp, Rectangle rect)
         {
             gp.AddEllipse(rect);
         }

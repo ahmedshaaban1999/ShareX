@@ -153,12 +153,6 @@
   <data name="tsmiRectangleLight.Text" xml:space="preserve">
     <value>Bölge (Basit)</value>
   </data>
-  <data name="tsmiPolygon.Text" xml:space="preserve">
-    <value>Çokgen</value>
-  </data>
-  <data name="tsmiFreeHand.Text" xml:space="preserve">
-    <value>Serbest seçim</value>
-  </data>
   <data name="tsmiLastRegion.Text" xml:space="preserve">
     <value>Son bölge</value>
   </data>
@@ -441,12 +435,6 @@
   <data name="tsmiTrayRectangleLight.Text" xml:space="preserve">
     <value>Bölge (Basit)</value>
   </data>
-  <data name="tsmiTrayPolygon.Text" xml:space="preserve">
-    <value>Çokgen</value>
-  </data>
-  <data name="tsmiTrayFreeHand.Text" xml:space="preserve">
-    <value>Serbest seçim</value>
-  </data>
   <data name="tsmiTrayLastRegion.Text" xml:space="preserve">
     <value>Son bölge</value>
   </data>
@@ -590,12 +578,6 @@
   </data>
   <data name="tsmiTrayRecentItems.Text" xml:space="preserve">
     <value>Son adresler</value>
-  </data>
-  <data name="tsmiAutomate.Text" xml:space="preserve">
-    <value>Otomatikleştirmek...</value>
-  </data>
-  <data name="tsmiTrayAutomate.Text" xml:space="preserve">
-    <value>Otomatikleştirmek...</value>
   </data>
   <data name="tsmiRectangleTransparent.Text" xml:space="preserve">
     <value>Bölge (Saydam)</value>

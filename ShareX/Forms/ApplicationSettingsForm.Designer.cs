@@ -33,6 +33,7 @@ namespace ShareX
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplicationSettingsForm));
             this.tcSettings = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
+            this.cbCheckPreReleaseUpdates = new System.Windows.Forms.CheckBox();
             this.cbTrayMiddleClickAction = new System.Windows.Forms.ComboBox();
             this.lblTrayMiddleClickAction = new System.Windows.Forms.Label();
             this.cbTrayLeftDoubleClickAction = new System.Windows.Forms.ComboBox();
@@ -45,7 +46,6 @@ namespace ShareX
             this.btnLanguages = new ShareX.HelpersLib.MenuButton();
             this.cmsLanguages = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cbRememberMainFormPosition = new System.Windows.Forms.CheckBox();
-            this.llTranslators = new System.Windows.Forms.LinkLabel();
             this.cbSilentRun = new System.Windows.Forms.CheckBox();
             this.cbTaskbarProgressEnabled = new System.Windows.Forms.CheckBox();
             this.cbRememberMainFormSize = new System.Windows.Forms.CheckBox();
@@ -54,7 +54,6 @@ namespace ShareX
             this.gbSteam = new System.Windows.Forms.GroupBox();
             this.cbSteamShowInApp = new System.Windows.Forms.CheckBox();
             this.gbChrome = new System.Windows.Forms.GroupBox();
-            this.btnChromeSupport = new System.Windows.Forms.Button();
             this.gbWindows = new System.Windows.Forms.GroupBox();
             this.cbStartWithWindows = new System.Windows.Forms.CheckBox();
             this.cbSendToMenu = new System.Windows.Forms.CheckBox();
@@ -139,6 +138,11 @@ namespace ShareX
             this.tpAdvanced = new System.Windows.Forms.TabPage();
             this.pgSettings = new System.Windows.Forms.PropertyGrid();
             this.tttvMain = new ShareX.HelpersLib.TabToTreeView();
+            this.btnChromeOpenExtensionPage = new System.Windows.Forms.Button();
+            this.gpFirefox = new System.Windows.Forms.GroupBox();
+            this.btnFirefoxOpenAddonPage = new System.Windows.Forms.Button();
+            this.cbChromeExtensionSupport = new System.Windows.Forms.CheckBox();
+            this.cbFirefoxAddonSupport = new System.Windows.Forms.CheckBox();
             this.tcSettings.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.tpIntegration.SuspendLayout();
@@ -167,6 +171,7 @@ namespace ShareX
             this.tpProxy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudProxyPort)).BeginInit();
             this.tpAdvanced.SuspendLayout();
+            this.gpFirefox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcSettings
@@ -186,6 +191,7 @@ namespace ShareX
             // 
             // tpGeneral
             // 
+            this.tpGeneral.Controls.Add(this.cbCheckPreReleaseUpdates);
             this.tpGeneral.Controls.Add(this.cbTrayMiddleClickAction);
             this.tpGeneral.Controls.Add(this.lblTrayMiddleClickAction);
             this.tpGeneral.Controls.Add(this.cbTrayLeftDoubleClickAction);
@@ -197,7 +203,6 @@ namespace ShareX
             this.tpGeneral.Controls.Add(this.cbTrayIconProgressEnabled);
             this.tpGeneral.Controls.Add(this.btnLanguages);
             this.tpGeneral.Controls.Add(this.cbRememberMainFormPosition);
-            this.tpGeneral.Controls.Add(this.llTranslators);
             this.tpGeneral.Controls.Add(this.cbSilentRun);
             this.tpGeneral.Controls.Add(this.cbTaskbarProgressEnabled);
             this.tpGeneral.Controls.Add(this.cbRememberMainFormSize);
@@ -205,6 +210,13 @@ namespace ShareX
             resources.ApplyResources(this.tpGeneral, "tpGeneral");
             this.tpGeneral.Name = "tpGeneral";
             this.tpGeneral.UseVisualStyleBackColor = true;
+            // 
+            // cbCheckPreReleaseUpdates
+            // 
+            resources.ApplyResources(this.cbCheckPreReleaseUpdates, "cbCheckPreReleaseUpdates");
+            this.cbCheckPreReleaseUpdates.Name = "cbCheckPreReleaseUpdates";
+            this.cbCheckPreReleaseUpdates.UseVisualStyleBackColor = true;
+            this.cbCheckPreReleaseUpdates.CheckedChanged += new System.EventHandler(this.cbCheckPreReleaseUpdates_CheckedChanged);
             // 
             // cbTrayMiddleClickAction
             // 
@@ -285,13 +297,6 @@ namespace ShareX
             this.cbRememberMainFormPosition.UseVisualStyleBackColor = true;
             this.cbRememberMainFormPosition.CheckedChanged += new System.EventHandler(this.cbRememberMainFormPosition_CheckedChanged);
             // 
-            // llTranslators
-            // 
-            resources.ApplyResources(this.llTranslators, "llTranslators");
-            this.llTranslators.Name = "llTranslators";
-            this.llTranslators.TabStop = true;
-            this.llTranslators.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llTranslators_LinkClicked);
-            // 
             // cbSilentRun
             // 
             resources.ApplyResources(this.cbSilentRun, "cbSilentRun");
@@ -320,6 +325,7 @@ namespace ShareX
             // 
             // tpIntegration
             // 
+            this.tpIntegration.Controls.Add(this.gpFirefox);
             this.tpIntegration.Controls.Add(this.gbSteam);
             this.tpIntegration.Controls.Add(this.gbChrome);
             this.tpIntegration.Controls.Add(this.gbWindows);
@@ -343,17 +349,11 @@ namespace ShareX
             // 
             // gbChrome
             // 
-            this.gbChrome.Controls.Add(this.btnChromeSupport);
+            this.gbChrome.Controls.Add(this.cbChromeExtensionSupport);
+            this.gbChrome.Controls.Add(this.btnChromeOpenExtensionPage);
             resources.ApplyResources(this.gbChrome, "gbChrome");
             this.gbChrome.Name = "gbChrome";
             this.gbChrome.TabStop = false;
-            // 
-            // btnChromeSupport
-            // 
-            resources.ApplyResources(this.btnChromeSupport, "btnChromeSupport");
-            this.btnChromeSupport.Name = "btnChromeSupport";
-            this.btnChromeSupport.UseVisualStyleBackColor = true;
-            this.btnChromeSupport.Click += new System.EventHandler(this.btnChromeSupport_Click);
             // 
             // gbWindows
             // 
@@ -999,6 +999,42 @@ namespace ShareX
             this.tttvMain.TreeViewFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tttvMain.TreeViewSize = 175;
             // 
+            // btnChromeOpenExtensionPage
+            // 
+            resources.ApplyResources(this.btnChromeOpenExtensionPage, "btnChromeOpenExtensionPage");
+            this.btnChromeOpenExtensionPage.Name = "btnChromeOpenExtensionPage";
+            this.btnChromeOpenExtensionPage.UseVisualStyleBackColor = true;
+            this.btnChromeOpenExtensionPage.Click += new System.EventHandler(this.btnChromeOpenExtensionPage_Click);
+            // 
+            // gpFirefox
+            // 
+            this.gpFirefox.Controls.Add(this.cbFirefoxAddonSupport);
+            this.gpFirefox.Controls.Add(this.btnFirefoxOpenAddonPage);
+            resources.ApplyResources(this.gpFirefox, "gpFirefox");
+            this.gpFirefox.Name = "gpFirefox";
+            this.gpFirefox.TabStop = false;
+            // 
+            // btnFirefoxOpenAddonPage
+            // 
+            resources.ApplyResources(this.btnFirefoxOpenAddonPage, "btnFirefoxOpenAddonPage");
+            this.btnFirefoxOpenAddonPage.Name = "btnFirefoxOpenAddonPage";
+            this.btnFirefoxOpenAddonPage.UseVisualStyleBackColor = true;
+            this.btnFirefoxOpenAddonPage.Click += new System.EventHandler(this.btnFirefoxOpenAddonPage_Click);
+            // 
+            // cbChromeExtensionSupport
+            // 
+            resources.ApplyResources(this.cbChromeExtensionSupport, "cbChromeExtensionSupport");
+            this.cbChromeExtensionSupport.Name = "cbChromeExtensionSupport";
+            this.cbChromeExtensionSupport.UseVisualStyleBackColor = true;
+            this.cbChromeExtensionSupport.CheckedChanged += new System.EventHandler(this.cbChromeExtensionSupport_CheckedChanged);
+            // 
+            // cbFirefoxAddonSupport
+            // 
+            resources.ApplyResources(this.cbFirefoxAddonSupport, "cbFirefoxAddonSupport");
+            this.cbFirefoxAddonSupport.Name = "cbFirefoxAddonSupport";
+            this.cbFirefoxAddonSupport.UseVisualStyleBackColor = true;
+            this.cbFirefoxAddonSupport.CheckedChanged += new System.EventHandler(this.cbFirefoxAddonSupport_CheckedChanged);
+            // 
             // ApplicationSettingsForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1018,6 +1054,7 @@ namespace ShareX
             this.gbSteam.ResumeLayout(false);
             this.gbSteam.PerformLayout();
             this.gbChrome.ResumeLayout(false);
+            this.gbChrome.PerformLayout();
             this.gbWindows.ResumeLayout(false);
             this.gbWindows.PerformLayout();
             this.tpPaths.ResumeLayout(false);
@@ -1050,6 +1087,8 @@ namespace ShareX
             this.tpProxy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudProxyPort)).EndInit();
             this.tpAdvanced.ResumeLayout(false);
+            this.gpFirefox.ResumeLayout(false);
+            this.gpFirefox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1131,11 +1170,9 @@ namespace ShareX
         private System.Windows.Forms.CheckBox cbPrintDontShowWindowsDialog;
         private System.Windows.Forms.CheckBox cbRememberMainFormPosition;
         private System.Windows.Forms.Label lblLanguage;
-        private System.Windows.Forms.LinkLabel llTranslators;
         private TabToTreeView tttvMain;
         private MenuButton btnLanguages;
         private System.Windows.Forms.ContextMenuStrip cmsLanguages;
-        private System.Windows.Forms.Button btnChromeSupport;
         private System.Windows.Forms.GroupBox gbWindows;
         private System.Windows.Forms.GroupBox gbChrome;
         private System.Windows.Forms.CheckBox cbSteamShowInApp;
@@ -1166,5 +1203,11 @@ namespace ShareX
         private System.Windows.Forms.ComboBox cbTrayMiddleClickAction;
         private System.Windows.Forms.ComboBox cbTrayLeftDoubleClickAction;
         private System.Windows.Forms.ComboBox cbTrayLeftClickAction;
+        private System.Windows.Forms.CheckBox cbCheckPreReleaseUpdates;
+        private System.Windows.Forms.Button btnChromeOpenExtensionPage;
+        private System.Windows.Forms.GroupBox gpFirefox;
+        private System.Windows.Forms.Button btnFirefoxOpenAddonPage;
+        private System.Windows.Forms.CheckBox cbChromeExtensionSupport;
+        private System.Windows.Forms.CheckBox cbFirefoxAddonSupport;
     }
 }

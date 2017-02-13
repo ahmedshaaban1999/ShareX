@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -63,11 +63,12 @@ namespace ShareX.HelpersLib
         public const string ValidURLCharacters = URLPathCharacters + ":?#[]@!$&'()*+,;= ";
 
         public static readonly string[] ImageFileExtensions = new string[] { "jpg", "jpeg", "png", "gif", "bmp", "ico", "tif", "tiff" };
-        public static readonly string[] TextFileExtensions = new string[] { "txt", "log", "nfo", "c", "cpp", "cc", "cxx", "h", "hpp", "hxx", "cs", "vb", "html", "htm", "xhtml", "xht", "xml", "css", "js", "php", "bat", "java", "lua", "py", "pl", "cfg", "ini" };
+        public static readonly string[] TextFileExtensions = new string[] { "txt", "log", "nfo", "c", "cpp", "cc", "cxx", "h", "hpp", "hxx", "cs", "vb", "html", "htm", "xhtml", "xht", "xml", "css", "js", "php", "bat", "java", "lua", "py", "pl", "cfg", "ini", "dart" };
+        public static readonly string[] VideoFileExtensions = new string[] { "mp4", "webm", "mkv", "avi", "vob", "ogv", "ogg", "mov", "qt", "wmv", "m4p", "m4v", "mpg", "mp2", "mpeg", "mpe", "mpv", "m2v", "m4v", "flv", "f4v" };
 
         public static readonly Version OSVersion = Environment.OSVersion.Version;
 
-        // Extension without dot
+        /// <summary>Get file name extension without dot.</summary>
         public static string GetFilenameExtension(string filePath)
         {
             if (!string.IsNullOrEmpty(filePath))
@@ -76,7 +77,7 @@ namespace ShareX.HelpersLib
 
                 if (pos >= 0)
                 {
-                    return filePath.Substring(pos + 1).ToLowerInvariant();
+                    return filePath.Substring(pos + 1);
                 }
             }
 
@@ -128,18 +129,38 @@ namespace ShareX.HelpersLib
             return filePath;
         }
 
+        public static string RenameFile(string filePath, string newFileName)
+        {
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    string directory = Path.GetDirectoryName(filePath);
+                    string newPath = Path.Combine(directory, newFileName);
+                    File.Move(filePath, newPath);
+                    return newPath;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Rename error:\r\n" + e.ToString(), "ShareX - " + Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return filePath;
+        }
+
         public static string AppendExtension(string filePath, string extension)
         {
             return filePath.TrimEnd('.') + '.' + extension.TrimStart('.');
         }
 
-        private static bool IsValidFile(string filePath, string[] extensionList)
+        public static bool CheckExtension(string filePath, IEnumerable<string> extensions)
         {
             string ext = GetFilenameExtension(filePath);
 
             if (!string.IsNullOrEmpty(ext))
             {
-                return extensionList.Any(x => ext.Equals(x, StringComparison.InvariantCultureIgnoreCase));
+                return extensions.Any(x => ext.Equals(x, StringComparison.InvariantCultureIgnoreCase));
             }
 
             return false;
@@ -147,12 +168,17 @@ namespace ShareX.HelpersLib
 
         public static bool IsImageFile(string filePath)
         {
-            return IsValidFile(filePath, ImageFileExtensions);
+            return CheckExtension(filePath, ImageFileExtensions);
         }
 
         public static bool IsTextFile(string filePath)
         {
-            return IsValidFile(filePath, TextFileExtensions);
+            return CheckExtension(filePath, TextFileExtensions);
+        }
+
+        public static bool IsVideoFile(string filePath)
+        {
+            return CheckExtension(filePath, VideoFileExtensions);
         }
 
         public static EDataType FindDataType(string filePath)
@@ -357,7 +383,7 @@ namespace ShareX.HelpersLib
         // returns a list of public static fields of the class type (similar to enum values)
         public static T[] GetValueFields<T>()
         {
-            var res = new List<T>();
+            List<T> res = new List<T>();
             foreach (FieldInfo fi in typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public))
             {
                 if (fi.FieldType != typeof(T)) continue;
@@ -415,6 +441,11 @@ namespace ShareX.HelpersLib
         {
             if (!string.IsNullOrEmpty(folderPath) && Directory.Exists(folderPath))
             {
+                if (!folderPath.EndsWith(@"\"))
+                {
+                    folderPath += @"\";
+                }
+
                 try
                 {
                     Process.Start(folderPath);
@@ -1091,9 +1122,9 @@ namespace ShareX.HelpersLib
 
         public static T[] GetInstances<T>() where T : class
         {
-            var instances = from t in Assembly.GetCallingAssembly().GetTypes()
-                            where t.IsClass && t.IsSubclassOf(typeof(T)) && t.GetConstructor(Type.EmptyTypes) != null
-                            select Activator.CreateInstance(t) as T;
+            IEnumerable<T> instances = from t in Assembly.GetCallingAssembly().GetTypes()
+                                       where t.IsClass && t.IsSubclassOf(typeof(T)) && t.GetConstructor(Type.EmptyTypes) != null
+                                       select Activator.CreateInstance(t) as T;
 
             return instances.ToArray();
         }
@@ -1119,6 +1150,19 @@ namespace ShareX.HelpersLib
             }
 
             return Environment.OSVersion.VersionString;
+        }
+
+        public static Cursor CreateCursor(byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                return new Cursor(ms);
+            }
+        }
+
+        public static string EscapeCLIText(string text)
+        {
+            return string.Format("\"{0}\"", text.Replace("\\", "\\\\").Replace("\"", "\\\""));
         }
     }
 }

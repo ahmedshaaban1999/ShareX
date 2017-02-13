@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -78,12 +78,15 @@ namespace ShareX
         public HotkeyType TrayLeftDoubleClickAction = HotkeyType.OpenMainWindow;
         public HotkeyType TrayMiddleClickAction = HotkeyType.PrintScreen;
 
+        public bool CheckPreReleaseUpdates = false;
+
         #endregion General
 
         #region Paths
 
         public bool UseCustomScreenshotsPath = false;
         public string CustomScreenshotsPath = "";
+
         public string SaveImageSubFolderPattern = "%y-%mo";
 
         #endregion Paths
@@ -172,10 +175,11 @@ namespace ShareX
         [Category("Application"), DefaultValue(false), Description("Show only customized tasks in main window workflows.")]
         public bool WorkflowsOnlyShowEdited { get; set; }
 
-#if !STEAM
         [Category("Application"), DefaultValue(true), Description("Automatically check updates.")]
-        public bool AutoCheckUpdate { get; set; }
+#if STEAM
+        [Browsable(false)]
 #endif
+        public bool AutoCheckUpdate { get; set; }
 
         [Category("Application"), DefaultValue(true), Description("Automatically expand capture menu when you open the tray menu.")]
         public bool TrayAutoExpandCaptureMenu { get; set; }
@@ -216,6 +220,10 @@ namespace ShareX
         [Editor(typeof(DirectoryNameEditor), typeof(UITypeEditor))]
         public string CustomHotkeysConfigPath { get; set; }
 
+        [Category("Paths"), Description("Custom screenshot path (secondary location). If custom screenshot path is temporarily unavailable (e.g. network share), ShareX will use this location (recommended to be a local path).")]
+        [Editor(typeof(DirectoryNameEditor), typeof(UITypeEditor))]
+        public string CustomScreenshotsPath2 { get; set; }
+
         [Category("Drag and drop window"), DefaultValue(150), Description("Size of drop window.")]
         public int DropSize { get; set; }
 
@@ -250,12 +258,6 @@ namespace ShareX
 
         #endregion ScreenRecord Form
 
-        #region Automate Form
-
-        public List<ScriptInfo> AutomateScripts = new List<ScriptInfo>();
-
-        #endregion Automate Form
-
         #region Webpage Capture Form
 
         public WebpageCaptureOptions WebpageCaptureOptions = new WebpageCaptureOptions();
@@ -267,5 +269,20 @@ namespace ShareX
         public OCRSpaceLanguages OCRLanguage = OCRSpaceLanguages.eng;
 
         #endregion OCR Form
+
+        #region Actions toolbar
+
+        public List<HotkeyType> ActionsToolbarList = new List<HotkeyType>() { HotkeyType.RectangleRegion, HotkeyType.PrintScreen, HotkeyType.ScreenRecorder,
+            HotkeyType.None, HotkeyType.FileUpload, HotkeyType.ClipboardUploadWithContentViewer };
+
+        public bool ActionsToolbarRunAtStartup = false;
+
+        public Point ActionsToolbarPosition = Point.Empty;
+
+        public bool ActionsToolbarLockPosition = false;
+
+        public bool ActionsToolbarStayTopMost = true;
+
+        #endregion Actions toolbar
     }
 }

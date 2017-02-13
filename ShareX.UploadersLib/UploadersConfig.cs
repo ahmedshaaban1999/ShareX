@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -28,7 +28,6 @@ using ShareX.HelpersLib;
 using ShareX.UploadersLib.FileUploaders;
 using ShareX.UploadersLib.ImageUploaders;
 using ShareX.UploadersLib.TextUploaders;
-using System;
 using System.Collections.Generic;
 
 namespace ShareX.UploadersLib
@@ -42,6 +41,7 @@ namespace ShareX.UploadersLib
         public AccountType ImgurAccountType = AccountType.Anonymous;
         public bool ImgurDirectLink = true;
         public ImgurThumbnailType ImgurThumbnailType = ImgurThumbnailType.Large_Thumbnail;
+        public bool ImgurUseHTTPS = false;
         public bool ImgurUseGIFV = true;
         public OAuth2Info ImgurOAuth2Info = null;
         public bool ImgurUploadSelectedAlbum = false;
@@ -115,13 +115,18 @@ namespace ShareX.UploadersLib
 
         // Hastebin
 
-        public string HastebinCustomDomain = "http://hastebin.com";
+        public string HastebinCustomDomain = "https://hastebin.com";
         public string HastebinSyntaxHighlighting = "hs";
+        public bool HastebinUseFileExtension = true;
 
         // OneTimeSecret
 
         public string OneTimeSecretAPIKey = "";
         public string OneTimeSecretAPIUsername = "";
+
+        // Pastie
+
+        public bool PastieIsPublic = false;
 
         #endregion Text uploaders
 
@@ -130,9 +135,9 @@ namespace ShareX.UploadersLib
         // Dropbox
 
         public OAuth2Info DropboxOAuth2Info = null;
-        public DropboxAccount DropboxAccount = null;
-        public string DropboxUploadPath = "Public/ShareX/%y/%mo";
-        public bool DropboxAutoCreateShareableLink = false;
+        //public DropboxAccount DropboxAccount = null;
+        public string DropboxUploadPath = "ShareX/%y/%mo";
+        public bool DropboxAutoCreateShareableLink = true;
         public DropboxURLType DropboxURLType = DropboxURLType.Default;
         public DropboxAccountInfo DropboxAccountInfo = null; // API v1
 
@@ -248,11 +253,6 @@ namespace ShareX.UploadersLib
 
         public PushbulletSettings PushbulletSettings = new PushbulletSettings();
 
-        // Up1
-
-        public string Up1Host = "https://up1.ca";
-        public string Up1Key = "c61540b5ceecd05092799f936e27755f";
-
         // Lambda
 
         public LambdaSettings LambdaSettings = new LambdaSettings();
@@ -263,7 +263,7 @@ namespace ShareX.UploadersLib
 
         // Pomf
 
-        public PomfUploader PomfUploader = new PomfUploader("https://pomf.cat/upload.php", "https://a.pomf.cat");
+        public PomfUploader PomfUploader = new PomfUploader("https://mixtape.moe/upload.php");
 
         // s-ul
 
@@ -290,6 +290,19 @@ namespace ShareX.UploadersLib
         public string StreamableUsername = "";
         public string StreamablePassword = "";
         public bool StreamableUseDirectURL = false;
+
+        // Uplea
+
+        public string UpleaApiKey = "";
+        public string UpleaEmailAddress = "";
+        public bool UpleaIsPremiumMember = false;
+        public bool UpleaInstantDownloadEnabled = false;
+
+        // Azure Storage
+
+        public string AzureStorageAccountName = "";
+        public string AzureStorageAccountAccessKey = "";
+        public string AzureStorageContainer = "";
 
         #endregion File uploaders
 
@@ -322,6 +335,8 @@ namespace ShareX.UploadersLib
         // polr
         public string PolrAPIHostname = "";
         public string PolrAPIKey = "";
+        public bool PolrIsSecret = false;
+        public bool PolrUseAPIv1 = false;
 
         #endregion URL shorteners
 

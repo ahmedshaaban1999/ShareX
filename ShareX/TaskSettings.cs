@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -274,8 +274,8 @@ namespace ShareX
         public EImageFormat ImageFormat = EImageFormat.PNG;
         public int ImageJPEGQuality = 90;
         public GIFQuality ImageGIFQuality = GIFQuality.Default;
-        public int ImageSizeLimit = 2048;
-        public EImageFormat ImageFormat2 = EImageFormat.JPEG;
+        public bool ImageAutoUseJPEG = true;
+        public int ImageAutoUseJPEGSize = 2048;
         public FileExistAction FileExistAction = FileExistAction.Ask;
 
         #endregion Image / General
@@ -343,12 +343,6 @@ namespace ShareX
         public ScrollingCaptureOptions ScrollingCaptureOptions = new ScrollingCaptureOptions();
 
         #endregion Capture / Scrolling capture
-
-        #region Capture / Rectangle annotate
-
-        public RectangleAnnotateOptions RectangleAnnotateOptions = new RectangleAnnotateOptions();
-
-        #endregion Capture / Rectangle annotate
     }
 
     public class TaskSettingsUpload
@@ -372,10 +366,13 @@ namespace ShareX
         public bool ClipboardUploadAutoIndexFolder = false;
 
         #endregion Upload / Clipboard upload
+
+        public List<UploaderFilter> UploaderFilters = new List<UploaderFilter>();
     }
 
     public class TaskSettingsTools
     {
+        public string ScreenColorPickerFormat = "$r, $g, $b";
         public IndexerSettings IndexerSettings = new IndexerSettings();
         public ImageCombinerOptions ImageCombinerOptions = new ImageCombinerOptions();
         public VideoThumbnailOptions VideoThumbnailOptions = new VideoThumbnailOptions();
@@ -397,6 +394,9 @@ namespace ShareX
 
         [Category("General"), DefaultValue(false), Description("If task contains upload job then this setting will clear clipboard when task start.")]
         public bool AutoClearClipboard { get; set; }
+
+        [Category("General"), DefaultValue(false), Description("Experimental setting to use ShareX region capture to annotate images instead of Greenshot image editor.")]
+        public bool UseShareXForAnnotation { get; set; }
 
         [Category("Sound"), DefaultValue(false), Description("Enable/disable custom capture sound.")]
         public bool UseCustomCaptureSound { get; set; }
@@ -428,6 +428,9 @@ namespace ShareX
         [Category("Paths"), Description("Custom capture path takes precedence over path configured in Application configuration."),
         Editor(typeof(DirectoryNameEditor), typeof(UITypeEditor))]
         public string CapturePath { get; set; }
+
+        [Category("Capture"), DefaultValue(false), Description("Disable annotation support in region capture.")]
+        public bool RegionCaptureDisableAnnotation { get; set; }
 
         [Category("Upload"), Description("Files with these file extensions will be uploaded using image uploader."),
         Editor("System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
@@ -531,9 +534,6 @@ namespace ShareX
 
         [Category("Name pattern"), DefaultValue(50), Description("Maximum name pattern title (%t) length for file name.")]
         public int NamePatternMaxTitleLength { get; set; }
-
-        [Category("Tools"), DefaultValue("$r, $g, $b"), Description("Copy this color format to clipboard after using screen color picker. Formats: $r, $g, $b, $hex, $x, $y")]
-        public string ScreenColorPickerFormat { get; set; }
 
         public TaskSettingsAdvanced()
         {

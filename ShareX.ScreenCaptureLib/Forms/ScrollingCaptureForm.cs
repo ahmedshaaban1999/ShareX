@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -39,8 +39,9 @@ namespace ShareX.ScreenCaptureLib
     {
         public event Action<Image> ImageProcessRequested;
 
-        public ScrollingCaptureOptions Options { get; set; }
-        public Image Result { get; set; }
+        public ScrollingCaptureOptions Options { get; private set; }
+        public RegionCaptureOptions RegionCaptureOptions { get; private set; }
+        public Image Result { get; private set; }
 
         private WindowInfo selectedWindow;
         private Rectangle selectedRectangle;
@@ -49,16 +50,17 @@ namespace ShareX.ScreenCaptureLib
         private bool isBusy, isCapturing, firstCapture, detectingScrollMethod;
         private ScrollingCaptureScrollMethod currentScrollMethod;
 
-        public ScrollingCaptureForm(ScrollingCaptureOptions options, bool forceSelection = false)
+        public ScrollingCaptureForm(ScrollingCaptureOptions options, RegionCaptureOptions regionCaptureOptions, bool forceSelection = false)
         {
             Options = options;
+            RegionCaptureOptions = regionCaptureOptions;
 
             InitializeComponent();
             Icon = ShareXResources.Icon;
 
-            cbScrollMethod.Items.AddRange(Helpers.GetEnumDescriptions<ScrollingCaptureScrollMethod>());
+            cbScrollMethod.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<ScrollingCaptureScrollMethod>());
             cbScrollMethod.SelectedIndex = (int)Options.ScrollMethod;
-            cbScrollTopMethodBeforeCapture.Items.AddRange(Helpers.GetEnumDescriptions<ScrollingCaptureScrollTopMethod>());
+            cbScrollTopMethodBeforeCapture.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<ScrollingCaptureScrollTopMethod>());
             cbScrollTopMethodBeforeCapture.SelectedIndex = (int)Options.ScrollTopMethodBeforeCapture;
             nudStartDelay.SetValue(Options.StartDelay);
             nudScrollDelay.SetValue(Options.ScrollDelay);
@@ -124,7 +126,7 @@ namespace ShareX.ScreenCaptureLib
             {
                 Thread.Sleep(250);
 
-                SimpleWindowInfo simpleWindowInfo = RegionCaptureHelpers.GetWindowInfo();
+                SimpleWindowInfo simpleWindowInfo = RegionCaptureTasks.GetWindowInfo(RegionCaptureOptions);
 
                 if (simpleWindowInfo != null)
                 {
@@ -161,7 +163,7 @@ namespace ShareX.ScreenCaptureLib
 
                 Rectangle rect;
 
-                if (RegionCaptureHelpers.GetRectangleRegion(out rect))
+                if (RegionCaptureTasks.GetRectangleRegion(out rect, RegionCaptureOptions))
                 {
                     selectedRectangle = rect;
                     lblSelectedRectangle.Text = selectedRectangle.ToString();
@@ -232,7 +234,6 @@ namespace ShareX.ScreenCaptureLib
             isCapturing = false;
 
             if (Options.AutoUpload) StartProcess();
-            if (Options.AutoClose) Close();
         }
 
         private void Clean()
@@ -313,8 +314,8 @@ namespace ShareX.ScreenCaptureLib
                 }
             }
 
-            Screenshot.CaptureCursor = false;
-            Image image = Screenshot.CaptureRectangle(selectedRectangle);
+            Screenshot screenshot = new Screenshot() { CaptureCursor = false };
+            Image image = screenshot.CaptureRectangle(selectedRectangle);
 
             if (image != null)
             {
@@ -580,7 +581,7 @@ namespace ShareX.ScreenCaptureLib
                 Image newImage;
                 Image image = images[i];
 
-                if (Options.TrimLeftEdge > 0 || Options.TrimTopEdge > 0 || Options.TrimTopEdge > 0 || Options.TrimBottomEdge > 0 ||
+                if (Options.TrimLeftEdge > 0 || Options.TrimTopEdge > 0 || Options.TrimRightEdge > 0 || Options.TrimBottomEdge > 0 ||
                     Options.CombineAdjustmentVertical > 0 || Options.CombineAdjustmentLastVertical > 0)
                 {
                     Rectangle rect = new Rectangle(Options.TrimLeftEdge, Options.TrimTopEdge, image.Width - Options.TrimLeftEdge - Options.TrimRightEdge,
@@ -661,11 +662,6 @@ namespace ShareX.ScreenCaptureLib
         private void chkAutoUpload_CheckedChanged(object sender, EventArgs e)
         {
             Options.AutoUpload = chkAutoUpload.Checked;
-        }
-
-        private void cbAutoClose_CheckedChanged(object sender, EventArgs e)
-        {
-            Options.AutoClose = cbAutoClose.Checked;
         }
 
         private Padding GuessEdges(Image img1, Image img2)

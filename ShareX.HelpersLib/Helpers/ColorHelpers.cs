@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -321,34 +321,6 @@ namespace ShareX.HelpersLib
             }
 
             return Color.FromName(color);
-        }
-
-        public static Color Mix(List<Color> colors)
-        {
-            int a = 0;
-            int r = 0;
-            int g = 0;
-            int b = 0;
-            int count = 0;
-
-            foreach (Color color in colors)
-            {
-                if (!color.Equals(Color.Empty))
-                {
-                    a += color.A;
-                    r += color.R;
-                    g += color.G;
-                    b += color.B;
-                    count++;
-                }
-            }
-
-            if (count == 0)
-            {
-                return Color.Empty;
-            }
-
-            return Color.FromArgb(a / count, r / count, g / count, b / count);
         }
 
         public static int PerceivedBrightness(Color color)

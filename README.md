@@ -1,6 +1,13 @@
-### ShareX website: [getsharex.com](https://getsharex.com)
+# ShareX
 
-[![](https://getsharex.com/img/ShareX_Screenshot.png)](https://getsharex.com)
+[![Website](https://img.shields.io/badge/ShareX-website-blue.svg)](https://getsharex.com)
+[![IRC](https://img.shields.io/badge/IRC-%23ShareX-blue.svg)](https://webchat.freenode.net/?channels=%23ShareX)
+[![Build status](https://img.shields.io/appveyor/ci/ShareX/sharex.svg?label=Build&maxAge=60)](https://ci.appveyor.com/project/ShareX/sharex)
+[![License](https://img.shields.io/github/license/ShareX/ShareX.svg?label=License&maxAge=86400)](./LICENSE.txt)
+[![Release](https://img.shields.io/github/release/ShareX/ShareX.svg?label=Release&maxAge=60)](https://github.com/ShareX/ShareX/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/ShareX/ShareX/latest/total.svg?label=Downloads&maxAge=60)](https://getsharex.com/downloads/)
+
+[![Screenshot](https://getsharex.com/img/ShareX_Screenshot.png)](https://getsharex.com)
 
 # Features
 
@@ -13,19 +20,40 @@ ShareX incorporates the following methods to allow screen capture.
 * Active monitor
 * Window menu
 * Monitor menu
-* Region
-* Region (Annotate)
+* [Region](#region-capture-tools)
 * Region (Light)
 * Region (Transparent)
-* Polygon
-* Freehand
 * Last region
 * Custom region
 * Screen recording
 * Screen recording (GIF)
 * Scrolling capture
 * Webpage capture
+* Text capture (OCR)
 * Auto capture
+
+#### Region capture tools
+
+* Region
+  * Rectangle
+  * Rounded rectangle
+  * Ellipse
+  * Freehand
+* Drawing
+  * Rectangle
+  * Rounded rectangle
+  * Ellipse
+  * Freehand
+  * Line
+  * Arrow
+  * Text
+  * Speech balloon
+  * Step
+  * Image
+* Effect
+  * Blur
+  * Pixelate
+  * Highlight
 
 #### After capture tasks
 
@@ -44,6 +72,7 @@ You can select any or all of these tasks to be automatically run after each scre
 * Copy file to clipboard
 * Copy file path to clipboard
 * Show file in explorer
+* Recognize text (OCR)
 * Show "Before upload" window
 * Upload image to host
 * Delete file locally
@@ -104,6 +133,7 @@ ShareX supports the following destinations.
 * [vgy.me](http://vgy.me)
 * [SomeImage](https://someimage.com)
 * [Imgland](http://imgland.net)
+* [SLiMG](https://sli.mg)
 * [Custom image uploader](https://github.com/ShareX/CustomUploaders)
 * [File uploader](#file-uploaders)
 
@@ -127,6 +157,7 @@ ShareX supports the following destinations.
 * [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol)
 * [OneDrive](https://onedrive.live.com)
 * [Google Drive](https://drive.google.com)
+* [puush](http://puush.me)
 * [Box](https://www.box.com)
 * [MEGA](https://mega.co.nz)
 * [Amazon S3](http://aws.amazon.com/s3/)
@@ -162,10 +193,12 @@ ShareX supports the following destinations.
   * [up.che.moe](http://up.che.moe)
 * [Uguu](https://uguu.se)
 * [Dropfile](https://dropfile.to)
-* [Up1](https://up1.ca)
 * [Seafile](https://www.seafile.com)
-* [s-ul](https://s-ul.eu)
 * [Streamable](https://streamable.com)
+* [s-ul](https://s-ul.eu)
+* [Lithiio](https://lithi.io)
+* [transfer.sh](https://transfer.sh)
+* [Uplea](http://uplea.com)
 * Shared folder
 * [Email](https://en.wikipedia.org/wiki/Email)
 * [Custom file uploader](https://github.com/ShareX/CustomUploaders)
@@ -204,7 +237,7 @@ ShareX supports the following destinations.
 
 ## Tools
 
-Additional tools to make certain tasks more efficient.
+Productivity tools to make certain tasks more efficient.
 
 * Color picker
 * Screen color picker

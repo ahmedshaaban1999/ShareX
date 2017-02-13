@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -26,6 +26,7 @@
 using Newtonsoft.Json;
 using ShareX.HelpersLib;
 using ShareX.UploadersLib.Properties;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -44,7 +45,8 @@ namespace ShareX.UploadersLib.TextUploaders
             return new Hastebin()
             {
                 CustomDomain = config.HastebinCustomDomain,
-                SyntaxHighlighting = config.HastebinSyntaxHighlighting
+                SyntaxHighlighting = config.HastebinSyntaxHighlighting,
+                UseFileExtension = config.HastebinUseFileExtension
             };
         }
 
@@ -55,6 +57,7 @@ namespace ShareX.UploadersLib.TextUploaders
     {
         public string CustomDomain { get; set; }
         public string SyntaxHighlighting { get; set; }
+        public bool UseFileExtension { get; set; }
 
         public override UploadResult UploadText(string text, string fileName)
         {
@@ -70,7 +73,7 @@ namespace ShareX.UploadersLib.TextUploaders
                 }
                 else
                 {
-                    domain = "http://hastebin.com";
+                    domain = "https://hastebin.com";
                 }
 
                 ur.Response = SendRequest(HttpMethod.POST, URLHelpers.CombineURL(domain, "documents"), text);
@@ -83,9 +86,21 @@ namespace ShareX.UploadersLib.TextUploaders
                     {
                         string url = URLHelpers.CombineURL(domain, response.Key);
 
-                        if (!string.IsNullOrEmpty(SyntaxHighlighting))
+                        string syntaxHighlighting = SyntaxHighlighting;
+
+                        if (UseFileExtension)
                         {
-                            url += "." + SyntaxHighlighting;
+                            string ext = Helpers.GetFilenameExtension(fileName);
+
+                            if (!string.IsNullOrEmpty(ext) && !ext.Equals("txt", StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                syntaxHighlighting = ext.ToLowerInvariant();
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(syntaxHighlighting))
+                        {
+                            url += "." + syntaxHighlighting;
                         }
 
                         ur.URL = url;

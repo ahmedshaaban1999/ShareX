@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -25,17 +25,16 @@
 
 using ShareX.HelpersLib;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace ShareX.ScreenCaptureLib
 {
     internal class TextAnimation
     {
         public string Text { get; private set; }
+
+        public Point Position { get; set; }
 
         private double opacity;
 
@@ -51,51 +50,63 @@ namespace ShareX.ScreenCaptureLib
             }
         }
 
-        public TimeSpan Duration { get; private set; }
-        public TimeSpan FadeDuration { get; private set; }
+        public TimeSpan Duration { get; private set; } = TimeSpan.Zero;
+        public TimeSpan FadeInDuration { get; private set; } = TimeSpan.Zero;
+        public TimeSpan FadeOutDuration { get; private set; } = TimeSpan.Zero;
 
-        public TimeSpan TotalDuration
-        {
-            get
-            {
-                return Duration + FadeDuration;
-            }
-        }
+        public TimeSpan TotalDuration => FadeInDuration + Duration + FadeOutDuration;
 
-        public bool Active
-        {
-            get
-            {
-                return timer.IsRunning && timer.Elapsed <= TotalDuration;
-            }
-        }
+        public bool Active => timer.IsRunning && timer.Elapsed <= TotalDuration;
 
         private Stopwatch timer = new Stopwatch();
 
-        public TextAnimation(TimeSpan duration, TimeSpan fadeDuration)
+        public TextAnimation(TimeSpan duration)
         {
             Duration = duration;
-            FadeDuration = fadeDuration;
+        }
+
+        public TextAnimation(TimeSpan duration, TimeSpan fadeInDuration, TimeSpan fadeOutDuration)
+        {
+            Duration = duration;
+            FadeInDuration = fadeInDuration;
+            FadeOutDuration = fadeOutDuration;
         }
 
         public void Start(string text)
         {
             Text = text;
-            Opacity = 1;
             timer.Restart();
         }
 
-        public void Update()
+        public void Stop()
+        {
+            timer.Stop();
+        }
+
+        public bool Update()
         {
             if (Active)
             {
-                Opacity = 1 - (timer.Elapsed - Duration).TotalMilliseconds / FadeDuration.TotalMilliseconds;
+                if (timer.Elapsed < FadeInDuration)
+                {
+                    Opacity = timer.Elapsed.TotalMilliseconds / FadeInDuration.TotalMilliseconds;
+                }
+                else
+                {
+                    Opacity = 1 - (timer.Elapsed - (FadeInDuration + Duration)).TotalMilliseconds / FadeOutDuration.TotalMilliseconds;
+                }
 
                 if (Opacity == 0)
                 {
                     timer.Stop();
                 }
+                else
+                {
+                    return true;
+                }
             }
+
+            return false;
         }
     }
 }

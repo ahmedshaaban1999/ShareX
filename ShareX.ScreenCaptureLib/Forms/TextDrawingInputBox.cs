@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -26,12 +26,8 @@
 using ShareX.HelpersLib;
 using ShareX.ScreenCaptureLib.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ShareX.ScreenCaptureLib
@@ -67,7 +63,7 @@ namespace ShareX.ScreenCaptureLib
                 cbFonts.SelectedItem = "Arial";
             }
 
-            nudTextSize.Value = Options.Size;
+            nudTextSize.SetValue(Options.Size);
             btnTextColor.Color = Options.Color;
             cbBold.Checked = Options.Bold;
             cbItalic.Checked = Options.Italic;
@@ -167,6 +163,14 @@ namespace ShareX.ScreenCaptureLib
             UpdateVerticalAlignmentImage();
         }
 
+        private void txtInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.Enter))
+            {
+                Close();
+            }
+        }
+
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
             InputText = txtInput.Text;
@@ -179,7 +183,20 @@ namespace ShareX.ScreenCaptureLib
 
         private void UpdateInputBox()
         {
-            txtInput.Font = new Font(Options.Font, Options.Size, Options.Style);
+            Font font;
+
+            try
+            {
+                font = new Font(Options.Font, Options.Size, Options.Style);
+            }
+            catch
+            {
+                Options.Font = "Arial";
+                font = new Font(Options.Font, Options.Size, Options.Style);
+            }
+
+            txtInput.Font = font;
+
             txtInput.ForeColor = Options.Color;
             txtInput.BackColor = ColorHelpers.VisibleColor(Options.Color, Color.White, Color.FromArgb(50, 50, 50));
 

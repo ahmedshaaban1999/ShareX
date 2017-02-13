@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2016 ShareX Team
+    Copyright (c) 2007-2017 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -41,12 +41,7 @@ namespace ShareX.ScreenCaptureLib
         public Rectangle CaptureArea { get; set; }
         public float Duration { get; set; }
         public bool DrawCursor { get; set; }
-        public FFmpegOptions FFmpeg { get; set; }
-
-        public ScreencastOptions()
-        {
-            FFmpeg = new FFmpegOptions();
-        }
+        public FFmpegOptions FFmpeg { get; set; } = new FFmpegOptions();
 
         public string GetFFmpegCommands()
         {
@@ -178,6 +173,12 @@ namespace ShareX.ScreenCaptureLib
                         break;
                     case FFmpegVideoCodec.libxvid: // https://trac.ffmpeg.org/wiki/Encode/MPEG-4
                         args.AppendFormat("-qscale:v {0} ", FFmpeg.XviD_qscale);
+                        break;
+                    case FFmpegVideoCodec.h264_nvenc: // https://trac.ffmpeg.org/wiki/HWAccelIntro#NVENC
+                    case FFmpegVideoCodec.hevc_nvenc:
+                        args.AppendFormat("-preset {0} ", FFmpeg.NVENC_preset);
+                        args.AppendFormat("-b:v {0}k ", FFmpeg.NVENC_bitrate);
+                        args.AppendFormat("-pix_fmt {0} ", "yuv420p");
                         break;
                     case FFmpegVideoCodec.gif:
                         args.AppendFormat("-preset {0} ", FFmpegPreset.ultrafast);

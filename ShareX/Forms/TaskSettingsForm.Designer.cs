@@ -55,7 +55,7 @@
             this.tsmiURLSharingServices = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTask = new ShareX.HelpersLib.MenuButton();
             this.tpGeneral = new System.Windows.Forms.TabPage();
-            this.panelGeneral = new System.Windows.Forms.Panel();
+            this.pGeneral = new System.Windows.Forms.Panel();
             this.lblAfterTaskNotification = new System.Windows.Forms.Label();
             this.cboPopUpNotification = new System.Windows.Forms.ComboBox();
             this.cbPlaySoundAfterUpload = new System.Windows.Forms.CheckBox();
@@ -65,16 +65,14 @@
             this.tcImage = new System.Windows.Forms.TabControl();
             this.tpQuality = new System.Windows.Forms.TabPage();
             this.pImage = new System.Windows.Forms.Panel();
+            this.cbImageAutoUseJPEG = new System.Windows.Forms.CheckBox();
             this.lblImageFormat = new System.Windows.Forms.Label();
             this.cbImageFileExist = new System.Windows.Forms.ComboBox();
-            this.lblUseImageFormat2After = new System.Windows.Forms.Label();
             this.lblImageFileExist = new System.Windows.Forms.Label();
-            this.nudUseImageFormat2After = new System.Windows.Forms.NumericUpDown();
-            this.lblImageFormat2 = new System.Windows.Forms.Label();
-            this.lblUseImageFormat2AfterHint = new System.Windows.Forms.Label();
+            this.nudImageAutoUseJPEGSize = new System.Windows.Forms.NumericUpDown();
+            this.lblImageSizeLimitHint = new System.Windows.Forms.Label();
             this.nudImageJPEGQuality = new System.Windows.Forms.NumericUpDown();
             this.cbImageFormat = new System.Windows.Forms.ComboBox();
-            this.cbImageFormat2 = new System.Windows.Forms.ComboBox();
             this.lblImageJPEGQualityHint = new System.Windows.Forms.Label();
             this.lblImageGIFQuality = new System.Windows.Forms.Label();
             this.lblImageJPEGQuality = new System.Windows.Forms.Label();
@@ -179,8 +177,6 @@
             this.cbScreenRecorderFixedDuration = new System.Windows.Forms.CheckBox();
             this.nudGIFFPS = new System.Windows.Forms.NumericUpDown();
             this.lblGIFFPS = new System.Windows.Forms.Label();
-            this.tpScrollingCapture = new System.Windows.Forms.TabPage();
-            this.pgScrollingCapture = new System.Windows.Forms.PropertyGrid();
             this.tpUpload = new System.Windows.Forms.TabPage();
             this.tcUpload = new System.Windows.Forms.TabControl();
             this.tpUploadMain = new System.Windows.Forms.TabPage();
@@ -224,27 +220,36 @@
             this.btnWatchFolderRemove = new System.Windows.Forms.Button();
             this.btnWatchFolderAdd = new System.Windows.Forms.Button();
             this.tpTools = new System.Windows.Forms.TabPage();
-            this.tcTools = new System.Windows.Forms.TabControl();
-            this.tpToolsMain = new System.Windows.Forms.TabPage();
+            this.pTools = new System.Windows.Forms.Panel();
+            this.txtToolsScreenColorPickerFormat = new System.Windows.Forms.TextBox();
+            this.lblToolsScreenColorPickerFormat = new System.Windows.Forms.Label();
             this.chkUseDefaultToolsSettings = new System.Windows.Forms.CheckBox();
-            this.tpIndexer = new System.Windows.Forms.TabPage();
-            this.pgIndexer = new System.Windows.Forms.PropertyGrid();
-            this.tpVideoThumbnailer = new System.Windows.Forms.TabPage();
-            this.pgVideoThumbnailer = new System.Windows.Forms.PropertyGrid();
             this.tpAdvanced = new System.Windows.Forms.TabPage();
             this.pgTaskSettings = new System.Windows.Forms.PropertyGrid();
             this.chkUseDefaultAdvancedSettings = new System.Windows.Forms.CheckBox();
             this.tttvMain = new ShareX.HelpersLib.TabToTreeView();
+            this.tpUploaderFilters = new System.Windows.Forms.TabPage();
+            this.txtUploaderFiltersExtensions = new System.Windows.Forms.TextBox();
+            this.lblUploaderFiltersExtensions = new System.Windows.Forms.Label();
+            this.lblUploaderFiltersExtensionsExample = new System.Windows.Forms.Label();
+            this.cbUploaderFiltersDestination = new System.Windows.Forms.ComboBox();
+            this.lblUploaderFiltersDestination = new System.Windows.Forms.Label();
+            this.btnUploaderFiltersAdd = new System.Windows.Forms.Button();
+            this.btnUploaderFiltersUpdate = new System.Windows.Forms.Button();
+            this.btnUploaderFiltersRemove = new System.Windows.Forms.Button();
+            this.lvUploaderFiltersList = new ShareX.HelpersLib.MyListView();
+            this.chUploaderFiltersName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chUploaderFiltersExtension = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tcTaskSettings.SuspendLayout();
             this.tpTask.SuspendLayout();
             this.cmsDestinations.SuspendLayout();
             this.tpGeneral.SuspendLayout();
-            this.panelGeneral.SuspendLayout();
+            this.pGeneral.SuspendLayout();
             this.tpImage.SuspendLayout();
             this.tcImage.SuspendLayout();
             this.tpQuality.SuspendLayout();
             this.pImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudUseImageFormat2After)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImageAutoUseJPEGSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudImageJPEGQuality)).BeginInit();
             this.tpEffects.SuspendLayout();
             this.tpThumbnail.SuspendLayout();
@@ -274,7 +279,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudScreenRecorderDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudScreenRecorderStartDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGIFFPS)).BeginInit();
-            this.tpScrollingCapture.SuspendLayout();
             this.tpUpload.SuspendLayout();
             this.tcUpload.SuspendLayout();
             this.tpUploadMain.SuspendLayout();
@@ -284,11 +288,9 @@
             this.pActions.SuspendLayout();
             this.tpWatchFolders.SuspendLayout();
             this.tpTools.SuspendLayout();
-            this.tcTools.SuspendLayout();
-            this.tpToolsMain.SuspendLayout();
-            this.tpIndexer.SuspendLayout();
-            this.tpVideoThumbnailer.SuspendLayout();
+            this.pTools.SuspendLayout();
             this.tpAdvanced.SuspendLayout();
+            this.tpUploaderFilters.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmsAfterCapture
@@ -477,20 +479,20 @@
             // 
             // tpGeneral
             // 
-            this.tpGeneral.Controls.Add(this.panelGeneral);
+            this.tpGeneral.Controls.Add(this.pGeneral);
             this.tpGeneral.Controls.Add(this.chkUseDefaultGeneralSettings);
             resources.ApplyResources(this.tpGeneral, "tpGeneral");
             this.tpGeneral.Name = "tpGeneral";
             this.tpGeneral.UseVisualStyleBackColor = true;
             // 
-            // panelGeneral
+            // pGeneral
             // 
-            this.panelGeneral.Controls.Add(this.lblAfterTaskNotification);
-            this.panelGeneral.Controls.Add(this.cboPopUpNotification);
-            this.panelGeneral.Controls.Add(this.cbPlaySoundAfterUpload);
-            this.panelGeneral.Controls.Add(this.cbPlaySoundAfterCapture);
-            resources.ApplyResources(this.panelGeneral, "panelGeneral");
-            this.panelGeneral.Name = "panelGeneral";
+            this.pGeneral.Controls.Add(this.lblAfterTaskNotification);
+            this.pGeneral.Controls.Add(this.cboPopUpNotification);
+            this.pGeneral.Controls.Add(this.cbPlaySoundAfterUpload);
+            this.pGeneral.Controls.Add(this.cbPlaySoundAfterCapture);
+            resources.ApplyResources(this.pGeneral, "pGeneral");
+            this.pGeneral.Name = "pGeneral";
             // 
             // lblAfterTaskNotification
             // 
@@ -554,22 +556,27 @@
             // 
             // pImage
             // 
+            this.pImage.Controls.Add(this.cbImageAutoUseJPEG);
             this.pImage.Controls.Add(this.lblImageFormat);
             this.pImage.Controls.Add(this.cbImageFileExist);
-            this.pImage.Controls.Add(this.lblUseImageFormat2After);
             this.pImage.Controls.Add(this.lblImageFileExist);
-            this.pImage.Controls.Add(this.nudUseImageFormat2After);
-            this.pImage.Controls.Add(this.lblImageFormat2);
-            this.pImage.Controls.Add(this.lblUseImageFormat2AfterHint);
+            this.pImage.Controls.Add(this.nudImageAutoUseJPEGSize);
+            this.pImage.Controls.Add(this.lblImageSizeLimitHint);
             this.pImage.Controls.Add(this.nudImageJPEGQuality);
             this.pImage.Controls.Add(this.cbImageFormat);
-            this.pImage.Controls.Add(this.cbImageFormat2);
             this.pImage.Controls.Add(this.lblImageJPEGQualityHint);
             this.pImage.Controls.Add(this.lblImageGIFQuality);
             this.pImage.Controls.Add(this.lblImageJPEGQuality);
             this.pImage.Controls.Add(this.cbImageGIFQuality);
             resources.ApplyResources(this.pImage, "pImage");
             this.pImage.Name = "pImage";
+            // 
+            // cbImageAutoUseJPEG
+            // 
+            resources.ApplyResources(this.cbImageAutoUseJPEG, "cbImageAutoUseJPEG");
+            this.cbImageAutoUseJPEG.Name = "cbImageAutoUseJPEG";
+            this.cbImageAutoUseJPEG.UseVisualStyleBackColor = true;
+            this.cbImageAutoUseJPEG.CheckedChanged += new System.EventHandler(this.cbImageAutoUseJPEG_CheckedChanged);
             // 
             // lblImageFormat
             // 
@@ -584,41 +591,36 @@
             this.cbImageFileExist.Name = "cbImageFileExist";
             this.cbImageFileExist.SelectedIndexChanged += new System.EventHandler(this.cbImageFileExist_SelectedIndexChanged);
             // 
-            // lblUseImageFormat2After
-            // 
-            resources.ApplyResources(this.lblUseImageFormat2After, "lblUseImageFormat2After");
-            this.lblUseImageFormat2After.Name = "lblUseImageFormat2After";
-            // 
             // lblImageFileExist
             // 
             resources.ApplyResources(this.lblImageFileExist, "lblImageFileExist");
             this.lblImageFileExist.Name = "lblImageFileExist";
             // 
-            // nudUseImageFormat2After
+            // nudImageAutoUseJPEGSize
             // 
-            resources.ApplyResources(this.nudUseImageFormat2After, "nudUseImageFormat2After");
-            this.nudUseImageFormat2After.Maximum = new decimal(new int[] {
+            resources.ApplyResources(this.nudImageAutoUseJPEGSize, "nudImageAutoUseJPEGSize");
+            this.nudImageAutoUseJPEGSize.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.nudUseImageFormat2After.Name = "nudUseImageFormat2After";
-            this.nudUseImageFormat2After.Value = new decimal(new int[] {
+            this.nudImageAutoUseJPEGSize.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudImageAutoUseJPEGSize.Name = "nudImageAutoUseJPEGSize";
+            this.nudImageAutoUseJPEGSize.Value = new decimal(new int[] {
             2048,
             0,
             0,
             0});
-            this.nudUseImageFormat2After.ValueChanged += new System.EventHandler(this.nudUseImageFormat2After_ValueChanged);
+            this.nudImageAutoUseJPEGSize.ValueChanged += new System.EventHandler(this.nudImageAutoUseJPEGSize_ValueChanged);
             // 
-            // lblImageFormat2
+            // lblImageSizeLimitHint
             // 
-            resources.ApplyResources(this.lblImageFormat2, "lblImageFormat2");
-            this.lblImageFormat2.Name = "lblImageFormat2";
-            // 
-            // lblUseImageFormat2AfterHint
-            // 
-            resources.ApplyResources(this.lblUseImageFormat2AfterHint, "lblUseImageFormat2AfterHint");
-            this.lblUseImageFormat2AfterHint.Name = "lblUseImageFormat2AfterHint";
+            resources.ApplyResources(this.lblImageSizeLimitHint, "lblImageSizeLimitHint");
+            this.lblImageSizeLimitHint.Name = "lblImageSizeLimitHint";
             // 
             // nudImageJPEGQuality
             // 
@@ -638,14 +640,6 @@
             resources.ApplyResources(this.cbImageFormat, "cbImageFormat");
             this.cbImageFormat.Name = "cbImageFormat";
             this.cbImageFormat.SelectedIndexChanged += new System.EventHandler(this.cbImageFormat_SelectedIndexChanged);
-            // 
-            // cbImageFormat2
-            // 
-            this.cbImageFormat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbImageFormat2.FormattingEnabled = true;
-            resources.ApplyResources(this.cbImageFormat2, "cbImageFormat2");
-            this.cbImageFormat2.Name = "cbImageFormat2";
-            this.cbImageFormat2.SelectedIndexChanged += new System.EventHandler(this.cbImageFormat2_SelectedIndexChanged);
             // 
             // lblImageJPEGQualityHint
             // 
@@ -796,7 +790,6 @@
             this.tcCapture.Controls.Add(this.tpCaptureGeneral);
             this.tcCapture.Controls.Add(this.tpRegionCapture);
             this.tcCapture.Controls.Add(this.tpScreenRecorder);
-            this.tcCapture.Controls.Add(this.tpScrollingCapture);
             resources.ApplyResources(this.tcCapture, "tcCapture");
             this.tcCapture.Name = "tcCapture";
             this.tcCapture.SelectedIndex = 0;
@@ -1156,22 +1149,7 @@
             // nudRegionCaptureMagnifierPixelSize
             // 
             resources.ApplyResources(this.nudRegionCaptureMagnifierPixelSize, "nudRegionCaptureMagnifierPixelSize");
-            this.nudRegionCaptureMagnifierPixelSize.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.nudRegionCaptureMagnifierPixelSize.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
             this.nudRegionCaptureMagnifierPixelSize.Name = "nudRegionCaptureMagnifierPixelSize";
-            this.nudRegionCaptureMagnifierPixelSize.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
             this.nudRegionCaptureMagnifierPixelSize.ValueChanged += new System.EventHandler(this.nudRegionCaptureMagnifierPixelSize_ValueChanged);
             // 
             // lblRegionCaptureMagnifierPixelSize
@@ -1187,22 +1165,7 @@
             0,
             0});
             resources.ApplyResources(this.nudRegionCaptureMagnifierPixelCount, "nudRegionCaptureMagnifierPixelCount");
-            this.nudRegionCaptureMagnifierPixelCount.Maximum = new decimal(new int[] {
-            35,
-            0,
-            0,
-            0});
-            this.nudRegionCaptureMagnifierPixelCount.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nudRegionCaptureMagnifierPixelCount.Name = "nudRegionCaptureMagnifierPixelCount";
-            this.nudRegionCaptureMagnifierPixelCount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nudRegionCaptureMagnifierPixelCount.ValueChanged += new System.EventHandler(this.nudRegionCaptureMagnifierPixelCount_ValueChanged);
             // 
             // lblRegionCaptureMagnifierPixelCount
@@ -1630,21 +1593,6 @@
             resources.ApplyResources(this.lblGIFFPS, "lblGIFFPS");
             this.lblGIFFPS.Name = "lblGIFFPS";
             // 
-            // tpScrollingCapture
-            // 
-            this.tpScrollingCapture.Controls.Add(this.pgScrollingCapture);
-            resources.ApplyResources(this.tpScrollingCapture, "tpScrollingCapture");
-            this.tpScrollingCapture.Name = "tpScrollingCapture";
-            this.tpScrollingCapture.UseVisualStyleBackColor = true;
-            // 
-            // pgScrollingCapture
-            // 
-            this.pgScrollingCapture.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            resources.ApplyResources(this.pgScrollingCapture, "pgScrollingCapture");
-            this.pgScrollingCapture.Name = "pgScrollingCapture";
-            this.pgScrollingCapture.PropertySort = System.Windows.Forms.PropertySort.NoSort;
-            this.pgScrollingCapture.ToolbarVisible = false;
-            // 
             // tpUpload
             // 
             this.tpUpload.Controls.Add(this.tcUpload);
@@ -1657,6 +1605,7 @@
             this.tcUpload.Controls.Add(this.tpUploadMain);
             this.tcUpload.Controls.Add(this.tpFileNaming);
             this.tcUpload.Controls.Add(this.tpUploadClipboard);
+            this.tcUpload.Controls.Add(this.tpUploaderFilters);
             resources.ApplyResources(this.tcUpload, "tcUpload");
             this.tcUpload.Name = "tcUpload";
             this.tcUpload.SelectedIndex = 0;
@@ -1955,26 +1904,29 @@
             // 
             // tpTools
             // 
-            this.tpTools.Controls.Add(this.tcTools);
+            this.tpTools.Controls.Add(this.pTools);
+            this.tpTools.Controls.Add(this.chkUseDefaultToolsSettings);
             resources.ApplyResources(this.tpTools, "tpTools");
             this.tpTools.Name = "tpTools";
             this.tpTools.UseVisualStyleBackColor = true;
             // 
-            // tcTools
+            // pTools
             // 
-            this.tcTools.Controls.Add(this.tpToolsMain);
-            this.tcTools.Controls.Add(this.tpIndexer);
-            this.tcTools.Controls.Add(this.tpVideoThumbnailer);
-            resources.ApplyResources(this.tcTools, "tcTools");
-            this.tcTools.Name = "tcTools";
-            this.tcTools.SelectedIndex = 0;
+            this.pTools.Controls.Add(this.txtToolsScreenColorPickerFormat);
+            this.pTools.Controls.Add(this.lblToolsScreenColorPickerFormat);
+            resources.ApplyResources(this.pTools, "pTools");
+            this.pTools.Name = "pTools";
             // 
-            // tpToolsMain
+            // txtToolsScreenColorPickerFormat
             // 
-            this.tpToolsMain.Controls.Add(this.chkUseDefaultToolsSettings);
-            resources.ApplyResources(this.tpToolsMain, "tpToolsMain");
-            this.tpToolsMain.Name = "tpToolsMain";
-            this.tpToolsMain.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.txtToolsScreenColorPickerFormat, "txtToolsScreenColorPickerFormat");
+            this.txtToolsScreenColorPickerFormat.Name = "txtToolsScreenColorPickerFormat";
+            this.txtToolsScreenColorPickerFormat.TextChanged += new System.EventHandler(this.txtToolsScreenColorPickerFormat_TextChanged);
+            // 
+            // lblToolsScreenColorPickerFormat
+            // 
+            resources.ApplyResources(this.lblToolsScreenColorPickerFormat, "lblToolsScreenColorPickerFormat");
+            this.lblToolsScreenColorPickerFormat.Name = "lblToolsScreenColorPickerFormat";
             // 
             // chkUseDefaultToolsSettings
             // 
@@ -1984,36 +1936,6 @@
             this.chkUseDefaultToolsSettings.Name = "chkUseDefaultToolsSettings";
             this.chkUseDefaultToolsSettings.UseVisualStyleBackColor = true;
             this.chkUseDefaultToolsSettings.CheckedChanged += new System.EventHandler(this.chkUseDefaultToolsSettings_CheckedChanged);
-            // 
-            // tpIndexer
-            // 
-            this.tpIndexer.Controls.Add(this.pgIndexer);
-            resources.ApplyResources(this.tpIndexer, "tpIndexer");
-            this.tpIndexer.Name = "tpIndexer";
-            this.tpIndexer.UseVisualStyleBackColor = true;
-            // 
-            // pgIndexer
-            // 
-            this.pgIndexer.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            resources.ApplyResources(this.pgIndexer, "pgIndexer");
-            this.pgIndexer.Name = "pgIndexer";
-            this.pgIndexer.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.pgIndexer.ToolbarVisible = false;
-            // 
-            // tpVideoThumbnailer
-            // 
-            this.tpVideoThumbnailer.Controls.Add(this.pgVideoThumbnailer);
-            resources.ApplyResources(this.tpVideoThumbnailer, "tpVideoThumbnailer");
-            this.tpVideoThumbnailer.Name = "tpVideoThumbnailer";
-            this.tpVideoThumbnailer.UseVisualStyleBackColor = true;
-            // 
-            // pgVideoThumbnailer
-            // 
-            this.pgVideoThumbnailer.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            resources.ApplyResources(this.pgVideoThumbnailer, "pgVideoThumbnailer");
-            this.pgVideoThumbnailer.Name = "pgVideoThumbnailer";
-            this.pgVideoThumbnailer.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.pgVideoThumbnailer.ToolbarVisible = false;
             // 
             // tpAdvanced
             // 
@@ -2050,6 +1972,91 @@
             this.tttvMain.TreeViewSize = 190;
             this.tttvMain.TabChanged += new ShareX.HelpersLib.TabToTreeView.TabChangedEventHandler(this.tttvMain_TabChanged);
             // 
+            // tpUploaderFilters
+            // 
+            this.tpUploaderFilters.Controls.Add(this.lvUploaderFiltersList);
+            this.tpUploaderFilters.Controls.Add(this.btnUploaderFiltersRemove);
+            this.tpUploaderFilters.Controls.Add(this.btnUploaderFiltersUpdate);
+            this.tpUploaderFilters.Controls.Add(this.btnUploaderFiltersAdd);
+            this.tpUploaderFilters.Controls.Add(this.lblUploaderFiltersDestination);
+            this.tpUploaderFilters.Controls.Add(this.cbUploaderFiltersDestination);
+            this.tpUploaderFilters.Controls.Add(this.lblUploaderFiltersExtensionsExample);
+            this.tpUploaderFilters.Controls.Add(this.lblUploaderFiltersExtensions);
+            this.tpUploaderFilters.Controls.Add(this.txtUploaderFiltersExtensions);
+            resources.ApplyResources(this.tpUploaderFilters, "tpUploaderFilters");
+            this.tpUploaderFilters.Name = "tpUploaderFilters";
+            this.tpUploaderFilters.UseVisualStyleBackColor = true;
+            // 
+            // txtUploaderFiltersExtensions
+            // 
+            resources.ApplyResources(this.txtUploaderFiltersExtensions, "txtUploaderFiltersExtensions");
+            this.txtUploaderFiltersExtensions.Name = "txtUploaderFiltersExtensions";
+            // 
+            // lblUploaderFiltersExtensions
+            // 
+            resources.ApplyResources(this.lblUploaderFiltersExtensions, "lblUploaderFiltersExtensions");
+            this.lblUploaderFiltersExtensions.Name = "lblUploaderFiltersExtensions";
+            // 
+            // lblUploaderFiltersExtensionsExample
+            // 
+            resources.ApplyResources(this.lblUploaderFiltersExtensionsExample, "lblUploaderFiltersExtensionsExample");
+            this.lblUploaderFiltersExtensionsExample.Name = "lblUploaderFiltersExtensionsExample";
+            // 
+            // cbUploaderFiltersDestination
+            // 
+            this.cbUploaderFiltersDestination.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUploaderFiltersDestination.FormattingEnabled = true;
+            resources.ApplyResources(this.cbUploaderFiltersDestination, "cbUploaderFiltersDestination");
+            this.cbUploaderFiltersDestination.Name = "cbUploaderFiltersDestination";
+            // 
+            // lblUploaderFiltersDestination
+            // 
+            resources.ApplyResources(this.lblUploaderFiltersDestination, "lblUploaderFiltersDestination");
+            this.lblUploaderFiltersDestination.Name = "lblUploaderFiltersDestination";
+            // 
+            // btnUploaderFiltersAdd
+            // 
+            resources.ApplyResources(this.btnUploaderFiltersAdd, "btnUploaderFiltersAdd");
+            this.btnUploaderFiltersAdd.Name = "btnUploaderFiltersAdd";
+            this.btnUploaderFiltersAdd.UseVisualStyleBackColor = true;
+            this.btnUploaderFiltersAdd.Click += new System.EventHandler(this.btnUploaderFiltersAdd_Click);
+            // 
+            // btnUploaderFiltersUpdate
+            // 
+            resources.ApplyResources(this.btnUploaderFiltersUpdate, "btnUploaderFiltersUpdate");
+            this.btnUploaderFiltersUpdate.Name = "btnUploaderFiltersUpdate";
+            this.btnUploaderFiltersUpdate.UseVisualStyleBackColor = true;
+            this.btnUploaderFiltersUpdate.Click += new System.EventHandler(this.btnUploaderFiltersUpdate_Click);
+            // 
+            // btnUploaderFiltersRemove
+            // 
+            resources.ApplyResources(this.btnUploaderFiltersRemove, "btnUploaderFiltersRemove");
+            this.btnUploaderFiltersRemove.Name = "btnUploaderFiltersRemove";
+            this.btnUploaderFiltersRemove.UseVisualStyleBackColor = true;
+            this.btnUploaderFiltersRemove.Click += new System.EventHandler(this.btnUploaderFiltersRemove_Click);
+            // 
+            // lvUploaderFiltersList
+            // 
+            resources.ApplyResources(this.lvUploaderFiltersList, "lvUploaderFiltersList");
+            this.lvUploaderFiltersList.AutoFillColumn = true;
+            this.lvUploaderFiltersList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chUploaderFiltersName,
+            this.chUploaderFiltersExtension});
+            this.lvUploaderFiltersList.FullRowSelect = true;
+            this.lvUploaderFiltersList.HideSelection = false;
+            this.lvUploaderFiltersList.Name = "lvUploaderFiltersList";
+            this.lvUploaderFiltersList.UseCompatibleStateImageBehavior = false;
+            this.lvUploaderFiltersList.View = System.Windows.Forms.View.Details;
+            this.lvUploaderFiltersList.SelectedIndexChanged += new System.EventHandler(this.lvUploaderFiltersList_SelectedIndexChanged);
+            // 
+            // chUploaderFiltersName
+            // 
+            resources.ApplyResources(this.chUploaderFiltersName, "chUploaderFiltersName");
+            // 
+            // chUploaderFiltersExtension
+            // 
+            resources.ApplyResources(this.chUploaderFiltersExtension, "chUploaderFiltersExtension");
+            // 
             // TaskSettingsForm
             // 
             resources.ApplyResources(this, "$this");
@@ -2066,15 +2073,15 @@
             this.cmsDestinations.ResumeLayout(false);
             this.tpGeneral.ResumeLayout(false);
             this.tpGeneral.PerformLayout();
-            this.panelGeneral.ResumeLayout(false);
-            this.panelGeneral.PerformLayout();
+            this.pGeneral.ResumeLayout(false);
+            this.pGeneral.PerformLayout();
             this.tpImage.ResumeLayout(false);
             this.tcImage.ResumeLayout(false);
             this.tpQuality.ResumeLayout(false);
             this.tpQuality.PerformLayout();
             this.pImage.ResumeLayout(false);
             this.pImage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudUseImageFormat2After)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImageAutoUseJPEGSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudImageJPEGQuality)).EndInit();
             this.tpEffects.ResumeLayout(false);
             this.tpEffects.PerformLayout();
@@ -2112,7 +2119,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudScreenRecorderDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudScreenRecorderStartDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGIFFPS)).EndInit();
-            this.tpScrollingCapture.ResumeLayout(false);
             this.tpUpload.ResumeLayout(false);
             this.tcUpload.ResumeLayout(false);
             this.tpUploadMain.ResumeLayout(false);
@@ -2127,13 +2133,13 @@
             this.tpWatchFolders.ResumeLayout(false);
             this.tpWatchFolders.PerformLayout();
             this.tpTools.ResumeLayout(false);
-            this.tcTools.ResumeLayout(false);
-            this.tpToolsMain.ResumeLayout(false);
-            this.tpToolsMain.PerformLayout();
-            this.tpIndexer.ResumeLayout(false);
-            this.tpVideoThumbnailer.ResumeLayout(false);
+            this.tpTools.PerformLayout();
+            this.pTools.ResumeLayout(false);
+            this.pTools.PerformLayout();
             this.tpAdvanced.ResumeLayout(false);
             this.tpAdvanced.PerformLayout();
+            this.tpUploaderFilters.ResumeLayout(false);
+            this.tpUploaderFilters.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2158,17 +2164,14 @@
         private System.Windows.Forms.TabControl tcImage;
         private System.Windows.Forms.TabPage tpQuality;
         private System.Windows.Forms.Label lblImageFormat;
-        private System.Windows.Forms.Label lblUseImageFormat2AfterHint;
+        private System.Windows.Forms.Label lblImageSizeLimitHint;
         private System.Windows.Forms.ComboBox cbImageFormat;
         private System.Windows.Forms.Label lblImageJPEGQualityHint;
         private System.Windows.Forms.Label lblImageJPEGQuality;
         private System.Windows.Forms.ComboBox cbImageGIFQuality;
         private System.Windows.Forms.Label lblImageGIFQuality;
-        private System.Windows.Forms.ComboBox cbImageFormat2;
         private System.Windows.Forms.NumericUpDown nudImageJPEGQuality;
-        private System.Windows.Forms.Label lblImageFormat2;
-        private System.Windows.Forms.NumericUpDown nudUseImageFormat2After;
-        private System.Windows.Forms.Label lblUseImageFormat2After;
+        private System.Windows.Forms.NumericUpDown nudImageAutoUseJPEGSize;
         private System.Windows.Forms.TabPage tpEffects;
         private System.Windows.Forms.TabControl tcCapture;
         private System.Windows.Forms.TabPage tpCaptureGeneral;
@@ -2229,7 +2232,7 @@
         private System.Windows.Forms.CheckBox cbPlaySoundAfterCapture;
         private System.Windows.Forms.CheckBox cbPlaySoundAfterUpload;
         private System.Windows.Forms.CheckBox chkUseDefaultGeneralSettings;
-        private System.Windows.Forms.Panel panelGeneral;
+        private System.Windows.Forms.Panel pGeneral;
         private System.Windows.Forms.TabPage tpTools;
         private System.Windows.Forms.NumericUpDown nudScreenRecorderStartDelay;
         private System.Windows.Forms.Button btnImageEffects;
@@ -2290,15 +2293,7 @@
         private System.Windows.Forms.ComboBox cbGIFEncoding;
         private System.Windows.Forms.Label lblGIFEncoding;
         private System.Windows.Forms.CheckBox cbScreenRecorderShowCursor;
-        private System.Windows.Forms.TabControl tcTools;
-        private System.Windows.Forms.TabPage tpToolsMain;
-        private System.Windows.Forms.TabPage tpIndexer;
         private System.Windows.Forms.CheckBox chkUseDefaultToolsSettings;
-        private System.Windows.Forms.PropertyGrid pgIndexer;
-        private System.Windows.Forms.TabPage tpVideoThumbnailer;
-        private System.Windows.Forms.PropertyGrid pgVideoThumbnailer;
-        private System.Windows.Forms.TabPage tpScrollingCapture;
-        private System.Windows.Forms.PropertyGrid pgScrollingCapture;
         private System.Windows.Forms.CheckBox cbRegionCaptureUseWindowPattern;
         private System.Windows.Forms.TabPage tpFileNaming;
         private System.Windows.Forms.Label lblAutoIncrementNumber;
@@ -2345,5 +2340,21 @@
         private System.Windows.Forms.CheckBox cbRegionCaptureIsFixedSize;
         private System.Windows.Forms.NumericUpDown nudRegionCaptureFixedSizeHeight;
         private System.Windows.Forms.CheckBox cbRegionCaptureShowFPS;
+        private System.Windows.Forms.CheckBox cbImageAutoUseJPEG;
+        private System.Windows.Forms.Panel pTools;
+        private System.Windows.Forms.TextBox txtToolsScreenColorPickerFormat;
+        private System.Windows.Forms.Label lblToolsScreenColorPickerFormat;
+        private System.Windows.Forms.TabPage tpUploaderFilters;
+        private HelpersLib.MyListView lvUploaderFiltersList;
+        private System.Windows.Forms.ColumnHeader chUploaderFiltersName;
+        private System.Windows.Forms.ColumnHeader chUploaderFiltersExtension;
+        private System.Windows.Forms.Button btnUploaderFiltersRemove;
+        private System.Windows.Forms.Button btnUploaderFiltersUpdate;
+        private System.Windows.Forms.Button btnUploaderFiltersAdd;
+        private System.Windows.Forms.Label lblUploaderFiltersDestination;
+        private System.Windows.Forms.ComboBox cbUploaderFiltersDestination;
+        private System.Windows.Forms.Label lblUploaderFiltersExtensionsExample;
+        private System.Windows.Forms.Label lblUploaderFiltersExtensions;
+        private System.Windows.Forms.TextBox txtUploaderFiltersExtensions;
     }
 }
